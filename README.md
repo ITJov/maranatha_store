@@ -1,0 +1,1 @@
+# maranatha_store
