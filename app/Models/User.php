@@ -1,69 +1,38 @@
-{{  }}p
+<?php
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class User extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-
-    protected $table = 'users';
+    use HasFactory;
 
     protected $fillable = [
-        'user_id',
-        'fname',
-        'lname',
+        'id',
+        'name',
         'email',
-        'email_verified_at',
         'password',
-        'location',
         'role_id',
+    ];
+
+    protected $hidden =[
+        'password',
         'remember_token'
     ];
 
-    protected $primaryKey = 'user_id';
-    protected $keyType = 'string';
-    public $incrementing = false;
-
-    public function role(): BelongsTo
-    {
-        return $this->belongsTo(Role::class, "id_role");
-    }
-
-    public function purchasing(): HasMany
-    {
-        return $this->hasMany(Purchasing::class);
-    }
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'password' => 'hashed',
     ];
+
+    protected $primaryKey = 'id';
+    public $incrementing = 'false';
+    protected $keyType = 'string';
+
+    public function namaRole(){
+        return $this -> belongsTo(role::class,'role');
+    }
+    
 }

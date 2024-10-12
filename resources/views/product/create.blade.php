@@ -4,10 +4,10 @@
 <div class="mx-5 px-5">
     <div class="border-bottom ps-3 pt-3 d-flex justify-content-between">
         <div>
-            <h3 class="fw-semibold text-black">Add New Medicine</h3>
+            <h3 class="fw-semibold text-black">Add New product</h3>
         </div>
         <div class="mb-3">
-            <a href="/medicine" class="btn btn-warning gap-2">
+            <a href="/product" class="btn btn-warning gap-2">
                 Back
             </a>
         </div>
@@ -15,7 +15,7 @@
 </div>
 <div class="mx-5">
     <div class="card bg-light-subtle rouded-3 my-5 mx-5">
-        <form method="post" action="{{  route('medicine-store')}}" class="p-4">
+        <form method="post" action="{{  route('product-store')}}" class="p-4">
             @csrf
             <div class="mb-3 input-group">
                 <div class="col-2">
@@ -26,7 +26,7 @@
                 <div class="ps-4 col-7">
                     <label for="med_name" class="form-label fw-semibold">Name</label>
                     <input type="text" class="form-control" id="med_name" name="med_name" required
-                        placeholder=" Medicine Name">
+                        placeholder=" product Name">
                 </div>
                 <div class="ps-4 col-3">
                     <label for="price" class="form-label fw-semibold">Price</label>
@@ -37,7 +37,7 @@
             <div class="ms-3 mb-4 me-3">
                 <label for="description" class="form-label fw-semibold">Description</label>
                 <textarea class="form-control" id="description" name="description" required rows="5"
-                    placeholder="Description about the Medicine"></textarea>
+                    placeholder="Description about the product"></textarea>
             </div>
             <div class="mb-3 input-group">
                 <div class="col-2">
@@ -56,7 +56,7 @@
                 </div>
             </div>
             <div class="d-flex justify-content-end">
-                <button type="submit" class="ms-3 mt-3 btn btn-success">Add New Medicine</button>
+                <button type="submit" class="ms-3 mt-3 btn btn-success">Add New product</button>
             </div>
         </form>
     </div>

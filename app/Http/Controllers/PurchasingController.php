@@ -6,7 +6,7 @@ use App\Models\Purchase;
 use App\Models\Purchasing;
 use Illuminate\Http\Request;
 
-class PurchaseController extends Controller
+class PurchasingController extends Controller
 {
     /**
      * Display a listing of the resource.

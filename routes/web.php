@@ -2,10 +2,11 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\RoleController;
-use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\PurchasingController;
 use App\Http\Controllers\PurchasingDetailController;
 use App\Http\Controllers\DeliveryController;
+use App\Http\Controllers\ProductController;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('dashboard.index');
 // });
 
-Route::get('/', [MedicineController::class, 'dashboardProducts'])->name('dashboard');
+Route::get('/', [ProductController::class, 'index'])->name('dashboard');
 
 
 
@@ -35,13 +36,13 @@ Route::get('/role-edit/{role}', [RoleController::class, 'edit'])->name('role-edi
 
 
 // Medicine
-Route::get('/medicine', [MedicineController::class, 'index'])->name('medicine-index');
-Route::get('/medicine-detail/{medicine}', [MedicineController::class, 'show'])->name('medicine-detail');
-Route::get('/medicine-create', [MedicineController::class, 'create'])->name('medicine-create');
-Route::post('/medicine-store', [MedicineController::class, 'store'])->name('medicine-store');
-Route::get('/medicine-edit/{medicine}', [MedicineController::class, 'edit'])->name('medicine-edit');
-Route::post('/medicine-update/{medicine}', [MedicineController::class, 'update'])->name('medicine-update');
-Route::delete('/medicine-delete/{medicine}', [MedicineController::class, 'destroy'])->name('medicine-delete');
+Route::get('/medicine', [ProductController::class, 'index'])->name('medicine-index');
+Route::get('/medicine-detail/{medicine}', [ProductController::class, 'show'])->name('medicine-detail');
+Route::get('/medicine-create', [ProductController::class, 'create'])->name('medicine-create');
+Route::post('/medicine-store', [ProductController::class, 'store'])->name('medicine-store');
+Route::get('/medicine-edit/{medicine}', [ProductController::class, 'edit'])->name('medicine-edit');
+Route::post('/medicine-update/{medicine}', [ProductController::class, 'update'])->name('medicine-update');
+Route::delete('/medicine-delete/{medicine}', [ProductController::class, 'destroy'])->name('medicine-delete');
 
 // Cart
 Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('add-to-cart');

@@ -27,11 +27,11 @@
             </div>
             <div class="icons">
                 <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
-                <a href="{{ route('cart') }}" class="mx-3 icons-btn d-inline-block bag">
+                <a href="" class="mx-3 icons-btn d-inline-block bag">
                     <span class="icon-shopping-bag"></span>
                     <span class="number">2</span>
                 </a>
-                <a href="{{ route('login') }}" class="icons-btn d-inline-block bag">
+                <a href="" class="icons-btn d-inline-block bag">
                     <span class="icon-user"></span>
                 </a>
                 <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span
