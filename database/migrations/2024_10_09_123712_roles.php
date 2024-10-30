@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
+
 
 return new class extends Migration
 {
@@ -19,6 +21,10 @@ return new class extends Migration
         });
 
         $data = ['Admin'];
+
+        DB::table('role')->insert([
+            ['id' => '1', 'nama_role' => 'admin'],
+        ]);
     }
 
     /**

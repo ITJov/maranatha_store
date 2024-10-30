@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class User extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
 
     protected $fillable = [
         'id',
@@ -17,9 +19,9 @@ class User extends Model
         'role_id',
     ];
 
-    protected $hidden =[
+    protected $hidden = [
         'password',
-        'remember_token'
+        'remember_token',
     ];
 
     protected $casts = [
@@ -28,11 +30,11 @@ class User extends Model
     ];
 
     protected $primaryKey = 'id';
-    public $incrementing = 'false';
+    public $incrementing = false;
     protected $keyType = 'string';
 
-    public function namaRole(){
-        return $this -> belongsTo(role::class,'role');
+    public function namaRole()
+    {
+        return $this->belongsTo(Role::class, 'role_id', 'id');
     }
-    
 }
