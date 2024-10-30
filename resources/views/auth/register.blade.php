@@ -8,12 +8,6 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="text-center">
-                        <a href="{{ url('index') }}" class="mb-5 d-block auth-logo">
-                            <img src="{{ URL::asset('/assets/images/logo-dark.png') }}" alt="" height="22"
-                                class="logo logo-dark">
-                            <img src="{{ URL::asset('/assets/images/logo-light.png') }}" alt="" height="22"
-                                class="logo logo-light">
-                        </a>
                     </div>
                 </div>
             </div>
@@ -25,7 +19,7 @@
 
                             <div class="text-center mt-2">
                                 <h5 class="text-primary">Register Account</h5>
-                                <p class="text-muted">Get your free Minible account now.</p>
+                                <p class="text-muted">Get your free Maranatha Store account now.</p>
                             </div>
                             <div class="p-2 mt-4">
                                 <form method="POST" action="{{ route('register') }}">
@@ -129,10 +123,10 @@
                         </div>
                     </div>
                     <div class="mt-5 text-center">
-                        <p>© <script>
+                        <>© <script>
                                 document.write(new Date().getFullYear())
 
-                            </script> Minible. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand</p>
+                            </script> Maranatha Store
                     </div>
 
                 </div>

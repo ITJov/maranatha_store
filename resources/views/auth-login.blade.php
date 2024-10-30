@@ -9,9 +9,9 @@
                 <div class="col-lg-12">
                     <div class="text-center">
                         <a href="{{ url('index') }}" class="mb-5 d-block auth-logo">
-                            <img src="{{ URL::asset('/assets/images/logo-dark.png') }}" alt="" height="22"
+                            <img src="'" alt="" height="22"
                                 class="logo logo-dark">
-                            <img src="{{ URL::asset('/assets/images/logo-light.png') }}" alt="" height="22"
+                            <img src="" alt="" height="22"
                                 class="logo logo-light">
                         </a>
                     </div>
@@ -97,7 +97,7 @@
                         <p>© <script>
                                 document.write(new Date().getFullYear())
 
-                            </script> Minible. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand</p>
+                            </script> Maranatha Store
                     </div>
 
                 </div>
