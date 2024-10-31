@@ -36,10 +36,10 @@
                         <span>@lang('translation.Ecommerce')</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="ecommerce-products">@lang('translation.Products')</a></li>
-                        <li><a href="ecommerce-orders">@lang('translation.Orders')</a></li>
-                        <li><a href="ecommerce-customers">@lang('translation.Customers')</a></li>
-                        <li><a href="ecommerce-add-product">@lang('translation.Add_Product')</a></li>
+                        <li><a href="/ecommerce/ecommerce-products">@lang('translation.Products')</a></li>
+                        <li><a href="/ecommerce/ecommerce-orders">@lang('translation.Orders')</a></li>
+                        <li><a href="/ecommerce/ecommerce-customers">@lang('translation.Customers')</a></li>
+                        <li><a href="/ecommerce/ecommerce-add-product">@lang('translation.Add_Product')</a></li>
                     </ul>
                 </li>
 
@@ -49,8 +49,8 @@
                         <span>@lang('translation.Invoices')</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="invoices-list">@lang('translation.Invoice_List')</a></li>
-                        <li><a href="invoices-detail">@lang('translation.Invoice_Detail')</a></li>
+                        <li><a href="/invoices/invoices-list">@lang('translation.Invoice_List')</a></li>
+                        <li><a href="/invoices/invoices-detail">@lang('translation.Invoice_Detail')</a></li>
                     </ul>
                 </li>
 
