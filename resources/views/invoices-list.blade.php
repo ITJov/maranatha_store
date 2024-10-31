@@ -68,7 +68,7 @@
                                     </div>
                                 </td>
                                 
-                                <td><a href="javascript: void(0);" class="text-reset  fw-bold">#MN0131</a> </td>
+                                <td><a href="javascript: void(0);" class="text-reset  fw-bold">1</a> </td>
                                 <td>
                                     10 Jul, 2020
                                 </td>
@@ -99,7 +99,7 @@
                                     </div>
                                 </td>
                                 
-                                <td><a href="javascript: void(0);" class="text-reset  fw-bold">#MN0130</a> </td>
+                                <td><a href="javascript: void(0);" class="text-reset  fw-bold">2</a> </td>
                                 <td>
                                     09 Jul, 2020
                                 </td>
@@ -130,7 +130,7 @@
                                     </div>
                                 </td>
                                 
-                                <td><a href="javascript: void(0);" class="text-reset  fw-bold">#MN0129</a> </td>
+                                <td><a href="javascript: void(0);" class="text-reset  fw-bold">3</a> </td>
                                 <td>
                                     09 Jul, 2020
                                 </td>
@@ -161,7 +161,7 @@
                                     </div>
                                 </td>
                                 
-                                <td><a href="javascript: void(0);" class="text-reset  fw-bold">#MN0128</a> </td>
+                                <td><a href="javascript: void(0);" class="text-reset  fw-bold">4</a> </td>
                                 <td>
                                     08 Jul, 2020
                                 </td>
@@ -192,7 +192,7 @@
                                     </div>
                                 </td>
                                 
-                                <td><a href="javascript: void(0);" class="text-reset  fw-bold">#MN0127</a> </td>
+                                <td><a href="javascript: void(0);" class="text-reset  fw-bold">5</a> </td>
                                 <td>
                                     07 Jul, 2020
                                 </td>
@@ -223,7 +223,7 @@
                                     </div>
                                 </td>
                                 
-                                <td><a href="javascript: void(0);" class="text-reset  fw-bold">#MN0126</a> </td>
+                                <td><a href="javascript: void(0);" class="text-reset  fw-bold">6</a> </td>
                                 <td>
                                     06 Jul, 2020
                                 </td>
@@ -254,7 +254,7 @@
                                     </div>
                                 </td>
                                 
-                                <td><a href="javascript: void(0);" class="text-reset  fw-bold">#MN0125</a> </td>
+                                <td><a href="javascript: void(0);" class="text-reset  fw-bold">7</a> </td>
                                 <td>
                                     05 Jul, 2020
                                 </td>
@@ -285,7 +285,7 @@
                                     </div>
                                 </td>
                                 
-                                <td><a href="javascript: void(0);" class="text-reset  fw-bold">#MN0124</a> </td>
+                                <td><a href="javascript: void(0);" class="text-reset  fw-bold">8</a> </td>
                                 <td>
                                     05 Jul, 2020
                                 </td>
@@ -316,7 +316,7 @@
                                     </div>
                                 </td>
                                 
-                                <td><a href="javascript: void(0);" class="text-reset  fw-bold">#MN0123</a> </td>
+                                <td><a href="javascript: void(0);" class="text-reset  fw-bold">9</a> </td>
                                 <td>
                                     04 Jul, 2020
                                 </td>
@@ -347,7 +347,7 @@
                                     </div>
                                 </td>
                                 
-                                <td><a href="javascript: void(0);" class="text-reset  fw-bold">#MN0122</a> </td>
+                                <td><a href="javascript: void(0);" class="text-reset  fw-bold">10</a> </td>
                                 <td>
                                     03 Jul, 2020
                                 </td>
@@ -378,7 +378,7 @@
                                     </div>
                                 </td>
                                 
-                                <td><a href="javascript: void(0);" class="text-reset  fw-bold">#MN0121</a> </td>
+                                <td><a href="javascript: void(0);" class="text-reset  fw-bold">11</a> </td>
                                 <td>
                                     02 Jul, 2020
                                 </td>
@@ -409,7 +409,7 @@
                                     </div>
                                 </td>
                                 
-                                <td><a href="javascript: void(0);" class="text-reset  fw-bold">#MN0120</a> </td>
+                                <td><a href="javascript: void(0);" class="text-reset  fw-bold">12</a> </td>
                                 <td>
                                     02 Jul, 2020
                                 </td>

@@ -18,11 +18,11 @@
             <div class="card">
                 <div class="card-body">
                     <div class="invoice-title">
-                        <h4 class="float-end font-size-16">Invoice #MN0131 <span
+                        <h4 class="float-end font-size-16">Invoice 1 <span
                                 class="badge bg-success font-size-12 ms-2">Paid</span></h4>
                         <div class="mb-4">
-                            <img src="{{ URL::asset('assets/images/logo-dark.png') }}" alt="logo" height="20" class="logo-dark" />
-                            <img src="{{ URL::asset('assets/images/logo-light.png') }}" alt="logo" height="20" class="logo-light" />
+                            <img src="{{ URL::asset('assets/images/Maranatha_Logo.png') }}" alt="logo" height="70" class="logo-dark" />
+                            <img src="{{ URL::asset('assets/images/Maranatha_Logo.png') }}" alt="logo" height="70" class="logo-light" />
                         </div>
                         <div class="text-muted">
                             <p class="mb-1">641 Counts Lane Wilmore, KY 40390</p>

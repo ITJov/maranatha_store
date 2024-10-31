@@ -138,7 +138,7 @@
 
                 <div class="row align-items-center g-0 mt-3">
                     <div class="col-sm-3">
-                        <p class="text-truncate mt-1 mb-0"><i class="mdi mdi-circle-medium text-primary me-2"></i> Desktops </p>
+                        <p class="text-truncate mt-1 mb-0"><i class="mdi mdi-circle-medium text-primary me-2"></i> Roti </p>
                     </div>
 
                     <div class="col-sm-9">
@@ -153,7 +153,7 @@
 
                 <div class="row align-items-center g-0 mt-3">
                     <div class="col-sm-3">
-                        <p class="text-truncate mt-1 mb-0"><i class="mdi mdi-circle-medium text-info me-2"></i> iPhones </p>
+                        <p class="text-truncate mt-1 mb-0"><i class="mdi mdi-circle-medium text-info me-2"></i> Es Krim </p>
                     </div>
                     <div class="col-sm-9">
                         <div class="progress mt-1" style="height: 6px;">
@@ -167,7 +167,7 @@
 
                 <div class="row align-items-center g-0 mt-3">
                     <div class="col-sm-3">
-                        <p class="text-truncate mt-1 mb-0"><i class="mdi mdi-circle-medium text-success me-2"></i> Android </p>
+                        <p class="text-truncate mt-1 mb-0"><i class="mdi mdi-circle-medium text-success me-2"></i> Indomie </p>
                     </div>
                     <div class="col-sm-9">
                         <div class="progress mt-1" style="height: 6px;">
@@ -181,7 +181,7 @@
 
                 <div class="row align-items-center g-0 mt-3">
                     <div class="col-sm-3">
-                        <p class="text-truncate mt-1 mb-0"><i class="mdi mdi-circle-medium text-warning me-2"></i> Tablets </p>
+                        <p class="text-truncate mt-1 mb-0"><i class="mdi mdi-circle-medium text-warning me-2"></i> Susu </p>
                     </div>
                     <div class="col-sm-9">
                         <div class="progress mt-1" style="height: 6px;">
@@ -195,7 +195,7 @@
 
                 <div class="row align-items-center g-0 mt-3">
                     <div class="col-sm-3">
-                        <p class="text-truncate mt-1 mb-0"><i class="mdi mdi-circle-medium text-purple me-2"></i> Cables </p>
+                        <p class="text-truncate mt-1 mb-0"><i class="mdi mdi-circle-medium text-purple me-2"></i> Brownies </p>
                     </div>
                     <div class="col-sm-9">
                         <div class="progress mt-1" style="height: 6px;">
@@ -228,7 +228,7 @@
                                     </div>
                                 </th>
                                 <th>Order ID</th>
-                                <th>Billing Name</th>
+                                <th>Name</th>
                                 <th>Date</th>
                                 <th>Total</th>
                                 <th>Payment Status</th>
@@ -244,7 +244,7 @@
                                         <label class="form-check-label" for="customCheck2">&nbsp;</label>
                                     </div>
                                 </td>
-                                <td><a href="javascript: void(0);" class="text-body fw-bold">#MB2540</a> </td>
+                                <td><a href="javascript: void(0);" class="text-body fw-bold">1</a> </td>
                                 <td>Neal Matthews</td>
                                 <td>
                                     07 Oct, 2019
@@ -272,7 +272,7 @@
                                         <label class="form-check-label" for="customCheck3">&nbsp;</label>
                                     </div>
                                 </td>
-                                <td><a href="javascript: void(0);" class="text-body fw-bold">#MB2541</a> </td>
+                                <td><a href="javascript: void(0);" class="text-body fw-bold">2</a> </td>
                                 <td>Jamal Burnett</td>
                                 <td>
                                     07 Oct, 2019
@@ -300,7 +300,7 @@
                                         <label class="form-check-label" for="customCheck4">&nbsp;</label>
                                     </div>
                                 </td>
-                                <td><a href="javascript: void(0);" class="text-body fw-bold">#MB2542</a> </td>
+                                <td><a href="javascript: void(0);" class="text-body fw-bold">3</a> </td>
                                 <td>Juan Mitchell</td>
                                 <td>
                                     06 Oct, 2019
@@ -327,7 +327,7 @@
                                         <label class="form-check-label" for="customCheck5">&nbsp;</label>
                                     </div>
                                 </td>
-                                <td><a href="javascript: void(0);" class="text-body fw-bold">#MB2543</a> </td>
+                                <td><a href="javascript: void(0);" class="text-body fw-bold">4</a> </td>
                                 <td>Barry Dick</td>
                                 <td>
                                     05 Oct, 2019
@@ -354,7 +354,7 @@
                                         <label class="form-check-label" for="customCheck6">&nbsp;</label>
                                     </div>
                                 </td>
-                                <td><a href="javascript: void(0);" class="text-body fw-bold">#MB2544</a> </td>
+                                <td><a href="javascript: void(0);" class="text-body fw-bold">5</a> </td>
                                 <td>Ronald Taylor</td>
                                 <td>
                                     04 Oct, 2019
@@ -381,7 +381,7 @@
                                         <label class="form-check-label" for="customCheck7">&nbsp;</label>
                                     </div>
                                 </td>
-                                <td><a href="javascript: void(0);" class="text-body fw-bold">#MB2545</a> </td>
+                                <td><a href="javascript: void(0);" class="text-body fw-bold">6</a> </td>
                                 <td>Jacob Hunter</td>
                                 <td>
                                     04 Oct, 2019
