@@ -1,1 +1,1 @@
-@extends('user-dashboard.master')
+@extends('user-dashboard.master-user')

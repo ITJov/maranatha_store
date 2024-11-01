@@ -26,7 +26,7 @@ Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang'
 Route::post('/formsubmit', [App\Http\Controllers\HomeController::class, 'FormSubmit'])->name('FormSubmit');
 
 // User
-Route::view('/home-page', 'user-dashboard.index');
+Route::view('/user-dashboard/index', 'user-dashboard.index');
 
 // Ecommerce
 Route::view('/ecommerce/ecommerce-products', 'ecommerce.ecommerce-products');
@@ -37,4 +37,3 @@ Route::view('/ecommerce/ecommerce-add-product', 'ecommerce.ecommerce-add-product
 // Invoices
 Route::view('/invoices/invoices-detail', 'invoices.invoices-detail');
 Route::view('/invoices/invoices-list', 'invoices.invoices-list');
-
