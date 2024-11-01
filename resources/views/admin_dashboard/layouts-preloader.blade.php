@@ -28,8 +28,8 @@
                         <div id="total-revenue-chart" data-colors='["--bs-primary"]'></div>
                     </div>
                     <div>
-                        <h4 class="mb-1 mt-1">$<span data-plugin="counterup">34,152</span></h4>
-                        <p class="text-muted mb-0">Total Revenue</p>
+                        <h4 class="mb-1 mt-1">$<span data-plugin="counterup">22</span></h4>
+                        <p class="text-muted mb-0"></p>
                     </div>
                     <p class="text-muted mt-3 mb-0"><span class="text-success me-1"><i class="mdi mdi-arrow-up-bold me-1"></i>2.65%</span> since last week
                     </p>

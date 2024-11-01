@@ -24,11 +24,6 @@
                             <img src="{{ URL::asset('assets/images/Maranatha_Logo.png') }}" alt="logo" height="70" class="logo-dark" />
                             <img src="{{ URL::asset('assets/images/Maranatha_Logo.png') }}" alt="logo" height="70" class="logo-light" />
                         </div>
-                        <div class="text-muted">
-                            <p class="mb-1">641 Counts Lane Wilmore, KY 40390</p>
-                            <p class="mb-1"><i class="uil uil-envelope-alt me-1"></i> abc@123.com</p>
-                            <p><i class="uil uil-phone me-1"></i> 012-345-6789</p>
-                        </div>
                     </div>
 
                     <hr class="my-4">
@@ -36,27 +31,14 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="text-muted">
-                                <h5 class="font-size-16 mb-3">Billed To:</h5>
-                                <h5 class="font-size-15 mb-2">Preston Miller</h5>
-                                <p class="mb-1">4450 Fancher Drive Dallas, TX 75247</p>
+                            <div>
+                                <h5 class="font-size-16 mb-1">Invoice No:</h5>
+                                <p>1</p>
+                                <h5 class="font-size-16 mb-1">Invoice Date:</h5>
+                                <p>09 Jul, 2020</p>
+                                <h5 class="font-size-16 mb-1">Order No:</h5>
+                                <p>#1123456</p>
                                 <p class="mb-1">PrestonMiller@armyspy.com</p>
-                                <p>001-234-5678</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="text-muted text-sm-end">
-                                <div>
-                                    <h5 class="font-size-16 mb-1">Invoice No:</h5>
-                                    <p>#MN0131</p>
-                                </div>
-                                <div class="mt-4">
-                                    <h5 class="font-size-16 mb-1">Invoice Date:</h5>
-                                    <p>09 Jul, 2020</p>
-                                </div>
-                                <div class="mt-4">
-                                    <h5 class="font-size-16 mb-1">Order No:</h5>
-                                    <p>#1123456</p>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -80,11 +62,11 @@
                                     <tr>
                                         <th scope="row">01</th>
                                         <td>
-                                            <h5 class="font-size-15 mb-1">Nike N012 Running Shoes</h5>
+                                            <h5 class="font-size-15 mb-1">Sepatu Nike N012 Running</h5>
                                             <ul class="list-inline mb-0">
                                                 <li class="list-inline-item">Color : <span class="fw-medium">Gray</span>
                                                 </li>
-                                                <li class="list-inline-item">Size : <span class="fw-medium">08</span></li>
+                                                <li class="list-inline-item">Size : <span class="fw-medium">42</span></li>
                                             </ul>
                                         </td>
                                         <td>$260</td>
@@ -95,11 +77,10 @@
                                     <tr>
                                         <th scope="row">02</th>
                                         <td>
-                                            <h5 class="font-size-15 mb-1">Adidas Running Shoes</h5>
+                                            <h5 class="font-size-15 mb-1">Bola Basket</h5>
                                             <ul class="list-inline mb-0">
                                                 <li class="list-inline-item">Color : <span class="fw-medium">Black</span>
                                                 </li>
-                                                <li class="list-inline-item">Size : <span class="fw-medium">09</span></li>
                                             </ul>
                                         </td>
                                         <td>$250</td>

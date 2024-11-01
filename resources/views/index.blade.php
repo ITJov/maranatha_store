@@ -256,7 +256,7 @@
                                     <span class="badge rounded-pill bg-success-subtle text-success font-size-12">Paid</span>
                                 </td>
                                 <td>
-                                    <i class="fab fa-cc-mastercard me-1"></i> Mastercard
+                                    <i class="fab fa-cc-mastercard me-1"></i> BCA
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light">
@@ -284,7 +284,7 @@
                                     <span class="badge rounded-pill bg-danger-subtle text-danger font-size-12">Chargeback</span>
                                 </td>
                                 <td>
-                                    <i class="fab fa-cc-visa me-1"></i> Visa
+                                    <i class="fab fa-cc-mastercard me-1"></i> BCA
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light">
@@ -312,7 +312,7 @@
                                     <span class="badge rounded-pill bg-success-subtle text-success font-size-12">Paid</span>
                                 </td>
                                 <td>
-                                    <i class="fab fa-cc-paypal me-1"></i> Paypal
+                                    <i class="fab fa-cc-mastercard me-1"></i> Mandiri
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light">
@@ -339,7 +339,7 @@
                                     <span class="badge rounded-pill bg-success-subtle text-success font-size-12">Paid</span>
                                 </td>
                                 <td>
-                                    <i class="fab fa-cc-mastercard me-1"></i> Mastercard
+                                    <i class="fab fa-cc-mastercard me-1"></i> BCA
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light">
@@ -366,7 +366,7 @@
                                     <span class="badge rounded-pill bg-warning-subtle text-warning font-size-12">Refund</span>
                                 </td>
                                 <td>
-                                    <i class="fab fa-cc-visa me-1"></i> Visa
+                                    <i class="fab fa-cc-visa me-1"></i> BCA
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light">
@@ -393,7 +393,7 @@
                                     <span class="badge rounded-pill bg-success-subtle text-success font-size-12">Paid</span>
                                 </td>
                                 <td>
-                                    <i class="fab fa-cc-paypal me-1"></i> Paypal
+                                    <i class="fab fa-cc-mastercard me-1"></i> Seabank
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light">

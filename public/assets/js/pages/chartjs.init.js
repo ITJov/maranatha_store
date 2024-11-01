@@ -171,7 +171,7 @@ function getChartColorsArray(chartId) {
     var DoughnutchartColors = getChartColorsArray("doughnut");
     if (DoughnutchartColors) {
       var donutChart = {
-        labels: ["Desktops", "Tablets"],
+        labels: ["Roti", "Tablets"],
         datasets: [{
           data: [300, 210],
           backgroundColor: DoughnutchartColors,
@@ -186,7 +186,7 @@ function getChartColorsArray(chartId) {
     var PiechartColors = getChartColorsArray("pie");
     if (PiechartColors) {
       var pieChart = {
-        labels: ["Desktops", "Tablets"],
+        labels: ["Roti", "Tablets"],
         datasets: [{
           data: [300, 180],
           backgroundColor: PiechartColors,
@@ -228,7 +228,7 @@ function getChartColorsArray(chartId) {
       var radarChart = {
         labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
         datasets: [{
-          label: "Desktops",
+          label: "Roti",
           backgroundColor: RadarchartColors[0],
           borderColor: RadarchartColors[1],
           pointBackgroundColor: RadarchartColors[1],

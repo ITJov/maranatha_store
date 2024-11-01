@@ -292,19 +292,19 @@ function getChartColorsArray(chartId) {
     var areaChartColors = getChartColorsArray("website-stats");
     if (areaChartColors) {
       //plot graph data
-      var desktops = [[0, 50], [1, 130], [2, 80], [3, 70], [4, 180], [5, 105], [6, 250]];
+      var Roti = [[0, 50], [1, 130], [2, 80], [3, 70], [4, 180], [5, 105], [6, 250]];
       var laptops = [[0, 80], [1, 100], [2, 60], [3, 120], [4, 140], [5, 100], [6, 105]];
       var tablets = [[0, 20], [1, 80], [2, 70], [3, 140], [4, 250], [5, 80], [6, 200]];
-      var plabels = ["Desktops", "Laptops", "Tablets"];
+      var plabels = ["Roti", "Laptops", "Tablets"];
       var pcolors = areaChartColors;
       var borderColor = 'rgba(166, 176, 207, 0.1)';
       var bgColor = 'transparent';
-      this.createPlotGraph("#website-stats", desktops, laptops, tablets, plabels, pcolors, borderColor, bgColor);
+      this.createPlotGraph("#website-stats", Roti, laptops, tablets, plabels, pcolors, borderColor, bgColor);
     }
     //Pie graph data
     var pieChartColors = getChartColorsArray("pie-chart-container");
     if (pieChartColors) {
-      var pielabels = ["Desktops", "Laptops", "Tablets"];
+      var pielabels = ["Roti", "Laptops", "Tablets"];
       var datas = [20, 30, 15];
       var colors = pieChartColors;
       this.createPieGraph("#pie-chart #pie-chart-container", pielabels, datas, colors);
@@ -328,7 +328,7 @@ function getChartColorsArray(chartId) {
     //Donut pie graph data
     var donutChartColors = getChartColorsArray("donut-chart-container");
     if (donutChartColors) {
-      var donutlabels = ["Desktops", "Laptops", "Tablets"];
+      var donutlabels = ["Roti", "Laptops", "Tablets"];
       var donutdatas = [29, 20, 18];
       var donutcolors = donutChartColors;
       this.createDonutGraph("#donut-chart #donut-chart-container", donutlabels, donutdatas, donutcolors);
