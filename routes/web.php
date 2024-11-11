@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,3 +39,12 @@ Route::view('/ecommerce/ecommerce-add-product', 'ecommerce.ecommerce-add-product
 // Invoices
 Route::view('/invoices/invoices-detail', 'invoices.invoices-detail');
 Route::view('/invoices/invoices-list', 'invoices.invoices-list');
+
+// Roles
+Route::get('/roles/index-role', [RoleController::class, 'index'])->name('role-index');
+Route::get('/roles/create-role', [RoleController::class, 'create'])->name('role.create');
+Route::post('/roles/store', [RoleController::class, 'store'])->name('role.store');
+Route::get('/roles/{role}/edit', [RoleController::class, 'edit'])->name('role.edit');
+Route::put('/roles/{role}', [RoleController::class, 'update'])->name('role.update');
+Route::delete('/roles/{role}', [RoleController::class, 'destroy'])->name('role.destroy');
+

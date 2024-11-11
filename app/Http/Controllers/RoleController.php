@@ -12,9 +12,9 @@ class RoleController extends Controller
      */
     public function index()
     {
-        return view('role.index', [
+        return view('roles.index-role', [
             'roles' => Role::all()
-        ]); // masukkan tujuan view
+        ]); 
     }
 
     /**
@@ -22,7 +22,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('role.create', [
+        return view('roles.create-role', [
             'roles' => Role::all()
         ]);
     }
@@ -33,7 +33,7 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'id' => 'required|string|max:2|unique:roles,role_id',
+            'id' => 'required|string|max:2|unique:role,id',
             'nama_role' => 'required|string|max:255'
         ], [
             'id.required' => 'ID Role harus diisi',
@@ -67,7 +67,7 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        return view('role.edit', [
+        return view('roles.edit-role', [
             'role' => $role
         ]);
     }
@@ -77,7 +77,15 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
-
+        $validatedData = $request->validate([
+            'nama_role' => 'required|string|max:255',
+        ], [
+            'nama_role.required' => 'Nama role harus diisi',
+        ]);
+    
+        $role->update($validatedData);
+    
+        return redirect()->route('role-index')->with('success', 'Role berhasil diperbarui.');
     }
 
     /**
@@ -85,6 +93,7 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        
+    $role->delete();
+    return redirect()->route('role-index')->with('success', 'Role berhasil dihapus.');
     }
 }
