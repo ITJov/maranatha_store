@@ -22,11 +22,10 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('roles.create-role', [
-            'roles' => Role::all()
-        ]);
+        $roles = Role::all();
+        return view('customers.create-customer', compact('roles'));
     }
-
+    
     /**
      * Store a newly created resource in storage.
      */
@@ -81,6 +80,7 @@ class RoleController extends Controller
             'nama_role' => 'required|string|max:255',
         ], [
             'nama_role.required' => 'Nama role harus diisi',
+            'nama_role.unique' => 'Nama role sudah ada'
         ]);
     
         $role->update($validatedData);

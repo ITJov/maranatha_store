@@ -57,10 +57,13 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="uil-user"></i>
-                        <span>Roles</span>
+                        <span>User</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="/roles/index-role">Roles User</a></li>
+                    </ul>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="/customers/index-customer">Customers User</a></li>
                     </ul>
                 </li>
 

@@ -20,11 +20,6 @@ return new class extends Migration
             $table->timestamp('created_at')->useCurrent();
         });
 
-        $data = ['Admin'];
-
-        DB::table('role')->insert([
-            ['id' => '1', 'nama_role' => 'admin'],
-        ]);
     }
 
     /**

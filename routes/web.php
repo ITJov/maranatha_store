@@ -40,7 +40,7 @@ Route::view('/ecommerce/ecommerce-add-product', 'ecommerce.ecommerce-add-product
 Route::view('/invoices/invoices-detail', 'invoices.invoices-detail');
 Route::view('/invoices/invoices-list', 'invoices.invoices-list');
 
-// Roles
+// Roles User
 Route::get('/roles/index-role', [RoleController::class, 'index'])->name('role-index');
 Route::get('/roles/create-role', [RoleController::class, 'create'])->name('role.create');
 Route::post('/roles/store', [RoleController::class, 'store'])->name('role.store');
@@ -48,3 +48,10 @@ Route::get('/roles/{role}/edit', [RoleController::class, 'edit'])->name('role.ed
 Route::put('/roles/{role}', [RoleController::class, 'update'])->name('role.update');
 Route::delete('/roles/{role}', [RoleController::class, 'destroy'])->name('role.destroy');
 
+// Customers User
+Route::get('/customers/index-customer', [App\Http\Controllers\UserController::class, 'index'])->name('customer-index');
+Route::get('/customers/create-customer', [App\Http\Controllers\UserController::class, 'create'])->name('customer-create');
+Route::post('/customers/store', [App\Http\Controllers\UserController::class, 'store'])->name('customer.store');
+Route::get('/customers/{customer}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('customer.edit');
+Route::put('/customers/{customer}', [App\Http\Controllers\UserController::class, 'update'])->name('customer.update');
+Route::delete('/customers/{customer}', [App\Http\Controllers\UserController::class, 'destroy'])->name('customer.destroy');
