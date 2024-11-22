@@ -17,7 +17,7 @@
 
                         <div class="card-body p-4">
                             <div class="text-center mt-2">
-                                <h5 class="text-primary">Welcome Back !</h5>
+                                <h5 class="text-primary">Sign In</h5>
                                 <p class="text-muted">Sign in to continue to Maranatha Store.</p>
                             </div>
                             <div class="p-2 mt-4">
@@ -38,10 +38,7 @@
 
                                     <div class="mb-3">
                                         <div class="float-end">
-                                            @if (Route::has('password.request'))
-                                                <a href="{{ route('password.request') }}" class="text-muted">Forgot
-                                                    password?</a>
-                                            @endif
+
                                         </div>
                                         <label class="form-label" for="userpassword">Password</label>
                                         <input type="password" class="form-control @error('password') is-invalid @enderror"
@@ -65,8 +62,10 @@
                                     </div>
 
                                     <div class="mt-4 text-center">
-                                        <p class="mb-0">Don't have an account ? <a href="{{ url('') }}"
-                                                class="fw-medium text-primary"> Signup now </a> </p>
+                                         @if (Route::has('password.request'))
+                                                <a href="{{ route('password.request') }}" class="text-muted">Forgot
+                                                    password?</a>
+                                            @endif
                                     </div>
                                 </form>
                             </div>

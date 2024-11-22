@@ -4,8 +4,9 @@
     <!-- LOGO -->
     <div class="navbar-brand-box">
         <a href="{{url('index')}}" class="logo logo-dark">
-            <span class="logo-lg">
-                <img src="assets/images/Maranatha_Logo.png" alt="" height="70">
+            <span class="logo-lg d-flex align-items-center" id="logo">
+                <img src="assets/images/logo.png" alt="" height="30">
+                 <p class="ms-3 m-0">Maranatha Store</p>
             </span>
         </a>
     </div>

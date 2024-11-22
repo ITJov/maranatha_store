@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    font-family: "Work Sans", sans-serif;
+    font-size: 12px;
+}
+
+/*-----------------------*/
+/* General */
+/*-----------------------*/
+
+.text-style{
+    font-family: 'Work Sans', sans-serif !important;
+}
+
+.background-primary {
+    background-color: #F47433 !important;
+}
+
+.background-secondary {
+    background-color: #007D3B !important;
+}
+
+.background-third {
+    background-color: #E94430 !important;
+}
+
+.color-primary {
+    color: #F47433;
+}
+
+/*-----------------------*/
+/* Navigation Admin */
+/*-----------------------*/
+body[data-sidebar-size=sm] .navbar-brand-box .logo #logo > p{
+    display: none;
+    padding-left: 25px;
+}
+
+/*-----------------------*/
+/* Navigation User */
+/*-----------------------*/
+
+.nav-color {
+    background-color: #F5F5F5;
+    color: #666666;
+    width: 100%;
+}
+
+.logo {
+    width: 45px;
+}
+
+.search {
+    width: 55rem;
+}
+
+#category .dropdown-item:hover {
+    background-color: #00B455;
+}
