@@ -1,6 +1,6 @@
 @yield('css')
 <!-- Style Css -->
-<link rel="stylesheet" href="{{ asset('/asset/css/style.css') }}">
+<link rel="stylesheet" href="{{ asset('/assets/css/style.css') }}">
 <!-- Bootstrap Css -->
 <link href="{{ URL::asset('/assets/css/bootstrap.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
 <!-- Icons Css -->

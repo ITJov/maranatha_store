@@ -6,7 +6,7 @@
     scroll-behavior: smooth;
     box-sizing: border-box;
     font-family: "Work Sans", sans-serif;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 /*-----------------------*/
@@ -33,6 +33,12 @@
     color: #F47433;
 }
 
+.background-img {
+    /*background-image: url("");*/
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 /*-----------------------*/
 /* Navigation Admin */
 /*-----------------------*/
@@ -40,6 +46,7 @@ body[data-sidebar-size=sm] .navbar-brand-box .logo #logo > p{
     display: none;
     padding-left: 25px;
 }
+
 
 /*-----------------------*/
 /* Navigation User */
@@ -61,4 +68,17 @@ body[data-sidebar-size=sm] .navbar-brand-box .logo #logo > p{
 
 #category .dropdown-item:hover {
     background-color: #00B455;
+}
+
+/*-----------------------*/
+/* Login */
+/*-----------------------*/
+
+.logo-login {
+    width: 55px;
+    height: 55px;
+}
+
+#remember-me #auth-remember-check .form-check-input:checked {
+    background-color: #007D3B;
 }
