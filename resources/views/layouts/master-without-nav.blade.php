@@ -8,7 +8,7 @@
 
 @section('body')
 
-    <body class="authentication-bg">
+    <body class="background-img">
     @show
     @yield('content')
     @include('layouts.vendor-scripts')
