@@ -38,7 +38,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="/ecommerce/product-ecommerce">Products</a></li>
-                        <li><a href="/ecommerce/ecommerce-orders">@lang('translation.Orders')</a></li>
+                        <li><a href="/ecommerce/orders-ecommerce">Orders</a></li>
                         <li><a href="/ecommerce/create-product-ecommerce">Add product</a></li>
                     </ul>
                 </li>

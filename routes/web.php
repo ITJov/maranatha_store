@@ -6,6 +6,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrderController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,13 +27,9 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'root']);
 
 Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index']);
 
-Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);
-
 Route::post('/formsubmit', [App\Http\Controllers\HomeController::class, 'FormSubmit'])->name('FormSubmit');
 
-// Dashboard
-Route::view('/user-dashboard/index', 'user-dashboard.index');
-
+//-----------------bagian admin---------------------
 // Ecommerce
 Route::view('/ecommerce/ecommerce-orders', 'ecommerce.ecommerce-orders');
 Route::get('/ecommerce/product-ecommerce', [ProductController::class, 'index'])->name('product-ecommerce');
@@ -41,6 +39,8 @@ Route::get('/ecommerce/{product}/edit', [ProductController::class, 'edit'])->nam
 Route::put('/ecommerce/{product}', [ProductController::class, 'update'])->name('product.update');
 Route::delete('/ecommerce/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
 
+// Order
+Route::get('/ecommerce/orders-ecommerce', [OrderController::class, 'index'])->name('orders.index');
 
 
 // Invoices
@@ -63,6 +63,9 @@ Route::get('/customers/{customer}/edit', [App\Http\Controllers\UserController::c
 Route::put('/customers/{customer}', [App\Http\Controllers\UserController::class, 'update'])->name('customer.update');
 Route::delete('/customers/{customer}', [App\Http\Controllers\UserController::class, 'destroy'])->name('customer.destroy');
 
+//----------------admin end---------------------
+// Dashboard
+Route::view('/user-dashboard/index', 'user-dashboard.index');
 
-// routes user
+
 

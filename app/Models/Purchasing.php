@@ -14,32 +14,27 @@ class Purchasing extends Model
 
     protected $table = 'purchasings';
 
-    protected $fillable = [
-        'purchase_id',
-        'user_id',
-        'date',
-        'address',
-        'status_order',
-        'total_purchase',
-        'total_payment'
-    ];
+    protected $fillable = ['id', 
+    'kuantiti_produk', 
+    'date', 
+    'user_id', 
+    'payment_id'];
 
-    protected $primaryKey = 'purchase_id';
+    protected $primaryKey = 'id';
     protected $keyType = 'string';
     public $incrementing = false;
 
-    public function user(): BelongsTo
+    public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function purchasing_detail(): HasMany
+    public function details()
     {
-        return $this->hasMany(Purchasing_Detail::class);
+        return $this->hasOne(Purchasing_Detail::class, 'purchasing_id');
     }
 
-    public function delivery(): HasMany
+    public function products()
     {
-        return $this->hasMany(Delivery::class);
-    }
-}
+        return $this->belongsToMany(Product::class, 'purchasings_has_product', 'purchasing_id', 'product_id');
+    }}

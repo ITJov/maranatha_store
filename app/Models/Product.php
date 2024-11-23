@@ -25,4 +25,9 @@ class Product extends Model
     protected $keyType = 'string';
     public $incrementing = false;
 
+    public function purchasings()
+    {
+        return $this->belongsToMany(Purchasing::class, 'purchasings_has_product', 'product_id', 'purchasing_id');
+    }
+
 }

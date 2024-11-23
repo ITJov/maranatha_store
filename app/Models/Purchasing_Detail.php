@@ -12,27 +12,19 @@ class Purchasing_Detail extends Model
 
     protected $table = 'purchasing_detials';
 
-    protected $fillable = [
-        'detail_id',
-        'med_id',
-        'purchase_id',
-        'qty',
-        'price',
-        'total_price'
-    ];
+    protected $fillable = ['id',
+    'date', 
+    'total_price', 
+    'status_order', 
+    'purchasing_id'
+];
 
-    protected $primaryKey = 'detail_id';
+    protected $primaryKey = 'id';
     protected $keyType = 'string';
     public $incrementing = false;
 
-    public function purchasing(): BelongsTo
+    public function purchasing()
     {
-        return $this->belongsTo(Purchasing::class);
+        return $this->belongsTo(Purchasing::class, 'purchasing_id');
     }
-
-    public function medicine(): BelongsTo
-    {
-        return $this->belongsTo(Medicine::class);
-    }
-
 }
