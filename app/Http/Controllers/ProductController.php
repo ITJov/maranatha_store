@@ -140,4 +140,13 @@ class ProductController extends Controller
 
         return redirect()->route('product-ecommerce')->with('success', 'Produk berhasil dihapus');
     }
+
+    public function show($id)
+{
+    // Cari customer berdasarkan ID
+    $user = Product::findOrFail($id);
+
+    // Kirim data ke view
+    return view('customers.show-customer', compact('user'));
+}
 }

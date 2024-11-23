@@ -53,6 +53,7 @@ Role List
                                         <label class="form-check-label" for="rolecheck"></label>
                                     </div>
                                 </th>
+                                <th>No</th>
                                 <th>Nama Role</th>
                                 <th>Action</th> 
                             </tr>
@@ -60,7 +61,8 @@ Role List
                         <tbody class="mb-4">
                             @foreach ($roles as $role)
                             <tr>
-                                <td>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>
                                     <div class="form-check text-center font-size-16">
                                         <input type="checkbox" class="form-check-input" id="rolecheck{{ $role->id }}">
                                         <label class="form-check-label" for="rolecheck{{ $role->id }}"></label>
@@ -78,7 +80,7 @@ Role List
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm delete-btn" onclick="return confirm('Apakah Anda yakin ingin menghapus role ini?');">
-                                            <i class="uil uil-trash-alt"></i> Hapus
+                                            <i class="uil uil-trash-alt"></i> Delete
                                         </button>
                                     </form>
                                 </td>

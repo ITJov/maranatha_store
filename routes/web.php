@@ -34,7 +34,6 @@ Route::view('/user-dashboard/index', 'user-dashboard.index');
 
 // Ecommerce
 Route::view('/ecommerce/ecommerce-orders', 'ecommerce.ecommerce-orders');
-Route::view('/ecommerce/ecommerce-customers', 'ecommerce.ecommerce-customers');
 Route::get('/ecommerce/product-ecommerce', [ProductController::class, 'index'])->name('product-ecommerce');
 Route::get('/ecommerce/create-product-ecommerce', [ProductController::class, 'create'])->name('product.create');
 Route::post('/ecommerce/store', [App\Http\Controllers\ProductController::class, 'store'])->name('product.store');

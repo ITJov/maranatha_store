@@ -16,10 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('customers.index-customer', [
-            'users' => User::all()
-        ]); 
-    }
+        $users = User::paginate(10); 
+        return view('customers.index-customer', compact('users'));    }
 
     /**
      * Show the form for creating a new resource.
@@ -116,4 +114,10 @@ class UserController extends Controller
 
         return redirect()->route('customer-index')->with('success', 'Pengguna berhasil dihapus');
     }
+    public function show($id)
+{
+    $user = User::findOrFail($id);
+
+    return view('customers.index-customer', compact('user'));
+}
 }
