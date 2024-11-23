@@ -6,6 +6,28 @@ Role List
 @endsection
 
 @section('content')
+@component('common-components.breadcrumb')
+        @slot('pagetitle')
+            User
+        @endslot
+        @slot('title')
+            Roles User
+        @endslot
+    @endcomponent
+    @if (session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
+@if (session('error'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session('error') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
 <h1>Role List</h1>
 <div class="col-md-4">
     <div>
@@ -31,9 +53,8 @@ Role List
                                         <label class="form-check-label" for="rolecheck"></label>
                                     </div>
                                 </th>
-                                <th>ID</th>
                                 <th>Nama Role</th>
-                                <th>Action</th> <!-- Tambahkan kolom Action -->
+                                <th>Action</th> 
                             </tr>
                         </thead>
                         <tbody class="mb-4">
@@ -45,7 +66,6 @@ Role List
                                         <label class="form-check-label" for="rolecheck{{ $role->id }}"></label>
                                     </div>
                                 </td>
-                                <td>{{ $role->id }}</td>
                                 <td>{{ $role->nama_role }}</td>
                                 <td>
                                     <!-- Tombol Edit -->

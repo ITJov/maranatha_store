@@ -135,60 +135,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="card">
-                <a href="#addproduct-metadata-collapse" class="text-dark collapsed" data-bs-toggle="collapse" aria-haspopup="true" aria-expanded="false" aria-haspopup="true" aria-controls="addproduct-metadata-collapse">
-                    <div class="p-4">
-
-                        <div class="d-flex align-items-center">
-                            <div class="flex-shrink-0 me-3">
-                                <div class="avatar-xs">
-                                    <div class="avatar-title rounded-circle bg-primary-subtle text-primary">
-                                        03
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="flex-grow-1 overflow-hidden">
-                                <h5 class="font-size-16 mb-1">Meta Data</h5>
-                                <p class="text-muted text-truncate mb-0">Fill all information below</p>
-                            </div>
-                            <div class="flex-shrink-0">
-                                <i class="mdi mdi-chevron-up accor-down-icon font-size-24"></i>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </a>
-
-                <div id="addproduct-metadata-collapse" class="collapse" data-bs-parent="#addproduct-accordion">
-                    <div class="p-4 border-top">
-                        <form>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="metatitle">Meta title</label>
-                                        <input id="metatitle" name="metatitle" type="text" class="form-control" placeholder="Enter your Meta title">
-                                    </div>
-
-                                </div>
-
-                                <div class="col-sm-6">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="metakeywords">Meta Keywords</label>
-                                        <input id="metakeywords" name="metakeywords" type="text" class="form-control" placeholder="Enter your Meta Keywords">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="mb-0">
-                                <label class="form-label" for="metadescription">Meta Description</label>
-                                <textarea class="form-control" id="metadescription" rows="4" placeholder="Enter your Meta Description"></textarea>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>

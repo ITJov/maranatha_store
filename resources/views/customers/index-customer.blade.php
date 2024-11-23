@@ -6,6 +6,15 @@ User List
 @endsection
 
 @section('content')
+@component('common-components.breadcrumb')
+        @slot('pagetitle')
+            User
+        @endslot
+        @slot('title')
+            Customers User
+        @endslot
+    @endcomponent
+
 <h1>User List</h1>
 <div class="col-md-4">
     <div>
@@ -25,7 +34,6 @@ User List
                     <table class="table table-centered datatable dt-responsive nowrap table-card-list" style="border-collapse: collapse; width: 100%;">
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Role ID</th>
@@ -35,7 +43,6 @@ User List
                         <tbody class="mb-4">
                             @foreach ($users as $user)
                             <tr>
-                                <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->role_id }}</td>
@@ -70,7 +77,6 @@ User List
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <p><strong>ID:</strong> {{ $user->id }}</p>
                                             <p><strong>Name:</strong> {{ $user->name }}</p>
                                             <p><strong>Email:</strong> {{ $user->email }}</p>
                                             <p><strong>Role ID:</strong> {{ $user->role_id }}</p>

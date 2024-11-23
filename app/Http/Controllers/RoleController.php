@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
 
 class RoleController extends Controller
 {
@@ -23,7 +24,7 @@ class RoleController extends Controller
     public function create()
     {
         $roles = Role::all();
-        return view('customers.create-customer', compact('roles'));
+        return view('roles.create-role', compact('roles'));
     }
     
     /**
@@ -33,26 +34,25 @@ class RoleController extends Controller
     {
         $validatedData = $request->validate([
             'id' => 'required|string|max:2|unique:role,id',
-            'nama_role' => 'required|string|max:255'
+            'nama_role' => 'required|string|max:255|unique:role,nama_role',
         ], [
             'id.required' => 'ID Role harus diisi',
             'id.unique' => 'ID Role sudah digunakan',
-            'nama_role.required' => 'Nama role harus diisi'
+            'nama_role.required' => 'Nama Role harus diisi',
+            'nama_role.unique' => 'Nama Role sudah digunakan',
         ]);
     
-        $role = new Role($validatedData);
-        $role->save();
+        try {
+            $role = Role::create($validatedData);
     
-        $success = 'Data role berhasil ditambahkan';
-        $failed = 'Data role gagal ditambahkan';
-    
-        if ($role) {
-            return redirect(route('role-index'))->with('success', $success);
-        } else {
-            return redirect(route('role-index'))->with('failed', $failed);
+            return redirect()->route('role-index')->with('success', 'Role berhasil ditambahkan.');
+        } catch (QueryException $e) {
+            if ($e->getCode() === '23000') { // Duplicate entry error code
+                return redirect()->back()->with('error', 'Role dengan nama yang sama sudah ada.');
+            }
+            return redirect()->back()->with('error', 'Terjadi kesalahan. Silakan coba lagi.');
         }
-    }
-    
+    }    
     /**
      * Display the specified resource.
      */

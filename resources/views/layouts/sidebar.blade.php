@@ -37,10 +37,10 @@
                         <span>@lang('translation.Ecommerce')</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="/ecommerce/ecommerce-products">@lang('translation.Products')</a></li>
+                        <li><a href="/ecommerce/product-ecommerce">Products</a></li>
                         <li><a href="/ecommerce/ecommerce-orders">@lang('translation.Orders')</a></li>
                         <li><a href="/ecommerce/ecommerce-customers">@lang('translation.Customers')</a></li>
-                        <li><a href="/ecommerce/ecommerce-add-product">@lang('translation.Add_Product')</a></li>
+                        <li><a href="/ecommerce/create-product-ecommerce">Add product</a></li>
                     </ul>
                 </li>
 
@@ -62,8 +62,6 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="/roles/index-role">Roles User</a></li>
-                    </ul>
-                    <ul class="sub-menu" aria-expanded="false">
                         <li><a href="/customers/index-customer">Customers User</a></li>
                     </ul>
                 </li>

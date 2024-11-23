@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,14 +29,20 @@ Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang'
 
 Route::post('/formsubmit', [App\Http\Controllers\HomeController::class, 'FormSubmit'])->name('FormSubmit');
 
-// User
+// Dashboard
 Route::view('/user-dashboard/index', 'user-dashboard.index');
 
 // Ecommerce
-Route::view('/ecommerce/ecommerce-products', 'ecommerce.ecommerce-products');
 Route::view('/ecommerce/ecommerce-orders', 'ecommerce.ecommerce-orders');
 Route::view('/ecommerce/ecommerce-customers', 'ecommerce.ecommerce-customers');
-Route::view('/ecommerce/ecommerce-add-product', 'ecommerce.ecommerce-add-product');
+Route::get('/ecommerce/product-ecommerce', [ProductController::class, 'index'])->name('product-ecommerce');
+Route::get('/ecommerce/create-product-ecommerce', [ProductController::class, 'create'])->name('product.create');
+Route::post('/ecommerce/store', [App\Http\Controllers\ProductController::class, 'store'])->name('product.store');
+Route::get('/ecommerce/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
+Route::put('/ecommerce/{product}', [ProductController::class, 'update'])->name('product.update');
+Route::delete('/ecommerce/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
+
+
 
 // Invoices
 Route::view('/invoices/invoices-detail', 'invoices.invoices-detail');
@@ -55,3 +63,7 @@ Route::post('/customers/store', [App\Http\Controllers\UserController::class, 'st
 Route::get('/customers/{customer}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('customer.edit');
 Route::put('/customers/{customer}', [App\Http\Controllers\UserController::class, 'update'])->name('customer.update');
 Route::delete('/customers/{customer}', [App\Http\Controllers\UserController::class, 'destroy'])->name('customer.destroy');
+
+
+// routes user
+
