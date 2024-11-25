@@ -7,6 +7,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\UserDashboardController;
 
 
 /*
@@ -65,7 +66,7 @@ Route::delete('/customers/{customer}', [App\Http\Controllers\UserController::cla
 
 //----------------admin end---------------------
 // Dashboard
-Route::view('/user-dashboard/index', 'user-dashboard.index');
+Route::get('/user-dashboard/index', [UserDashboardController::class, 'index'])->name('user.dashboard');
 
 
 
