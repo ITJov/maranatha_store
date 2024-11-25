@@ -27,6 +27,7 @@
     display: none
 }
 
+
 body[data-sidebar-size=sm] #page-topbar {
     left: 70px
 }

@@ -3,10 +3,10 @@
 
     <!-- LOGO -->
     <div class="navbar-brand-box">
-        <a href="{{url('index')}}" class="logo logo-dark">
-            <span class="logo-lg d-flex align-items-center" id="logo">
-                <img src="assets/images/logo.png" alt="" height="30">
-                 <p class="ms-3 m-0">Maranatha Store</p>
+        <a href="{{url('index')}}" class="logo">
+            <span class="logo-container d-flex align-items-center" id="logo">
+                <img src="assets/images/logo.png" alt="" class="logo-img" height="30">
+                 <p class="logo-text ms-3 mt-3">Maranatha Store</p>
             </span>
         </a>
     </div>
@@ -20,7 +20,7 @@
         <!--- Sidemenu -->
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
-            <ul class="metismenu list-unstyled" id="side-menu">
+            <ul class="metismenu list-unstyled mt-2" id="side-menu">
                 <li class="menu-title">@lang('translation.Menu')</li>
 
                 <li>
