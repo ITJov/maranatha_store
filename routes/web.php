@@ -8,6 +8,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserDashboardController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\DetailProductController;
 
 
 /*
@@ -48,7 +50,7 @@ Route::get('/ecommerce/orders-ecommerce', [OrderController::class, 'index'])->na
 Route::view('/invoices/invoices-detail', 'invoices.invoices-detail');
 Route::view('/invoices/invoices-list', 'invoices.invoices-list');
 
-// Roles User
+// Roles 
 Route::get('/roles/index-role', [RoleController::class, 'index'])->name('role-index');
 Route::get('/roles/create-role', [RoleController::class, 'create'])->name('role.create');
 Route::post('/roles/store', [RoleController::class, 'store'])->name('role.store');
@@ -69,4 +71,11 @@ Route::delete('/customers/{customer}', [App\Http\Controllers\UserController::cla
 Route::get('/user-dashboard/index', [UserDashboardController::class, 'index'])->name('user.dashboard');
 
 
+// cart
+Route::get('/carts/cart-index', [CartController::class, 'index'])->name('cart.index');
+Route::post('/carts/{id}/update-quantity', [CartController::class, 'updateQuantity'])->name('cart.updateQuantity');
+
+// detail_product
+Route::get('/product/{id}', [DetailProductController::class, 'show'])->name('product.detail');
+Route::post('/product/{id}/add-to-cart', [DetailProductController::class, 'addToCart'])->name('product.addToCart');
 

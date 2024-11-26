@@ -23,12 +23,12 @@ Edit Product
 
     <div class="mb-3">
         <label for="price" class="form-label">Price</label>
-        <input type="number" class="form-control" name="price" id="price" value="{{ $product->price }}" required>
+        <input type="number" class="form-control" name="price" id="price" value="{{ $product->price }}" min="0" required>
     </div>
 
     <div class="mb-3">
         <label for="kuantiti" class="form-label">Quantity</label>
-        <input type="number" class="form-control" name="kuantiti" id="kuantiti" value="{{ $product->kuantiti }}" required>
+        <input type="number" class="form-control" name="kuantiti" id="kuantiti" value="{{ $product->kuantiti }}" min="1" required>
     </div>
 
     <div class="mb-3">

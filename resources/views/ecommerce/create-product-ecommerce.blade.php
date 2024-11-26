@@ -53,13 +53,13 @@
                                 <div class="col-lg-4">
                                     <div class="mb-3">
                                         <label class="form-label" for="kuantiti">Quantity</label>
-                                        <input id="kuantiti" name="kuantiti" type="number" class="form-control" placeholder="Enter your quantity of product" required>
+                                        <input id="kuantiti" name="kuantiti" type="number" class="form-control" placeholder="Enter your quantity of product" value="1" min="1" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="mb-3">
                                         <label class="form-label" for="price">Price</label>
-                                        <input id="price" name="price" type="number" class="form-control" placeholder="Enter your Price" required>
+                                        <input id="price" name="price" type="number" class="form-control" placeholder="Enter your Price" required value="0" min="0">
                                     </div>
                                 </div>
                             </div>

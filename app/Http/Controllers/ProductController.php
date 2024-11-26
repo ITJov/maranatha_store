@@ -142,11 +142,9 @@ class ProductController extends Controller
     }
 
     public function show($id)
-{
-    // Cari customer berdasarkan ID
+    {
     $user = Product::findOrFail($id);
 
-    // Kirim data ke view
     return view('customers.show-customer', compact('user'));
-}
+    }
 }

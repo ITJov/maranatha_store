@@ -7,12 +7,13 @@
         @foreach($products as $product)
         <div class="col-md-3 mb-4">
             <div class="card">
-                <img src="{{ asset($product->file_photo) }}" class="card-img-top" alt="{{ $product->name }}">
+                <a href="{{ route('product.detail', ['id' => $product->id]) }}">
+                    <img src="{{ asset($product->file_photo) }}" class="card-img-top" alt="{{ $product->name }}">
+                </a>
                 <div class="card-body">
                     <h5 class="card-title">{{ $product->name }}</h5>
                     <p class="card-text">Price: Rp {{ number_format($product->price, 0, ',', '.') }}</p>
                     <p class="card-text">Category: {{ $product->kategori }}</p>
-                    <a href="#" class="btn btn-primary">Add to Cart</a>
                 </div>
             </div>
         </div>
