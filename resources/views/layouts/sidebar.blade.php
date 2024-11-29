@@ -2,11 +2,11 @@
 <div class="vertical-menu">
 
     <!-- LOGO -->
-    <div class="navbar-brand-box">
+    <div class="navbar-brand-box mt-4">
         <a href="{{url('index')}}" class="logo">
             <span class="logo-container d-flex align-items-center" id="logo">
                 <img src="assets/images/logo.png" alt="" class="logo-img" height="30">
-                 <p class="logo-text ms-3 mt-3">Maranatha Store</p>
+                 <h5 class="logo-text ms-3 mt-3">Maranatha Store</h5>
             </span>
         </a>
     </div>
@@ -20,7 +20,7 @@
         <!--- Sidemenu -->
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
-            <ul class="metismenu list-unstyled mt-2" id="side-menu">
+            <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title">@lang('translation.Menu')</li>
 
                 <li>
@@ -71,3 +71,7 @@
     </div>
 </div>
 <!-- Left Sidebar End -->
+
+<script>
+
+</script>

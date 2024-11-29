@@ -2,6 +2,7 @@
 @section('title')
     @lang('translation.Login')
 @endsection
+@section('body-style', 'login-background background-img')
 @section('content')
     <div class="account-pages my-5 pt-sm-5">
         <div class="container">
@@ -43,7 +44,7 @@
                                     </div>
 
                                     <div class="form-check" id="remember-me">
-                                        <input type="checkbox" class="form-check-input" id="auth-remember-check"
+                                        <input type="checkbox" class="form-check-input border-dark-subtle" id="auth-remember-check"
                                                name="remember" {{ old('remember') ? 'checked' : '' }}>
                                         <label class="form-check-label" for="auth-remember-check">Remember me</label>
                                     </div>

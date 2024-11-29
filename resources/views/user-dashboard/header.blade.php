@@ -9,7 +9,7 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid p-3 px-5 d-flex align-items-center">
         <img class="logo pe-3" src="{{asset('assets/images/logo.png')}}" alt="maranatha store">
-        <a class="navbar-brand fs-4" href="{{url('user-dashboard/index')}}">Maranatha Store</a>
+        <a class="navbar-brand" href="{{url('user-dashboard/index')}}">Maranatha Store</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

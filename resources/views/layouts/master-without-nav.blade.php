@@ -8,7 +8,7 @@
 
 @section('body')
 
-    <body class="background-img">
+    <body class="@yield('body-style')">
     @show
     @yield('content')
     @include('layouts.vendor-scripts')
