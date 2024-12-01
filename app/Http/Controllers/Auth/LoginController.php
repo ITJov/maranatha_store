@@ -6,30 +6,24 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Http\Request;
+
 class LoginController extends Controller
 {
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login.
-     *
-     * @var string
+     * Redirect users after login based on role.
      */
-    protected $redirectTo;
-
-    /**
-     * Set redirection path dynamically based on user role.
-     */
-    protected function redirectTo()
+    protected function authenticated(Request $request, $user)
     {
-        // Check user role
-        if (Auth::check() && Auth::user()->role_id == '1') {
-            return '/'; // Redirect to admin dashboard
-        } elseif (Auth::check() && Auth::user()->role_id == '3') {
-            return '/user-dashboard/index'; // Redirect to user dashboard
+        if ($user->role_id == '1') {
+            return redirect('/'); 
+        } elseif ($user->role_id == '3') {
+            return redirect('/user-dashboard/index'); 
         }
 
-        // return '/'; // Default redirection if no role matches
+        return redirect('/'); 
     }
 
     /**
