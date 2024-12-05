@@ -38,14 +38,15 @@
         <div class="row mt-4 mx-5 px-5">
             @foreach($products as $product)
                 <div class="col-md-3 mb-4">
-                    <div class="card">
+                    <div class="card round-circle">
                         <a href="{{ route('product.detail', ['id' => $product->id]) }}">
-                            <img src="{{ asset($product->file_photo) }}" class="card-img-top"
+                            <img src="{{ asset($product->file_photo) }}" class="card-img-top product-image"
                                  alt="{{ $product->name }}">
                         </a>
                         <div class="card-body">
-                            <h5 class="card-title">{{ $product->name }}</h5>
-                            <p class="card-text">Price: Rp {{ number_format($product->price, 0, ',', '.') }}</p>
+                            <h5 class="card-title text-capitalize">{{ $product->name }}</h5>
+                            <p class="card-text fw-bold m-0">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
+                            <hr class="my-3">
                             <p class="card-text">Category: {{ $product->kategori }}</p>
                         </div>
                     </div>

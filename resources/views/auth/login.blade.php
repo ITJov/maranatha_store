@@ -4,7 +4,7 @@
 @endsection
 @section('body-style', 'login-background background-img')
 @section('content')
-    <div class="account-pages my-5 pt-sm-5">
+    <div class="account-pages d-flex align-items-center" style="height: 100vh">
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 <div class="col-md-8 col-lg-6 col-xl-6">
@@ -62,10 +62,9 @@
                     </div>
 
                     <div class="mt-5 text-center">
-                        <p>©
+                        <p class="text-light">©
                             <script>
                                 document.write(new Date().getFullYear())
-
                             </script>
                             Maranatha Store
                     </div>

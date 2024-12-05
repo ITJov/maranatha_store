@@ -131,3 +131,17 @@ body[data-sidebar-size=sm] .navbar-brand-box .logo #logo > h5{
     background-color: #E94430;
     border-radius: 5px;
 }
+
+.product-image {
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+}
+
+.card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
