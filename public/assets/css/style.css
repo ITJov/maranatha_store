@@ -30,7 +30,11 @@
 }
 
 .color-primary {
-    color: #F47433;
+    color: #F47433 !important;
+}
+
+.color-secondary {
+    color: #007D3B !important;
 }
 
 .background-img {
@@ -101,15 +105,15 @@ body[data-sidebar-size=sm] .navbar-brand-box .logo #logo > h5{
     object-fit: contain;
 }
 
-.discount-text p{
+.subtitle-text p{
     font-size: 24px;
     font-weight: bold;
     color: #666666;
     margin: 0;
 }
-.discount-text p span{
+
+.subtitle-text p span{
     font-size: 1em;
-    color: #F47433;
 }
 
 .dual-color-hr {
@@ -133,15 +137,58 @@ body[data-sidebar-size=sm] .navbar-brand-box .logo #logo > h5{
 }
 
 .product-image {
-    width: 100%;
+    background-color: #F5F5F5;
     height: 150px;
     object-fit: contain;
 }
 
-.card {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.banner{
+    background-image: url("../images/background/home-page-banner.png");
+    height: 200px;
 }
 
+.open-hours{
+    font-size: 50px;
+    font-weight: 500;
+}
+
+.schedule p{
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.logo-footer{
+    width :20%;
+}
+.footer {
+    height: 150px;
+    background-color: #000000;
+    color: white;
+}
+
+/*-----------------------*/
+/* Detail Product */
+/*-----------------------*/
+
+.detail-product-background{
+    background-image: url("../images/background/detail-product-background.png");
+}
+
+.detail-product-name {
+    font-weight: 600;
+    font-size: 40px;
+    margin: 0;
+}
+
+.detail-product-back i{
+    font-size: 16px;
+}
+
+.price{
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.recommendation{
+    height: 200px;
+}
