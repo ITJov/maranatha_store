@@ -36,12 +36,12 @@
         </div>
         <div class="my-4 d-flex align-item-center justify-content-center banner text-light text-center">
             <div class="row align-items-center me-5">
-                <div class="col-12 open-hours">
+                <div class="col-12 fw-500 open-hours">
                     OPEN HOURS
                 </div>
             </div>
             <div class="row align-items-center ms-5">
-                <div class="col-12 schedule">
+                <div class="col-12 fw-500 schedule">
                     <p> SENIN - JUMAT </p>
                     <p class="m-0">08.00 - 17.00 </p>
                 </div>

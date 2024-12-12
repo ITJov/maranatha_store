@@ -15,7 +15,7 @@
     {{-- Header --}}
     @include('user-dashboard.header')
 
-    <div class="container-fluid p-0">
+    <div class="container-fluid p-0 overflow-hidden">
         {{-- Livewire Content --}}
         @yield('content')
     </div>

@@ -22,7 +22,7 @@
                     <p class="fs-5">Stock: {{ $product->kuantiti }} <span
                                 class="ms-3 fw-bold fs-5 fa-bold text-success">IN STOCK</span>
                     </p>
-                    <p class="price">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
+                    <p class="fw-700 price">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
                     <!-- <form action="{{ route('product.addToCart', $product->id) }}" method="POST"> -->
                     @csrf
                     <div class="d-flex">
