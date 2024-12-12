@@ -23,7 +23,7 @@
                                 class="ms-3 fw-bold fs-5 fa-bold text-success">IN STOCK</span>
                     </p>
                     <p class="fw-700 price">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
-                    <!-- <form action="{{ route('product.addToCart', $product->id) }}" method="POST"> -->
+                    <form action="{{ route('product.addToCart', $product->id) }}" method="POST">
                     @csrf
                     <div class="d-flex">
                         <div class="input-group mb-3" style="width: 150px;">
@@ -36,7 +36,7 @@
                             <button type="submit" class="btn btn-success">Add to Cart</button>
                         </div>
                     </div>
-                    {{--                    </form>--}}
+                    </form>
                 </div>
             </div>
             <div class="mx-5 subtitle-text">

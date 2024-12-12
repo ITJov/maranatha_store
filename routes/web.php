@@ -11,6 +11,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DetailProductController;
+use App\Http\Controllers\PaymentController;
 
 
 /*
@@ -90,4 +91,8 @@ Route::middleware(['auth', 'is_user'])->group(function () {
 
     // Profile
     Route::get('/user-profile/index', [ProfileController::class, 'index'])->name('user-profile.index');
+
+    // Payment
+    Route::get('/payments/payment-index', [PaymentController::class, 'index'])->name('payment.index');
+
 });

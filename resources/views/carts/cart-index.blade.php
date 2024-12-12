@@ -46,8 +46,8 @@
     </table>
     <div class="text-end">
         <h4 id="total-price">Total: Rp {{ number_format($totalPrice, 0, ',', '.') }}</h4>
-        <button class="btn btn-success">Check Out</button>
-    </div>
+        <a href="{{ route('payment.index') }}" class="btn btn-success">Check Out</a>
+        </div>
     @endif
 </div>
 @endsection
