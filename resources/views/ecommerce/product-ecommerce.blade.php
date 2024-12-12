@@ -71,7 +71,15 @@
                                                     <i class="uil uil-trash-alt"></i> Delete
                                                 </button>
                                             </form>
+                                            <form action="{{ route('product.addStock', $product->id) }}" method="POST" style="display: inline;">
+                                            @csrf
+                                            <div class="input-group" style="width: 150px;">
+                                                <input type="number" name="additional_stock" class="form-control" placeholder="Add Stock" min="1" required>
+                                                <button type="submit" class="btn btn-primary">Add</button>
+                                            </div>
+                                            </form>
                                         </td>
+
                                     </tr>
 
                                     <!-- Modal untuk Detail Produk -->

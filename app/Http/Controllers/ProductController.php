@@ -147,4 +147,17 @@ class ProductController extends Controller
 
     return view('customers.show-customer', compact('user'));
     }
+
+    public function addStock(Request $request,$id){
+    $request->validate([
+        'additional_stock' => 'required|integer|min:1',
+    ]);
+
+    $product = Product::findOrFail($id);
+
+    $product->kuantiti += $request->input('additional_stock');
+    $product->save();
+
+    return redirect()->route('product-ecommerce')->with('success', 'Stock added successfully!');
+}
 }

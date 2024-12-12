@@ -47,6 +47,7 @@ Route::middleware(['is_admin'])->group(function () {
     Route::get('/ecommerce/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
     Route::put('/ecommerce/{product}', [ProductController::class, 'update'])->name('product.update');
     Route::delete('/ecommerce/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
+    Route::post('/ecommerce/product/{id}/addStock', [ProductController::class, 'addStock'])->name('product.addStock');
 
     // Order
     Route::get('/ecommerce/orders-ecommerce', [OrderController::class, 'index'])->name('orders.index');
@@ -80,9 +81,9 @@ Route::middleware(['auth', 'is_user'])->group(function () {
 
     // Cart
     Route::get('/carts/cart-index', [CartController::class, 'index'])->name('cart.index');
-    Route::post('/carts/{id}/update-quantity', [CartController::class, 'updateQuantity'])->name('cart.updateQuantity');
+    Route::delete('/carts/{id}/remove', [CartController::class, 'remove'])->name('cart.remove');
 
     // Detail Product
     Route::get('/product/{id}', [DetailProductController::class, 'show'])->name('product.detail');
     Route::post('/product/{id}/add-to-cart', [DetailProductController::class, 'addToCart'])->name('product.addToCart');
-});
+    });

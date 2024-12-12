@@ -5,9 +5,14 @@
 @section('content')
 <div class="container">
     <div class="mt-5">
-        <a href="javascript:history.back()" class="btn btn-secondary mb-3">
+        <!-- Tombol Back -->
+        <div class="mb-3">
+        <button class="btn btn-secondary" onclick="history.back()">
             <i class="bi bi-arrow-left"></i> Back
-        </a>
+        </button>
+    </div>
+
+        <!-- Detail Produk -->
         <div class="row">
             <div class="col-md-6">
                 <img src="{{ asset($product->file_photo) }}" alt="{{ $product->name }}" class="img-fluid">
@@ -17,13 +22,22 @@
                 <p>Category: {{ $product->kategori }}</p>
                 <p>Stock: {{ $product->kuantiti }} <span class="text-success">IN STOCK</span></p>
                 <p>Price: Rp {{ number_format($product->price, 0, ',', '.') }}</p>
-                <!-- <form action="{{ route('product.addToCart', $product->id) }}" method="POST"> -->
+
+                <!-- Form Tambah ke Keranjang -->
+                <form action="{{ route('product.addToCart', $product->id) }}" method="POST">
                     @csrf
                     <div class="input-group mb-3" style="width: 150px;">
+                        <!-- Tombol Decrease -->
                         <button type="button" class="btn btn-outline-secondary" id="decreaseQuantity">-</button>
+                        
+                        <!-- Input Quantity -->
                         <input type="number" name="quantity" id="quantityInput" class="form-control text-center" value="1" min="1" max="{{ $product->kuantiti }}">
+                        
+                        <!-- Tombol Increase -->
                         <button type="button" class="btn btn-outline-secondary" id="increaseQuantity">+</button>
                     </div>
+
+                    <!-- Tombol Submit -->
                     <button type="submit" class="btn btn-success">Add to Cart</button>
                 </form>
             </div>
@@ -34,6 +48,7 @@
 
 @push('scripts')
 <script>
+    // Script untuk tombol increase
     document.getElementById('increaseQuantity').addEventListener('click', function () {
         const input = document.getElementById('quantityInput');
         let currentValue = parseInt(input.value);
@@ -44,6 +59,7 @@
         }
     });
 
+    // Script untuk tombol decrease
     document.getElementById('decreaseQuantity').addEventListener('click', function () {
         const input = document.getElementById('quantityInput');
         let currentValue = parseInt(input.value);
