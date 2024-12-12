@@ -12,6 +12,7 @@ use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DetailProductController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\UserInvoiceController;
 
 
 /*
@@ -94,5 +95,9 @@ Route::middleware(['auth', 'is_user'])->group(function () {
 
     // Payment
     Route::get('/payments/payment-index', [PaymentController::class, 'index'])->name('payment.index');
+
+    // invoice user page
+    Route::get('/invoice_user/invoice-index', [UserInvoiceController::class, 'generateInvoice'])->name('invoice.index');
+    Route::post('/invoice_user/invoice-index', [UserInvoiceController::class, 'generateInvoice'])->name('invoice.index');
 
 });

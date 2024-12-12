@@ -1,54 +1,58 @@
 @extends('user-dashboard.master-user')
 
-@section('title', 'Your order is being prepared')
+@section('title', 'Your Order is Being Prepared')
 
 @section('content')
-<div class="mb-3">
-        <button class="btn btn-secondary" onclick="history.back()">
-            <i class="bi bi-arrow-left"></i> Back to home
-        </button>
+<div class="container mt-5">
+    <div class="mb-3">
+    <a href="{{ route('user.dashboard') }}" class="btn btn-success">back to home</a>
     </div>
 
-    <!-- Konten Cart -->
-    <h1 class="text-center mt-5">Your Cart</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Product</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Total</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
+    <h1 class="text-center text-warning">Your Order is Being <span class="text-success">Prepared</span>!</h1>
+
+    <div class="card mt-4">
+        <div class="card-header bg-white text-center">
+            <h4>Invoice Pembayaran</h4>
+            <p>Kode Pesanan: <strong>{{ $storeData['order_code'] }}</strong></p>
+            <p>{{ $storeData['store_name'] }}</p>
+            <p>{{ $storeData['address'] }}</p>
+            <p>Waktu: {{ $storeData['order_time'] }}</p>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Item Name</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($cart as $item)
+                    <tr>
+                        <td>{{ $item['name'] }}</td>
+                        <td>{{ $item['quantity'] }}</td>
+                        <td>Rp {{ number_format($item['price'], 0, ',', '.') }}</td>
+                        <td>Rp {{ number_format($item['price'] * $item['quantity'], 0, ',', '.') }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="3" class="text-end">Total</th>
+                        <th>Rp {{ number_format($totalPrice, 0, ',', '.') }}</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
 </div>
 @endsection
-@push('scripts')
-<script>
-    $(document).on('click', '.btn-increase, .btn-decrease', function() {
-        let button = $(this);
-        let input = button.closest('.quantity-wrapper').find('.quantity-input');
-        let currentQuantity = parseInt(input.val());
-        let newQuantity = button.hasClass('btn-increase') ? currentQuantity + 1 : currentQuantity - 1;
 
-        if (newQuantity < 1) return; 
-
-        $.ajax({
-            url: `/carts/${input.data('id')}/update-quantity`,
-            method: 'POST',
-            data: {
-                quantity: newQuantity,
-                _token: '{{ csrf_token() }}'
-            },
-            success: function(response) {
-                if (response.success) {
-                    input.val(newQuantity); 
-                    location.reload(); 
-                }
-            }
-        });
-    });
-</script>
-@endpush
-
+@section('footer')
+<div class="mt-5 bg-dark text-white text-center p-4">
+    <p>{{ $storeData['store_name'] }}</p>
+    <p>&copy; 2024 {{ $storeData['store_name'] }} | <a href="https://instagram.com/maranathastore.official" class="text-warning" target="_blank">@maranathastore.official</a></p>
+</div>
+@endsection

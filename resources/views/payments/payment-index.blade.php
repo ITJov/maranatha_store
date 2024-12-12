@@ -11,10 +11,8 @@
             <p class="card-text text-primary fs-4">
                 No: <strong>141670000000</strong>
             </p>
-            <button class="btn btn-success" onclick="copyToClipboard('141670000000');">
-                Copy
-            </button>
-        </div>
+            <a href="{{ route('invoice.index') }}" class="btn btn-success">Copy</a>
+            </div>
     </div>
     <p class="mt-5 text-muted">Copyright &copy; 2024 Maranatha Store</p>
 </div>
