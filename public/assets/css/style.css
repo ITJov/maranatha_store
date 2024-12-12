@@ -30,12 +30,55 @@
 }
 
 .color-primary {
-    color: #F47433;
+    color: #F47433 !important;
+}
+
+.color-secondary {
+    color: #007D3B !important;
 }
 
 .background-img {
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.subtitle-text p{
+    font-size: 24px;
+    font-weight: bold;
+    color: #666666;
+    margin: 0;
+}
+
+.subtitle-text p span{
+    font-size: 1em;
+}
+
+.dual-color-hr {
+    border: none;
+    height: 3px;
+    background-color: #EDEDED;
+    position: relative;
+    margin-top: 10px;
+    opacity: 75%;
+}
+
+.dual-color-hr::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 100%;
+    background-color: #E94430;
+    border-radius: 5px;
+}
+
+.fw-500{
+    font-weight: 500;
+}
+
+.fw-700{
+    font-weight: 700;
 }
 
 /*-----------------------*/
@@ -101,47 +144,79 @@ body[data-sidebar-size=sm] .navbar-brand-box .logo #logo > h5{
     object-fit: contain;
 }
 
-.discount-text p{
-    font-size: 24px;
-    font-weight: bold;
-    color: #666666;
-    margin: 0;
-}
-.discount-text p span{
-    font-size: 1em;
-    color: #F47433;
-}
-
-.dual-color-hr {
-    border: none;
-    height: 3px;
-    background-color: #EDEDED;
-    position: relative;
-    margin-top: 10px;
-    opacity: 75%;
-}
-
-.dual-color-hr::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 40%;
-    height: 100%;
-    background-color: #E94430;
-    border-radius: 5px;
-}
-
 .product-image {
-    width: 100%;
+    background-color: #F5F5F5;
     height: 150px;
     object-fit: contain;
 }
 
-.card {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.banner{
+    background-image: url("../images/background/home-page-banner.png");
+    height: 200px;
+}
+
+.open-hours{
+    font-size: 50px;
+}
+
+.schedule p{
+    font-size: 25px;
+}
+
+.logo-footer{
+    width :15%;
+}
+.footer {
+    height: 100px;
+    background-color: #000000;
+    color: white;
+}
+
+/*-----------------------*/
+/* Detail Product */
+/*-----------------------*/
+
+.detail-product-background{
+    background-image: url("../images/background/detail-product-background.png");
+}
+
+.detail-product-name {
+    font-weight: 600;
+    font-size: 40px;
+    margin: 0;
+}
+
+.detail-product-back i{
+    font-size: 16px;
+}
+
+.price{
+    font-size: 30px;
+}
+
+.recommendation{
+    height: 200px;
+}
+
+/*-----------------------*/
+/* Profile */
+/*-----------------------*/
+
+.profile-background{
+    background-image: url("../images/background/profile-background.png");
+}
+
+.profile-icon{
+    width: 75.5%;
+}
+
+.profile-title p{
+    font-size: 32px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.profile-title p span {
+    font-size: 1em;
 }
 

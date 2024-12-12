@@ -1,7 +1,6 @@
 @extends('user-dashboard.master-user')
 @section('body-class', 'home-page-background background-img')
 @section('content')
-    <div class="container">
         <div id="carouselExampleAutoplaying" class="carousel slide m-5 px-5" data-bs-ride="carousel">
             <div class="carousel-inner rounded-3" id="carousel">
                 <div class="carousel-item active">
@@ -31,27 +30,45 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-        <div class="mx-5 px-5 discount-text">
-            <p>We've got a big <span> discount </span> for you !</p>
+        <div class="mx-5 px-5 subtitle-text">
+            <p>We've got a big <span class="color-primary"> discount </span> for you !</p>
+            <hr class="dual-color-hr">
+        </div>
+        <div class="my-4 d-flex align-item-center justify-content-center banner text-light text-center">
+            <div class="row align-items-center me-5">
+                <div class="col-12 fw-500 open-hours">
+                    OPEN HOURS
+                </div>
+            </div>
+            <div class="row align-items-center ms-5">
+                <div class="col-12 fw-500 schedule">
+                    <p> SENIN - JUMAT </p>
+                    <p class="m-0">08.00 - 17.00 </p>
+                </div>
+            </div>
+        </div>
+        <div class="mx-5 px-5 subtitle-text">
+            <p class="color-secondary">NEW ARRIVALS</p>
             <hr class="dual-color-hr">
         </div>
         <div class="row mt-4 mx-5 px-5">
             @foreach($products as $product)
                 <div class="col-md-3 mb-4">
-                    <div class="card round-circle">
-                        <a href="{{ route('product.detail', ['id' => $product->id]) }}">
-                            <img src="{{ asset($product->file_photo) }}" class="card-img-top product-image"
+                    <div class="card round-circle rounded-4">
+                        <a class="text-decoration-none text-dark" href="{{ route('product.detail', ['id' => $product->id]) }}">
+                            <img src="{{ asset($product->file_photo) }}"
+                                 class="round-circle rounded-top-4 pt-4 card-img-top product-image"
                                  alt="{{ $product->name }}">
+
+                            <div class="card-body">
+                                <h5 class="card-title text-capitalize">{{ $product->name }}</h5>
+                                <p class="card-text fw-bold m-0">
+                                    Rp {{ number_format($product->price, 0, ',', '.') }}</p>
+                                <hr class="my-3">
+                                <p class="card-text">Category: {{ $product->kategori }}</p>
+                            </div>
                         </a>
-                        <div class="card-body">
-                            <h5 class="card-title text-capitalize">{{ $product->name }}</h5>
-                            <p class="card-text fw-bold m-0">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
-                            <hr class="my-3">
-                            <p class="card-text">Category: {{ $product->kategori }}</p>
-                        </div>
                     </div>
                 </div>
             @endforeach
-        </div>
-    </div>
 @endsection

@@ -56,7 +56,7 @@
                                 {{Str::ucfirst(Auth::user()->name)}}
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><a class="dropdown-item" href="/user-profile/index">Profile</a></li>
                                 <li><a class="dropdown-item" href="#">History</a></li>
                                 <li>
                                     <hr class="dropdown-divider">

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -86,4 +87,7 @@ Route::middleware(['auth', 'is_user'])->group(function () {
     // Detail Product
     Route::get('/product/{id}', [DetailProductController::class, 'show'])->name('product.detail');
     Route::post('/product/{id}/add-to-cart', [DetailProductController::class, 'addToCart'])->name('product.addToCart');
-    });
+
+    // Profile
+    Route::get('/user-profile/index', [ProfileController::class, 'index'])->name('user-profile.index');
+});

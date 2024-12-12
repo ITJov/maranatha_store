@@ -1,72 +1,72 @@
 @extends('user-dashboard.master-user')
-
+@section('body-class', 'detail-product-background background-img')
 @section('title', $product->name)
 
 @section('content')
-<div class="container">
-    <div class="mt-5">
-        <!-- Tombol Back -->
-        <div class="mb-3">
-        <button class="btn btn-secondary" onclick="history.back()">
-            <i class="bi bi-arrow-left"></i> Back
-        </button>
-    </div>
-
-        <!-- Detail Produk -->
-        <div class="row">
-            <div class="col-md-6">
-                <img src="{{ asset($product->file_photo) }}" alt="{{ $product->name }}" class="img-fluid">
-            </div>
-            <div class="col-md-6">
-                <h2>{{ $product->name }}</h2>
-                <p>Category: {{ $product->kategori }}</p>
-                <p>Stock: {{ $product->kuantiti }} <span class="text-success">IN STOCK</span></p>
-                <p>Price: Rp {{ number_format($product->price, 0, ',', '.') }}</p>
-
-                <!-- Form Tambah ke Keranjang -->
-                <form action="{{ route('product.addToCart', $product->id) }}" method="POST">
-                    @csrf
-                    <div class="input-group mb-3" style="width: 150px;">
-                        <!-- Tombol Decrease -->
-                        <button type="button" class="btn btn-outline-secondary" id="decreaseQuantity">-</button>
-                        
-                        <!-- Input Quantity -->
-                        <input type="number" name="quantity" id="quantityInput" class="form-control text-center" value="1" min="1" max="{{ $product->kuantiti }}">
-                        
-                        <!-- Tombol Increase -->
-                        <button type="button" class="btn btn-outline-secondary" id="increaseQuantity">+</button>
+    <div class="container">
+        <div class="mt-5">
+            <div class="row mb-5">
+                <div class="col-2 d-flex justify-content-center">
+                    <div>
+                        <a href="javascript:history.back()" class="btn btn-outline-secondary mb-3 detail-product-back">
+                            <i class="bi bi-arrow-left"> Back</i>
+                        </a>
                     </div>
-
-                    <!-- Tombol Submit -->
-                    <button type="submit" class="btn btn-success">Add to Cart</button>
-                </form>
+                </div>
+                <div class="col-4">
+                    <img src="{{ asset($product->file_photo) }}" alt="{{ $product->name }}" class="img-fluid w-50">
+                </div>
+                <div class="col-5">
+                    <p class="m-0 fs-5 text-capitalize">{{ $product->kategori }}</p>
+                    <p class="detail-product-name text-capitalize">{{ $product->name }}</p>
+                    <p class="fs-5">Stock: {{ $product->kuantiti }} <span
+                                class="ms-3 fw-bold fs-5 fa-bold text-success">IN STOCK</span>
+                    </p>
+                    <p class="fw-700 price">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
+                    <!-- <form action="{{ route('product.addToCart', $product->id) }}" method="POST"> -->
+                    @csrf
+                    <div class="d-flex">
+                        <div class="input-group mb-3" style="width: 150px;">
+                            <button type="button" class="btn btn-outline-secondary" id="decreaseQuantity">-</button>
+                            <input type="number" name="quantity" id="quantityInput" class="form-control text-center"
+                                   value="1" min="1" max="{{ $product->kuantiti }}">
+                            <button type="button" class="btn btn-outline-secondary" id="increaseQuantity">+</button>
+                        </div>
+                        <div class="ms-3">
+                            <button type="submit" class="btn btn-success">Add to Cart</button>
+                        </div>
+                    </div>
+                    {{--                    </form>--}}
+                </div>
             </div>
+            <div class="mx-5 subtitle-text">
+                <p>Recommendation <span class="color-primary"> Suitable </span> for You !</p>
+                <hr class="dual-color-hr">
+            </div>
+            <div class="recommendation"></div>
         </div>
     </div>
-</div>
 @endsection
 
 @push('scripts')
-<script>
-    // Script untuk tombol increase
-    document.getElementById('increaseQuantity').addEventListener('click', function () {
-        const input = document.getElementById('quantityInput');
-        let currentValue = parseInt(input.value);
-        const maxValue = parseInt(input.getAttribute('max'));
+    <script>
+        document.getElementById('increaseQuantity').addEventListener('click', function () {
+            const input = document.getElementById('quantityInput');
+            let currentValue = parseInt(input.value);
+            const maxValue = parseInt(input.getAttribute('max'));
 
-        if (currentValue < maxValue) {
-            input.value = currentValue + 1;
-        }
-    });
+            if (currentValue < maxValue) {
+                input.value = currentValue + 1;
+            }
+        });
 
-    // Script untuk tombol decrease
-    document.getElementById('decreaseQuantity').addEventListener('click', function () {
-        const input = document.getElementById('quantityInput');
-        let currentValue = parseInt(input.value);
+        document.getElementById('decreaseQuantity').addEventListener('click', function () {
+            const input = document.getElementById('quantityInput');
+            let currentValue = parseInt(input.value);
 
-        if (currentValue > 1) {
-            input.value = currentValue - 1;
-        }
-    });
-</script>
+            if (currentValue > 1) {
+                input.value = currentValue - 1;
+            }
+        });
+    </script>
 @endpush
