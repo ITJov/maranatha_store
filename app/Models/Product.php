@@ -30,4 +30,9 @@ class Product extends Model
         return $this->belongsToMany(Purchasing::class, 'purchasings_has_product', 'product_id', 'purchasing_id');
     }
 
+    public function carts()
+    {
+        return $this->hasMany(Shop_Cart::class);
+    }
+
 }

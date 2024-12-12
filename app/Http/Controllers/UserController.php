@@ -8,9 +8,11 @@ use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Livewire\WithPagination;
 
 class UserController extends Controller
 {
+    use WithPagination;
     /**
      * Display a listing of the resource.
      */

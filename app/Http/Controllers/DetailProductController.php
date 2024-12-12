@@ -10,6 +10,7 @@ class DetailProductController extends Controller
     public function show($id)
     {
         $product = Product::findOrFail($id);
+
         return view('detail_product.detail-product-index', compact('product'));
     }
 
@@ -17,13 +18,12 @@ class DetailProductController extends Controller
     {
         $product = Product::findOrFail($id);
     
-        // Validasi Input
         $request->validate([
             'quantity' => 'required|integer|min:1|max:' . $product->kuantiti,
         ]);
     
         $cart = session()->get('cart', []);
-    
+
         if (isset($cart[$id])) {
             $cart[$id]['quantity'] += $request->quantity;
         } else {
@@ -36,7 +36,7 @@ class DetailProductController extends Controller
         }
     
         session()->put('cart', $cart);
-    
+
         return redirect()->back()->with('success', 'Product added to cart successfully!');
-        }
+    }
 }

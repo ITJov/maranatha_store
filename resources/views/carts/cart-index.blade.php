@@ -13,6 +13,9 @@
 
     <!-- Konten Cart -->
     <h1 class="text-center mt-5">Your Cart</h1>
+    @if (!$cartItems || $cartItems->isEmpty())
+        <p class="text-center">Your cart is empty. Start shopping now!</p>
+    @else
     <table class="table">
         <thead>
             <tr>
@@ -24,56 +27,27 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($cartItems as $item)
+            @foreach ($cartItems as $id => $item)
             <tr>
-                <td>{{ $item['name'] }}</td>
-                <td>Rp {{ number_format($item['price'], 0, ',', '.') }}</td>
+                <td>{{ $item['name'] ?? 'Product not found' }}</td>
+                <td>Rp {{ number_format($item['price'] ?? 0, 0, ',', '.') }}</td>
+                <td>{{ $item['quantity'] }}</td>
+                <td>Rp {{ number_format(($item['price'] ?? 0) * $item['quantity'], 0, ',', '.') }}</td>
                 <td>
-                    <div class="quantity-wrapper d-flex align-items-center">
-                        <button class="btn btn-sm btn-outline-secondary btn-decrease" data-id="{{ $loop->index }}">-</button>
-                        <input type="number" class="form-control quantity-input mx-2" data-id="{{ $loop->index }}" value="{{ $item['quantity'] }}" min="1">
-                        <button class="btn btn-sm btn-outline-secondary btn-increase" data-id="{{ $loop->index }}">+</button>
-                    </div>
-                </td>
-                <td>Rp {{ number_format($item['price'] * $item['quantity'], 0, ',', '.') }}</td>
-                <td>
-                    <button class="btn btn-danger btn-sm">Remove</button>
+                    <form action="{{ route('cart.remove', $id) }}" method="POST" style="display: inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                    </form>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
     <div class="text-end">
-        <h4>Total: Rp {{ number_format($cartItems->sum(fn($item) => $item['price'] * $item['quantity']), 0, ',', '.') }}</h4>
+        <h4 id="total-price">Total: Rp {{ number_format($totalPrice, 0, ',', '.') }}</h4>
         <button class="btn btn-success">Check Out</button>
     </div>
+    @endif
 </div>
 @endsection
-
-@push('scripts')
-<script>
-    $(document).on('click', '.btn-increase, .btn-decrease', function() {
-        let button = $(this);
-        let input = button.closest('.quantity-wrapper').find('.quantity-input');
-        let currentQuantity = parseInt(input.val());
-        let newQuantity = button.hasClass('btn-increase') ? currentQuantity + 1 : currentQuantity - 1;
-
-        if (newQuantity < 1) return; 
-
-        $.ajax({
-            url: `/carts/${input.data('id')}/update-quantity`,
-            method: 'POST',
-            data: {
-                quantity: newQuantity,
-                _token: '{{ csrf_token() }}'
-            },
-            success: function(response) {
-                if (response.success) {
-                    input.val(newQuantity); 
-                    location.reload(); 
-                }
-            }
-        });
-    });
-</script>
-@endpush

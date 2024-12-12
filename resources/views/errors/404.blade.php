@@ -21,7 +21,7 @@
                         </div>
                         <h4 class="text-uppercase mt-4">Sorry, page not found</h4>
                         <div class="mt-5">
-                            <a class="btn btn-primary waves-effect waves-light" href="{{ url('index') }}">Back to
+                            <a class="btn btn-primary waves-effect waves-light" href="{{ url('user.dashboard') }}">Back to
                                 Dashboard</a>
                         </div>
                     </div>
