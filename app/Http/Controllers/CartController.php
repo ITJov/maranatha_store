@@ -11,14 +11,14 @@ class CartController extends Controller
     public function index()
     {
         $cart = session()->get('cart', []);
-        
+
         $cartItems = collect($cart);
-    
+
         $totalPrice = $cartItems->sum(fn($item) => $item['price'] * $item['quantity']);
-    
+
         return view('carts.cart-index', compact('cartItems', 'totalPrice'));
     }
-            
+
     public function updateQuantity(Request $request, $id)
     {
         $request->validate([
@@ -39,12 +39,12 @@ class CartController extends Controller
     public function remove($id)
     {
         $cart = session()->get('cart', []);
-    
+
         if (isset($cart[$id])) {
             unset($cart[$id]);
             session()->put('cart', $cart);
         }
-    
+
         return redirect()->route('cart.index')->with('success', 'Item removed from cart!');
     }
-    }
+}

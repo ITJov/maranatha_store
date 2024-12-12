@@ -91,7 +91,7 @@ Route::middleware(['auth', 'is_user'])->group(function () {
     Route::post('/product/{id}/add-to-cart', [DetailProductController::class, 'addToCart'])->name('product.addToCart');
 
     // Profile
-    Route::get('/user-profile/index', [ProfileController::class, 'index'])->name('user-profile.index');
+    Route::get('/user-profile/index', [ProfileController::class, 'index'])->name('user-profile.index')->middleware('auth');
 
     // Payment
     Route::get('/payments/payment-index', [PaymentController::class, 'index'])->name('payment.index');
