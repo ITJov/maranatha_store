@@ -15,7 +15,7 @@
     {{-- Header --}}
     @include('user-dashboard.header')
 
-    <div class="container-fluid p-0 overflow-hidden">
+    <div class="container-fluid p-0 overflow-hidden content @yield('add-certain')">
         {{-- Livewire Content --}}
         @yield('content')
     </div>

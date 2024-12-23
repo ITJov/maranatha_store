@@ -1,7 +1,8 @@
 @extends('user-dashboard.master-user')
 @section('body-class', 'profile-background background-img')
+@section('add-certain', 'd-flex align-items-center')
 @section('content')
-    <div class="row py-5">
+    <div class="row w-100">
         <div class="col-2"></div>
         <div class="col-4">
             <div class="profile-title mb-3">
