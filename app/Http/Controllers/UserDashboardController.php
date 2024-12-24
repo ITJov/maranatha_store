@@ -9,7 +9,7 @@ class UserDashboardController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
+        $products = Product::latest()->take(4)->get();
         return view('user-dashboard.index', compact('products'));
     }
 }

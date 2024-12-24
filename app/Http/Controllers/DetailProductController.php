@@ -10,8 +10,9 @@ class DetailProductController extends Controller
     public function show($id)
     {
         $product = Product::findOrFail($id);
+        $productRecommend = Product::where('kategori', $product->kategori)->where('id', '!=', $product->id)->take(4)->get();
 
-        return view('detail_product.detail-product-index', compact('product'));
+        return view('detail_product.detail-product-index', compact('product', 'productRecommend'));
     }
 
     public function addToCart(Request $request, $id)

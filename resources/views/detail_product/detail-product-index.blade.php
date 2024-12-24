@@ -43,7 +43,27 @@
                 <p>Recommendation <span class="color-primary"> Suitable </span> for You !</p>
                 <hr class="dual-color-hr">
             </div>
-            <div class="recommendation"></div>
+            <div class="row mt-4 mx-5 px-5">
+            @foreach($productRecommend as $recommend)
+                <div class="col-md-3 mb-4">
+                    <div class="card round-circle rounded-4">
+                        <a class="text-decoration-none text-dark" href="{{ route('product.detail', ['id' => $recommend->id]) }}">
+                            <img src="{{ asset($recommend->file_photo) }}"
+                                 class="round-circle rounded-top-4 pt-4 card-img-top product-image"
+                                 alt="{{ $recommend->name }}">
+
+                            <div class="card-body">
+                                <h5 class="card-title text-capitalize">{{ $recommend->name }}</h5>
+                                <hr class="my-3">
+                                <p class="card-text fw-bold m-0">
+                                    Rp {{ number_format($recommend->price, 0, ',', '.') }}</p>
+{{--                                <p class="card-text">Category: {{ $recommend->kategori }}</p>--}}
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            @endforeach
+        </div>
         </div>
     </div>
 @endsection
