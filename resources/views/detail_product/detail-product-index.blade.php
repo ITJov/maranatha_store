@@ -24,18 +24,18 @@
                     </p>
                     <p class="fw-700 price">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
                     <form action="{{ route('product.addToCart', $product->id) }}" method="POST">
-                    @csrf
-                    <div class="d-flex">
-                        <div class="input-group mb-3" style="width: 150px;">
-                            <button type="button" class="btn btn-outline-secondary" id="decreaseQuantity">-</button>
-                            <input type="number" name="quantity" id="quantityInput" class="form-control text-center"
-                                   value="1" min="1" max="{{ $product->kuantiti }}">
-                            <button type="button" class="btn btn-outline-secondary" id="increaseQuantity">+</button>
+                        @csrf
+                        <div class="d-flex">
+                            <div class="input-group mb-3" style="width: 150px;">
+                                <button type="button" class="btn btn-outline-secondary" id="decreaseQuantity">-</button>
+                                <input type="number" name="quantity" id="quantityInput" class="form-control text-center"
+                                       value="1" min="1" max="{{ $product->kuantiti }}">
+                                <button type="button" class="btn btn-outline-secondary" id="increaseQuantity">+</button>
+                            </div>
+                            <div class="ms-3">
+                                <button type="submit" class="btn btn-success">Add to Cart</button>
+                            </div>
                         </div>
-                        <div class="ms-3">
-                            <button type="submit" class="btn btn-success">Add to Cart</button>
-                        </div>
-                    </div>
                     </form>
                 </div>
             </div>
@@ -57,7 +57,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Product "{{ $product->name }}" has been added to your cart successfully!
+                Product <span class="text-capitalize">{{ $product->name }}</span> has been added to your cart
+                successfully!
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -69,8 +70,8 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         @if(session('success'))
-            var successModal = new bootstrap.Modal(document.getElementById('successModal'));
-            successModal.show();
+        var successModal = new bootstrap.Modal(document.getElementById('successModal'));
+        successModal.show();
         @endif
     });
 
