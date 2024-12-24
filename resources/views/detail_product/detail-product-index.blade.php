@@ -48,25 +48,48 @@
     </div>
 @endsection
 
-@push('scripts')
-    <script>
-        document.getElementById('increaseQuantity').addEventListener('click', function () {
-            const input = document.getElementById('quantityInput');
-            let currentValue = parseInt(input.value);
-            const maxValue = parseInt(input.getAttribute('max'));
+<!-- Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="successModalLabel">Success</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Product "{{ $product->name }}" has been added to your cart successfully!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-            if (currentValue < maxValue) {
-                input.value = currentValue + 1;
-            }
-        });
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        @if(session('success'))
+            var successModal = new bootstrap.Modal(document.getElementById('successModal'));
+            successModal.show();
+        @endif
+    });
 
-        document.getElementById('decreaseQuantity').addEventListener('click', function () {
-            const input = document.getElementById('quantityInput');
-            let currentValue = parseInt(input.value);
+    document.getElementById('increaseQuantity').addEventListener('click', function () {
+        const input = document.getElementById('quantityInput');
+        let currentValue = parseInt(input.value);
+        const maxValue = parseInt(input.getAttribute('max'));
 
-            if (currentValue > 1) {
-                input.value = currentValue - 1;
-            }
-        });
-    </script>
-@endpush
+        if (currentValue < maxValue) {
+            input.value = currentValue + 1;
+        }
+    });
+
+    document.getElementById('decreaseQuantity').addEventListener('click', function () {
+        const input = document.getElementById('quantityInput');
+        let currentValue = parseInt(input.value);
+
+        if (currentValue > 1) {
+            input.value = currentValue - 1;
+        }
+    });
+</script>

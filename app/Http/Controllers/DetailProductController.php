@@ -17,11 +17,11 @@ class DetailProductController extends Controller
     public function addToCart(Request $request, $id)
     {
         $product = Product::findOrFail($id);
-    
+
         $request->validate([
             'quantity' => 'required|integer|min:1|max:' . $product->kuantiti,
         ]);
-    
+
         $cart = session()->get('cart', []);
 
         if (isset($cart[$id])) {
@@ -34,9 +34,10 @@ class DetailProductController extends Controller
                 "image" => $product->file_photo,
             ];
         }
-    
+
         session()->put('cart', $cart);
 
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
+        return redirect()->route('product.detail', $id)->with('success', 'Product added to cart successfully!');
+
     }
 }
