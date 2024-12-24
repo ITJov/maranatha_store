@@ -69,28 +69,37 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
+        // Tampilkan modal jika ada session success
         @if(session('success'))
         var successModal = new bootstrap.Modal(document.getElementById('successModal'));
         successModal.show();
         @endif
-    });
 
-    document.getElementById('increaseQuantity').addEventListener('click', function () {
-        const input = document.getElementById('quantityInput');
-        let currentValue = parseInt(input.value);
-        const maxValue = parseInt(input.getAttribute('max'));
+        const increaseButton = document.getElementById('increaseQuantity');
+        const decreaseButton = document.getElementById('decreaseQuantity');
+        const quantityInput = document.getElementById('quantityInput');
 
-        if (currentValue < maxValue) {
-            input.value = currentValue + 1;
-        }
-    });
+        if (increaseButton && decreaseButton && quantityInput) {
+            // Tambahkan event listener untuk tombol "+"
+            increaseButton.addEventListener('click', function () {
+                let currentValue = parseInt(quantityInput.value);
+                const maxValue = parseInt(quantityInput.getAttribute('max'));
 
-    document.getElementById('decreaseQuantity').addEventListener('click', function () {
-        const input = document.getElementById('quantityInput');
-        let currentValue = parseInt(input.value);
+                if (currentValue < maxValue) {
+                    quantityInput.value = currentValue + 1;
+                }
+            });
 
-        if (currentValue > 1) {
-            input.value = currentValue - 1;
+            // Tambahkan event listener untuk tombol "-"
+            decreaseButton.addEventListener('click', function () {
+                let currentValue = parseInt(quantityInput.value);
+
+                if (currentValue > 1) {
+                    quantityInput.value = currentValue - 1;
+                }
+            });
+        } else {
+            console.error('Elemen increaseQuantity, decreaseQuantity, atau quantityInput tidak ditemukan di DOM.');
         }
     });
 </script>
