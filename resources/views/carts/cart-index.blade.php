@@ -5,22 +5,22 @@
 @section('content')
     <div class="container">
         <!-- Tombol Back -->
-        <div class="mb-3">
+        <div class="mb-3 mt-3">
             <button class="btn btn-secondary" onclick="history.back()">
                 <i class="bi bi-arrow-left"></i> Back
             </button>
         </div>
 
         <!-- Konten Cart -->
-        <h1 class="text-center mt-3 mb-5 fw-bold">Your Cart</h1>
+        <h1 class="text-center mb-5 fw-bold">Your Cart</h1>
         <table class="table">
             <thead>
-            <tr>
-                <th>Product</th>
+            <tr class="text-center">
+                <th class="text-start">Product</th>
                 <th>Price</th>
                 <th>Quantity</th>
-                <th>Total</th>
                 <th>Action</th>
+                <th class="text-end">Total</th>
             </tr>
             </thead>
             <tbody>
@@ -32,11 +32,10 @@
                 </tr>
             @else
                 @foreach ($cartItems as $id => $item)
-                    <tr>
-                        <td>{{ $item['name'] ?? 'Product not found' }}</td>
+                    <tr class="text-center">
+                        <td style="background: rgba(0,0,0,0)" class="text-start text-capitalize">{{ $item['name'] ?? 'Product not found' }}</td>
                         <td>Rp {{ number_format($item['price'] ?? 0, 0, ',', '.') }}</td>
                         <td>{{ $item['quantity'] }}</td>
-                        <td>Rp {{ number_format(($item['price'] ?? 0) * $item['quantity'], 0, ',', '.') }}</td>
                         <td>
                             <form action="{{ route('cart.remove', $id) }}" method="POST" style="display: inline;">
                                 @csrf
@@ -44,6 +43,7 @@
                                 <button type="submit" class="btn btn-danger btn-sm">Remove</button>
                             </form>
                         </td>
+                        <td class="text-end">Rp {{ number_format(($item['price'] ?? 0) * $item['quantity'], 0, ',', '.') }}</td>
                     </tr>
                 @endforeach
             @endif
