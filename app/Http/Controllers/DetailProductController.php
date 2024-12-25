@@ -33,6 +33,7 @@ class DetailProductController extends Controller
                 "price" => $product->price,
                 "quantity" => $request->quantity,
                 "image" => $product->file_photo,
+                "kategori" => $product->kategori,
             ];
         }
 

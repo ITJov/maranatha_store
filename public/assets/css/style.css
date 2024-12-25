@@ -13,7 +13,7 @@
 /* General */
 /*-----------------------*/
 
-.text-style{
+.text-style {
     font-family: 'Work Sans', sans-serif !important;
 }
 
@@ -43,14 +43,14 @@
     min-height: 100vh;
 }
 
-.subtitle-text p{
+.subtitle-text p {
     font-size: 24px;
     font-weight: bold;
     color: #666666;
     margin: 0;
 }
 
-.subtitle-text p span{
+.subtitle-text p span {
     font-size: 1em;
 }
 
@@ -74,22 +74,22 @@
     border-radius: 5px;
 }
 
-.fw-500{
+.fw-500 {
     font-weight: 500;
 }
 
-.fw-700{
+.fw-700 {
     font-weight: 700;
 }
 
-.content{
+.content {
     min-height: calc(100vh - 49px - 83px - 84px);
 }
 
 /*-----------------------*/
 /* Navigation Admin */
 /*-----------------------*/
-body[data-sidebar-size=sm] .navbar-brand-box .logo #logo > h5{
+body[data-sidebar-size=sm] .navbar-brand-box .logo #logo > h5 {
     display: none;
 }
 
@@ -125,7 +125,7 @@ body[data-sidebar-size=sm] .navbar-brand-box .logo #logo > h5{
     height: 55px;
 }
 
-.login-background{
+.login-background {
     background-image: url("../images/background/Login.jpeg");
 }
 
@@ -133,11 +133,11 @@ body[data-sidebar-size=sm] .navbar-brand-box .logo #logo > h5{
 /* Home Page */
 /*-----------------------*/
 
-.home-page-background{
+.home-page-background {
     background-image: url("../images/background/home-page-background.png");
 }
 
-.carousel-inner{
+.carousel-inner {
     height: 300px;
     display: flex;
     align-items: center;
@@ -155,22 +155,23 @@ body[data-sidebar-size=sm] .navbar-brand-box .logo #logo > h5{
     object-fit: contain;
 }
 
-.banner{
+.banner {
     background-image: url("../images/background/home-page-banner.png");
     height: 200px;
 }
 
-.open-hours{
+.open-hours {
     font-size: 50px;
 }
 
-.schedule p{
+.schedule p {
     font-size: 25px;
 }
 
-.logo-footer{
-    width :13%;
+.logo-footer {
+    width: 13%;
 }
+
 .footer {
     height: 70px;
     background-color: #000000;
@@ -181,7 +182,7 @@ body[data-sidebar-size=sm] .navbar-brand-box .logo #logo > h5{
 /* Detail Product */
 /*-----------------------*/
 
-.detail-product-background{
+.detail-product-background {
     background-image: url("../images/background/detail-product-background.png");
 }
 
@@ -191,15 +192,15 @@ body[data-sidebar-size=sm] .navbar-brand-box .logo #logo > h5{
     margin: 0;
 }
 
-.detail-product-back i{
+.detail-product-back i {
     font-size: 16px;
 }
 
-.price{
+.price {
     font-size: 30px;
 }
 
-.recommendation{
+.recommendation {
     height: 200px;
 }
 
@@ -207,15 +208,15 @@ body[data-sidebar-size=sm] .navbar-brand-box .logo #logo > h5{
 /* Profile */
 /*-----------------------*/
 
-.profile-background{
+.profile-background {
     background-image: url("../images/background/profile-background.png");
 }
 
-.profile-icon{
+.profile-icon {
     width: 75.5%;
 }
 
-.profile-title p{
+.profile-title p {
     font-size: 32px;
     font-weight: bold;
     margin: 0;
@@ -225,8 +226,8 @@ body[data-sidebar-size=sm] .navbar-brand-box .logo #logo > h5{
     font-size: 1em;
 }
 
-.box-shadow{
-    box-shadow: 0px 0px 29px 3px rgba(0,0,0,0.1);
+.box-shadow {
+    box-shadow: 0px 0px 29px 3px rgba(0, 0, 0, 0.1);
 }
 
 /*-----------------------*/
@@ -235,4 +236,17 @@ body[data-sidebar-size=sm] .navbar-brand-box .logo #logo > h5{
 
 .cart-background {
     background-image: url("../images/background/cart-background.png");
+}
+
+.cart-table td {
+    background-color: rgba(0, 0, 0, 0) !important;
+    vertical-align: middle;
+}
+
+.cart-table td p{
+    font-size: 16px;
+}
+
+.cart-product-img {
+    width: 3em;
 }

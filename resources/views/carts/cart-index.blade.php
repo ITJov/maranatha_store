@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <!-- Tombol Back -->
-        <div class="mb-3 mt-3">
+        <div class="mb-3 mt-5">
             <button class="btn btn-secondary" onclick="history.back()">
                 <i class="bi bi-arrow-left"></i> Back
             </button>
@@ -15,43 +15,58 @@
         <h1 class="text-center mb-5 fw-bold">Your Cart</h1>
         <table class="table">
             <thead>
-            <tr class="text-center">
+            <tr class="text-end text-uppercase">
                 <th class="text-start">Product</th>
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Action</th>
-                <th class="text-end">Total</th>
+                <th>Total</th>
             </tr>
             </thead>
             <tbody>
             @if (!$cartItems || $cartItems->isEmpty())
                 <tr>
                     <td colspan="5" style="height: 200px; background: rgba(0,0,0,0)">
-                        <p class="d-flex align-items-center justify-content-center h-100">Your cart is empty. Start shopping now!</p>
+                        <p class="d-flex align-items-center justify-content-center h-100">Your cart is empty. Start
+                            shopping now!</p>
                     </td>
                 </tr>
             @else
                 @foreach ($cartItems as $id => $item)
-                    <tr class="text-center">
-                        <td style="background: rgba(0,0,0,0)" class="text-start text-capitalize">{{ $item['name'] ?? 'Product not found' }}</td>
-                        <td>Rp {{ number_format($item['price'] ?? 0, 0, ',', '.') }}</td>
-                        <td>{{ $item['quantity'] }}</td>
+                    <tr class="cart-table text-end">
+                        <td class="text-start text-capitalize d-flex align-items-center">
+                            <div class="me-5 my-3">
+                                <img src="{{ asset($item['image']) }}" alt="{{ $item['name'] }}"
+                                     class="cart-product-img">
+                            </div>
+                            <div>
+                                <h5>{{ $item['name'] ?? 'Product not found' }}</h5>
+                                <p class="m-0">{{$item['kategori'] ?? 'Category not found'}}</p>
+                            </div>
+                        </td>
+                        <td><p>Rp {{ number_format($item['price'] ?? 0, 0, ',', '.') }}</p></td>
+                        <td class="pe-5"><p>{{ $item['quantity'] }}</p></td>
                         <td>
-                            <form action="{{ route('cart.remove', $id) }}" method="POST" style="display: inline;">
+                            <form action="{{ route('cart.remove', $id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">Remove</button>
                             </form>
                         </td>
-                        <td class="text-end">Rp {{ number_format(($item['price'] ?? 0) * $item['quantity'], 0, ',', '.') }}</td>
+                        <td><p>Rp {{ number_format(($item['price'] ?? 0) * $item['quantity'], 0, ',', '.') }}</p></td>
                     </tr>
                 @endforeach
             @endif
             </tbody>
         </table>
-        <div class="text-end">
-            <h4 id="total-price">Total: Rp {{ number_format($totalPrice, 0, ',', '.') }}</h4>
-            <a href="{{ route('payment.index') }}" class="btn btn-success">Check Out</a>
+        <div class="mt-5 mb-3">
+            <div class="d-flex justify-content-end">
+                <h4 class="me-5">Total</h4>
+                <h4 class="ms-5" id="total-price">Rp {{ number_format($totalPrice, 0, ',', '.') }}</h4>
+            </div>
+            <div class="d-flex justify-content-end">
+                <a href="{{ route('payment.index') }}" class="btn btn-success mt-4 w-25">CHECK OUT</a>
+            </div>
         </div>
     </div>
 @endsection

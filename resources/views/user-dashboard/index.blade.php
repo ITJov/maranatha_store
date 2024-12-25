@@ -62,13 +62,10 @@
                              alt="{{ $product->name }}">
 
                         <div class="card-body">
-{{--                            <div class="d-flex justify-content-between m-0">--}}
-                                <h5 class="card-title text-capitalize">{{ $product->name }}</h5>
-                                <p class="card-text fw-bold m-0">
-                                    Rp {{ number_format($product->price, 0, ',', '.') }}</p>
-{{--                            </div>--}}
+                            <h5 class="card-title text-capitalize">{{ $product->name }}</h5>
                             <hr class="">
-                            <p class="card-text">Category: {{ $product->kategori }}</p>
+                            <p class="card-text fw-bold m-0">
+                                Rp {{ number_format($product->price, 0, ',', '.') }}</p>
                         </div>
                     </a>
                 </div>
