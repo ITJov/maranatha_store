@@ -22,12 +22,12 @@
                         Select category
                     </a>
                     <ul id="category" class="dropdown-menu border-0 background-secondary text-light">
+                        <li><a class="dropdown-item text-light" href="/product/index">All Product</a></li>
                         <li><a class="dropdown-item text-light" href="#">Food</a></li>
                         <li><a class="dropdown-item text-light" href="#">Drink</a></li>
                         <li><a class="dropdown-item text-light" href="#">Stationery</a></li>
                         <li><a class="dropdown-item text-light" href="#">Medicine</a></li>
                     </ul>
-                </li>
                 <li class="search">
                     <div class="container ">
                         <div class="input-group rounded shadow-sm  border rounded-1 py-1"

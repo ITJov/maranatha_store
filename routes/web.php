@@ -86,6 +86,9 @@ Route::middleware(['auth', 'is_user'])->group(function () {
     Route::get('/carts/cart-index', [CartController::class, 'index'])->name('cart.index');
     Route::delete('/carts/{id}/remove', [CartController::class, 'remove'])->name('cart.remove');
 
+    // Product
+    Route::get('/product/index',[ProductController::class, 'showUser'])->name('product.index');
+
     // Detail Product
     Route::get('/product/{id}', [DetailProductController::class, 'show'])->name('product.detail');
     Route::post('/product/{id}/add-to-cart', [DetailProductController::class, 'addToCart'])->name('product.addToCart');
@@ -99,5 +102,4 @@ Route::middleware(['auth', 'is_user'])->group(function () {
     // invoice user page
     Route::get('/invoice_user/invoice-index', [UserInvoiceController::class, 'generateInvoice'])->name('invoice.index');
     Route::post('/invoice_user/invoice-index', [UserInvoiceController::class, 'generateInvoice'])->name('invoice.index');
-
 });

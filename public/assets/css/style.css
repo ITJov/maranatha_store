@@ -179,6 +179,13 @@ body[data-sidebar-size=sm] .navbar-brand-box .logo #logo > h5 {
 }
 
 /*-----------------------*/
+/* Product */
+/*-----------------------*/
+.product-background{
+    background-image: url("../images/background/product-background.png");
+}
+
+/*-----------------------*/
 /* Detail Product */
 /*-----------------------*/
 

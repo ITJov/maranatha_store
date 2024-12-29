@@ -23,6 +23,16 @@ class ProductController extends Controller
     }
 
     /**
+     * Display a listing of the resource for user.
+     */
+    public function showUser()
+    {
+        $products = Product::all();
+
+        return view('product.index', compact('products'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()

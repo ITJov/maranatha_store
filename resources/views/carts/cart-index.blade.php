@@ -6,7 +6,7 @@
     <div class="container">
         <!-- Tombol Back -->
         <div class="mb-3 mt-5">
-            <button class="btn btn-secondary" onclick="history.back()">
+            <button class="btn btn-outline-secondary" onclick="history.back()">
                 <i class="bi bi-arrow-left"></i> Back
             </button>
         </div>
