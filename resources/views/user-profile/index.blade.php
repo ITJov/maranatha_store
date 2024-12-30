@@ -24,11 +24,48 @@
                     </div>
                 </div>
             </div>
-            <a class="ms-4 px-4 py-2 btn btn-success"><span class="fw-500">Reset Password</span></a>
+            <a class="ms-4 px-4 py-2 btn btn-success" href="/user-profile/resetPassword"><span class="fw-500">Reset Password</span></a>
         </div>
         <div class="col-6 d-flex justify-content-center p-0">
             <img class="profile-icon" src="{{ asset('assets/images/profile-icon.png') }}" alt="">
         </div>
     </div>
 
+    <!-- Ikon WhatsApp -->
+    <a href="https://wa.me/62881023373000" target="_blank">
+        <div class="whatsapp-icon rounded-circle d-flex align-items-center justify-content-center">
+            <i class="bi bi-whatsapp text-light fs-2"></i>
+        </div>
+    </a>
+     <!-- Modal -->
+    <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="feedbackModalLabel">
+                        {{ session('success') ? 'Success' : 'Error' }}
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    @if(session('success'))
+                        {{ session('success') }}
+                    @endif
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            @if(session('success'))
+            var feedbackModal = new bootstrap.Modal(document.getElementById('feedbackModal'));
+            feedbackModal.show();
+            @endif
+        });
+    </script>
 @endsection

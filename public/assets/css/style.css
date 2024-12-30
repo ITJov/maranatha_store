@@ -9,6 +9,10 @@
     font-size: 14px;
 }
 
+*:focus{
+    outline:none;
+}
+
 /*-----------------------*/
 /* General */
 /*-----------------------*/
@@ -84,6 +88,16 @@
 
 .content {
     min-height: calc(100vh - 49px - 83px - 84px);
+}
+
+.whatsapp-icon {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    width: 70px;
+    height: 70px;
+    background-color: #38B94A;
 }
 
 /*-----------------------*/
@@ -181,7 +195,7 @@ body[data-sidebar-size=sm] .navbar-brand-box .logo #logo > h5 {
 /*-----------------------*/
 /* Product */
 /*-----------------------*/
-.product-background{
+.product-background {
     background-image: url("../images/background/product-background.png");
 }
 
@@ -238,6 +252,32 @@ body[data-sidebar-size=sm] .navbar-brand-box .logo #logo > h5 {
 }
 
 /*-----------------------*/
+/* Reset Password */
+/*-----------------------*/
+.reset-password-background{
+    background-image: url("../images/background/reset-password-background.png");
+}
+
+.reset-password-title p {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.reset-password-title span {
+    font-size: 1em;
+}
+
+.password-input{
+    border: none;
+    width: 100%;
+}
+
+.password-input{
+
+}
+
+/*-----------------------*/
 /* Cart */
 /*-----------------------*/
 
@@ -250,7 +290,7 @@ body[data-sidebar-size=sm] .navbar-brand-box .logo #logo > h5 {
     vertical-align: middle;
 }
 
-.cart-table td p{
+.cart-table td p {
     font-size: 16px;
 }
 

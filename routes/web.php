@@ -95,6 +95,8 @@ Route::middleware(['auth', 'is_user'])->group(function () {
 
     // Profile
     Route::get('/user-profile/index', [ProfileController::class, 'index'])->name('user-profile.index')->middleware('auth');
+    Route::get('/user-profile/resetPassword', [ProfileController::class, 'resetPassword'])->name('user-profile.reset-password')->middleware('auth');
+    Route::post('/user-profile/updatePassword', [ProfileController::class, 'updatePassword'])->name('password.update')->middleware('auth');
 
     // Payment
     Route::get('/payments/payment-index', [PaymentController::class, 'index'])->name('payment.index');
