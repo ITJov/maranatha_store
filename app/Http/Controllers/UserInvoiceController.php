@@ -11,9 +11,9 @@ class UserInvoiceController extends Controller
     {
         // Ambil data dari tabel shop_carts dengan join ke tabel products
         $cartItems = DB::table('shop_carts')
-            ->join('products', 'shop_carts.id', '=', 'products.id')
+            ->join('products', 'shop_carts.id_produk', '=', 'products.id') // Sesuaikan dengan id_produk
             ->select(
-                'shop_carts.id',
+                'shop_carts.id_produk',
                 'shop_carts.kuantiti_produk as quantity',
                 'products.name',
                 'products.price'
@@ -45,8 +45,11 @@ class UserInvoiceController extends Controller
 
         // Pindahkan data dari shop_carts ke purchasings
         foreach ($cartItems as $item) {
+            $nextPurchasingId = DB::table('purchasings')->max('id') + 1; // Auto-increment ID untuk purchasings
+
             DB::table('purchasings')->insert([
-                'id' => $item->id, // produk_id
+                'id' => $nextPurchasingId, // Auto-increment ID
+                'id_produk' => $item->id_produk,
                 'kuantiti_produk' => $item->quantity,
                 'user_id' => auth()->id(),
                 'date' => $date,

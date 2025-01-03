@@ -77,8 +77,8 @@ class CartController extends Controller
 
         $userId = Auth::id();
 
-        // Cek apakah item sudah ada di keranjang
-        $cartItem = Shop_Cart::where('id', $productId)->where('user_id', $userId)->first();
+        // Cek apakah item sudah ada di keranjang berdasarkan id_produk dan user_id
+        $cartItem = Shop_Cart::where('id_produk', $productId)->where('user_id', $userId)->first();
 
         if ($cartItem) {
             // Jika sudah ada, tambahkan kuantitasnya
@@ -86,8 +86,11 @@ class CartController extends Controller
             $cartItem->save();
         } else {
             // Jika belum ada, buat entri baru
+            $nextId = Shop_Cart::max('id') + 1; // Hitung ID berikutnya
+
             Shop_Cart::create([
-                'id' => $productId,
+                'id' => $nextId,
+                'id_produk' => $productId,
                 'kuantiti_produk' => $request->quantity,
                 'user_id' => $userId,
             ]);
@@ -95,5 +98,6 @@ class CartController extends Controller
 
         return redirect()->back()->with('success', 'Item added to cart!');
     }
+
 
 }
