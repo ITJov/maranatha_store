@@ -17,17 +17,17 @@
         <div class="collapse navbar-collapse m-0 p-0" id="navbarNavDropdown">
             <ul class="navbar-nav d-flex align-items-center justify-content-between w-100">
                 <li class="nav-item dropdown ms-3 background-secondary rounded-3 p-0 px-2">
-                    <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        Select category
-                    </a>
-                    <ul id="category" class="dropdown-menu border-0 background-secondary text-light">
-                        <li><a class="dropdown-item text-light" href="/product/index">All Product</a></li>
-                        <li><a class="dropdown-item text-light" href="#">Food</a></li>
-                        <li><a class="dropdown-item text-light" href="#">Drink</a></li>
-                        <li><a class="dropdown-item text-light" href="#">Stationery</a></li>
-                        <li><a class="dropdown-item text-light" href="#">Medicine</a></li>
-                    </ul>
+                <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false" id="dropdownCategory">
+                    Select category
+                </a>
+                <ul id="category" class="dropdown-menu border-0 background-secondary text-light">
+                    <li><a class="dropdown-item text-light" href="{{ route('product.index') }}" onclick="updateCategory('All Product')">All Product</a></li>
+                    <li><a class="dropdown-item text-light" href="{{ route('product.category', 'foods') }}" onclick="updateCategory('Food')">Food</a></li>
+                    <li><a class="dropdown-item text-light" href="{{ route('product.category', 'drinks') }}" onclick="updateCategory('Drink')">Drink</a></li>
+                    <li><a class="dropdown-item text-light" href="{{ route('product.category', 'stationery') }}" onclick="updateCategory('Stationery')">Stationery</a></li>
+                    <li><a class="dropdown-item text-light" href="{{ route('product.category', 'medicines') }}" onclick="updateCategory('Medicine')">Medicine</a></li>
+                </ul>
                 <li class="search">
                     <div class="container ">
                         <div class="input-group rounded shadow-sm  border rounded-1 py-1"
@@ -77,3 +77,30 @@
         </div>
     </div>
 </nav>
+
+<!-- biar dropdown sesuai sama kategori yang dipilih -->
+<script>
+    function updateCategory(category) {
+        document.getElementById('dropdownCategory').textContent = category;
+        // simpan ke localStorage
+        localStorage.setItem('selectedCategory', category);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const pathWebsite = window.location.pathname;
+        const dropdown = document.getElementById('dropdownCategory');
+
+        // reset dropdown kalo user-dashboard/index
+        if (pathWebsite.includes('/user-dashboard/index')) {
+            localStorage.removeItem('selectedCategory');
+            dropdown.textContent = 'Select category';
+        } else {
+            const savedCategory = localStorage.getItem('selectedCategory');
+            if (savedCategory) {
+                dropdown.textContent = savedCategory;
+            } else {
+                dropdown.textContent = 'Select category';
+            }
+        }
+    });
+</script>

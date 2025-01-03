@@ -22,6 +22,14 @@ class ProductController extends Controller
         return view('ecommerce.product-ecommerce', compact('products', 'categories'));
     }
 
+    public function filterByCategory($category)
+    {
+        $products = Product::where('kategori', $category)->get();
+        
+        return view('product.index', compact('products'));
+    }
+
+
     /**
      * Display a listing of the resource for user.
      */

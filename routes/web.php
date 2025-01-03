@@ -88,6 +88,8 @@ Route::middleware(['auth', 'is_user'])->group(function () {
 
     // Product
     Route::get('/product/index',[ProductController::class, 'showUser'])->name('product.index');
+    Route::get('/product/category/{category}', [ProductController::class, 'filterByCategory'])->name('product.category');
+
 
     // Detail Product
     Route::get('/product/{id}', [DetailProductController::class, 'show'])->name('product.detail');
