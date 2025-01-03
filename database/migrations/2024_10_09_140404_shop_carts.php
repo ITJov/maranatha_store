@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('shop_carts', function (Blueprint $table) {
             $table->string('id',10)->primary();
-            $table->integer('kuantiti_produk');
+            $table->integer('kuantiti_produk')->default(0);
             $table->string('user_id',10); 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');        
             $table->timestamp('updated_at')->useCurrent();

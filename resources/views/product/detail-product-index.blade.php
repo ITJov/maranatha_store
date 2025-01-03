@@ -23,13 +23,14 @@
                                 class="ms-3 fw-bold fs-5 fa-bold text-success">IN STOCK</span>
                     </p>
                     <p class="fw-700 price">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
-                    <form action="{{ route('product.addToCart', $product->id) }}" method="POST">
+                    <!-- pakai controller di cart -->
+                    <form action="{{ route('cart.addToCart', $product->id) }}" method="POST">
                         @csrf
                         <div class="d-flex">
                             <div class="input-group mb-3" style="width: 150px;">
                                 <button type="button" class="btn btn-outline-secondary" id="decreaseQuantity">-</button>
                                 <input type="number" name="quantity" id="quantityInput" class="form-control text-center"
-                                       value="1" min="1" max="{{ $product->kuantiti }}">
+                                    value="1" min="1" max="{{ $product->kuantiti }}">
                                 <button type="button" class="btn btn-outline-secondary" id="increaseQuantity">+</button>
                             </div>
                             <div class="ms-3">
@@ -37,6 +38,7 @@
                             </div>
                         </div>
                     </form>
+
                 </div>
             </div>
             <div class="mx-5 subtitle-text">
@@ -126,6 +128,8 @@
                     quantityInput.value = currentValue - 1;
                 }
             });
+
+            
         } else {
             console.error('Elemen increaseQuantity, decreaseQuantity, atau quantityInput tidak ditemukan di DOM.');
         }

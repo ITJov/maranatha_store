@@ -12,7 +12,7 @@ class Shop_Cart extends Model
     protected $table = 'shop_carts';
 
     protected $fillable = [
-        'id',
+        'id',  // ini adalah product_id
         'kuantiti_produk',
         'user_id',
     ];
@@ -24,5 +24,10 @@ class Shop_Cart extends Model
     public function product()
     {
         return $this->belongsTo(Product::class, 'id', 'id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

@@ -47,11 +47,12 @@
                         <td><p>Rp {{ number_format($item['price'] ?? 0, 0, ',', '.') }}</p></td>
                         <td class="pe-5"><p>{{ $item['quantity'] }}</p></td>
                         <td>
-                            <form action="{{ route('cart.remove', $id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Remove</button>
-                            </form>
+                        <!-- hapus data di cart page -->
+                        <form action="{{ route('cart.remove', $item['id']) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                        </form>
                         </td>
                         <td><p>Rp {{ number_format(($item['price'] ?? 0) * $item['quantity'], 0, ',', '.') }}</p></td>
                     </tr>

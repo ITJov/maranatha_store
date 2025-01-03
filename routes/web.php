@@ -84,14 +84,14 @@ Route::middleware(['auth', 'is_user'])->group(function () {
 
     // Cart
     Route::get('/carts/cart-index', [CartController::class, 'index'])->name('cart.index');
-    Route::delete('/carts/{id}/remove', [CartController::class, 'remove'])->name('cart.remove');
+    Route::delete('/carts/cart-index/{id}/remove', [CartController::class, 'remove'])->name('cart.remove');
 
     // Product
     Route::get('/product/index',[ProductController::class, 'showUser'])->name('product.index');
 
     // Detail Product
     Route::get('/product/{id}', [DetailProductController::class, 'show'])->name('product.detail');
-    Route::post('/product/{id}/add-to-cart', [DetailProductController::class, 'addToCart'])->name('product.addToCart');
+    Route::post('/product/{id}/add-to-cart', [CartController::class, 'addToCart'])->name('cart.addToCart');
 
     // Profile
     Route::get('/user-profile/index', [ProfileController::class, 'index'])->name('user-profile.index')->middleware('auth');
