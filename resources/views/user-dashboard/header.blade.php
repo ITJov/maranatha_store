@@ -90,8 +90,8 @@
         const pathWebsite = window.location.pathname;
         const dropdown = document.getElementById('dropdownCategory');
 
-        // reset dropdown kalo user-dashboard/index
-        if (pathWebsite.includes('/user-dashboard/index')) {
+        // reset dropdown kalo ke dashboard & cart
+        if (pathWebsite.includes('/user-dashboard/index') || pathWebsite.includes('/carts/cart-index')) {
             localStorage.removeItem('selectedCategory');
             dropdown.textContent = 'Select category';
         } else {
