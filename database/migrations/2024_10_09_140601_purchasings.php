@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('purchasings', function (Blueprint $table) {
             $table->string('id',10)->primary();
+            $table->string('id_produk',10)->primary();
+            $table->foreign('id_produk')->references('id')->on('products')->onDelete('cascade');
             $table->integer('kuantiti_produk');
             $table->date('date');
             $table->string('user_id',10); 

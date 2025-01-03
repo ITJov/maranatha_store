@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('shop_carts', function (Blueprint $table) {
             $table->string('id',10)->primary();
+            $table->string('id_produk',10)->primary();
+            $table->foreign('id_produk')->references('id')->on('products')->onDelete('cascade'); 
             $table->integer('kuantiti_produk')->default(0);
             $table->string('user_id',10); 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');        

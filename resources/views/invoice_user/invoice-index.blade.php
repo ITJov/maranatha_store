@@ -5,19 +5,20 @@
 @section('content')
 <div class="container mt-5">
     <div class="mb-3">
-    <a href="{{ route('user.dashboard') }}" class="btn btn-success">back to home</a>
+    <a href="{{ route('user.dashboard') }}" class="btn btn-success">Back to home</a>
     </div>
 
     <h1 class="text-center text-warning">Your Order is Being <span class="text-success">Prepared</span>!</h1>
 
     <div class="card mt-4">
-        <div class="card-header bg-white text-center">
-            <h4>Invoice Pembayaran</h4>
-            <p>Kode Pesanan: <strong>{{ $storeData['order_code'] }}</strong></p>
-            <p>{{ $storeData['store_name'] }}</p>
-            <p>{{ $storeData['address'] }}</p>
-            <p>Waktu: {{ $storeData['order_time'] }}</p>
-        </div>
+    <div class="card-header bg-white text-center">
+        <h4>Invoice Pembayaran</h4>
+        <p>Payment ID: <strong>{{ $paymentId }}</strong></p>
+        <p>Tanggal Pembelian: {{ $date }}</p>
+        <p>{{ $storeData['store_name'] }}</p>
+        <p>{{ $storeData['address'] }}</p>
+        <p>Waktu: {{ $storeData['order_time'] }}</p>
+    </div>
         <div class="card-body">
             <table class="table table-bordered">
                 <thead>
@@ -29,12 +30,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($cart as $item)
+                    @foreach ($purchasing as $item)
                     <tr>
-                        <td>{{ $item['name'] }}</td>
-                        <td>{{ $item['quantity'] }}</td>
-                        <td>Rp {{ number_format($item['price'], 0, ',', '.') }}</td>
-                        <td>Rp {{ number_format($item['price'] * $item['quantity'], 0, ',', '.') }}</td>
+                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->quantity }}</td>
+                        <td>Rp {{ number_format($item->price, 0, ',', '.') }}</td>
+                        <td>Rp {{ number_format($item->price * $item->quantity, 0, ',', '.') }}</td>
                     </tr>
                     @endforeach
                 </tbody>

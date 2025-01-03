@@ -3,40 +3,79 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserInvoiceController extends Controller
 {
-    public function generateInvoice()
+    public function generateInvoice(Request $request)
     {
-        // Ambil data cart dari sesi
-        $cart = session()->get('cart', []);
+        // Ambil data dari tabel shop_carts dengan join ke tabel products
+        $cartItems = DB::table('shop_carts')
+            ->join('products', 'shop_carts.id', '=', 'products.id')
+            ->select(
+                'shop_carts.id',
+                'shop_carts.kuantiti_produk as quantity',
+                'products.name',
+                'products.price'
+            )
+            ->where('shop_carts.user_id', auth()->id())
+            ->get();
 
-        // Hitung total harga
-        $totalPrice = collect($cart)->sum(function ($item) {
-            return $item['price'] * $item['quantity'];
-        });
+        if ($cartItems->isEmpty()) {
+            return redirect()->route('payment.index')->with('error', 'Cart is empty.');
+        }
 
-        // Cek apakah ada kode pesanan terakhir di session atau database
-        $lastOrderCode = session()->get('last_order_code', 'P00000');
+        // Generate payment ID secara increment
+        $lastPayment = DB::table('payments')->orderBy('id', 'desc')->first();
+        $nextPaymentId = $lastPayment
+            ? sprintf('P%06d', (int)substr($lastPayment->id, 1) + 1)
+            : 'P000001';
 
-        // Ambil angka dari kode terakhir dan tambahkan 1
-        $orderNumber = (int) substr($lastOrderCode, 1) + 1;
+        // Tambahkan entri ke tabel payments
+        DB::table('payments')->insert([
+            'id' => $nextPaymentId,
+            'payment_method' => 'va', // Virtual Account
+            'status' => true,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
 
-        // Buat kode pesanan baru
-        $newOrderCode = 'P' . str_pad($orderNumber, 5, '0', STR_PAD_LEFT);
+        // Tanggal saat ini
+        $date = now();
 
-        // Simpan kode pesanan terbaru di session (atau database jika diperlukan)
-        session()->put('last_order_code', $newOrderCode);
+        // Pindahkan data dari shop_carts ke purchasings
+        foreach ($cartItems as $item) {
+            DB::table('purchasings')->insert([
+                'id' => $item->id, // produk_id
+                'kuantiti_produk' => $item->quantity,
+                'user_id' => auth()->id(),
+                'date' => $date,
+                'payment_id' => $nextPaymentId, // Menghubungkan ke tabel payments
+            ]);
+        }
 
-        // Data toko
+        // Hapus data dari shop_carts
+        DB::table('shop_carts')->where('user_id', auth()->id())->delete();
+
+        // Data toko untuk halaman invoice
         $storeData = [
             'store_name' => 'Maranatha Store',
             'address' => 'Jalan Surya Sumantri No. 65',
-            'order_code' => $newOrderCode,
             'order_time' => now()->format('d/m/Y - H:i'),
         ];
 
-        // Tampilkan halaman invoice dengan data
-        return view('invoice_user.invoice-index', compact('cart', 'totalPrice', 'storeData'));
+        // Hitung total harga
+        $totalPrice = $cartItems->sum(function ($item) {
+            return $item->quantity * $item->price;
+        });
+
+        // Kirim data ke halaman invoice
+        return view('invoice_user.invoice-index', [
+            'purchasing' => $cartItems,
+            'paymentId' => $nextPaymentId,
+            'date' => $date,
+            'storeData' => $storeData,
+            'totalPrice' => $totalPrice,
+        ]);
     }
 }

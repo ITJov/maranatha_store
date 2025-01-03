@@ -90,7 +90,6 @@ Route::middleware(['auth', 'is_user'])->group(function () {
     Route::get('/product/index',[ProductController::class, 'showUser'])->name('product.index');
     Route::get('/product/category/{category}', [ProductController::class, 'filterByCategory'])->name('product.category');
 
-
     // Detail Product
     Route::get('/product/{id}', [DetailProductController::class, 'show'])->name('product.detail');
     Route::post('/product/{id}/add-to-cart', [CartController::class, 'addToCart'])->name('cart.addToCart');
@@ -101,9 +100,16 @@ Route::middleware(['auth', 'is_user'])->group(function () {
     Route::post('/user-profile/updatePassword', [ProfileController::class, 'updatePassword'])->name('password.update')->middleware('auth');
 
     // Payment
-    Route::get('/payments/payment-index', [PaymentController::class, 'index'])->name('payment.index');
+    //Route::get('/payments/payment-index', [PaymentController::class, 'index'])->name('payment.index');
 
     // invoice user page
     Route::get('/invoice_user/invoice-index', [UserInvoiceController::class, 'generateInvoice'])->name('invoice.index');
+    //Route::post('/invoice_user/invoice-index', [UserInvoiceController::class, 'generateInvoice'])->name('invoice.index');
+
+    // Payment
+    Route::get('/payments/payment-index', [PaymentController::class, 'index'])->name('payment.index');
+
+    // Invoice User Page
     Route::post('/invoice_user/invoice-index', [UserInvoiceController::class, 'generateInvoice'])->name('invoice.index');
+
 });
