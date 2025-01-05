@@ -327,6 +327,11 @@ body[data-sidebar-size=sm] .navbar-brand-box .logo #logo > h5 {
     width: 15%;
 }
 
+.btn-copy:active:after{
+    border: none;
+}
+
+
 .container-pay{
     min-height: calc(100vh - 450px);
 }

@@ -69,7 +69,7 @@
                 @if(!$cartItems || $cartItems->isEmpty())
                     <button class="btn btn-success mt-4 w-25" disabled>CHECK OUT</button>
                 @else
-                    <button href="{{ route('payment.index') }}" class="btn btn-success mt-4 w-25">CHECK OUT</button>
+                    <a href="{{ route('payment.index') }}" class="btn btn-success mt-4 w-25">CHECK OUT</a>
                 @endif
             </div>
         </div>

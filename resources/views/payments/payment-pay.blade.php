@@ -15,9 +15,13 @@
                         <img class="bank-logo-pay" src="{{ asset('assets/images/bank/bca.png') }}" alt="bca">
                         <div class="text-start ms-5">
                             <p class="bank-title mb-2 fw-5 fw-bold">BCA Virtual Account</p>
-                            <p class="m-0">No : 14167000000</p>
+                            <p class="m-0" id="virtualAccount">No : 14167000000</p>
                         </div>
-                        <img class="ms-auto me-2" src="{{ asset('assets/images/copy.png') }}" alt="">
+                        <form class="ms-auto me-2" id="copyForm" action="{{ route('invoice.index') }}" method="POST">
+                        <button id="copyButton" class="btn btn-copy">
+                            <img src="{{ asset('assets/images/copy.png') }}" alt="">
+                        </button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -35,7 +39,6 @@
         document.getElementById('copyForm').addEventListener('submit', function (event) {
             // Prevent form submission to handle clipboard first
             event.preventDefault();
-
             const virtualAccount = document.getElementById('virtualAccount').innerText;
 
             // Copy to clipboard

@@ -1,4 +1,4 @@
-<div class="d-flex align-items-center justify-content-center footer mt-3 fixed-bottom">
+<div class="d-flex align-items-center justify-content-center footer mt-3">
     <div class="row">
         <div class="col d-flex align-items-center justify-content-center">
             <img class="logo-footer pe-3" src="{{ asset('assets/images/logo.png') }}" alt="maranatha store logo">
