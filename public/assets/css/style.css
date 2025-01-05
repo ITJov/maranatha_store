@@ -273,10 +273,6 @@ body[data-sidebar-size=sm] .navbar-brand-box .logo #logo > h5 {
     width: 100%;
 }
 
-.password-input{
-
-}
-
 /*-----------------------*/
 /* Cart */
 /*-----------------------*/
@@ -296,4 +292,41 @@ body[data-sidebar-size=sm] .navbar-brand-box .logo #logo > h5 {
 
 .cart-product-img {
     width: 3em;
+}
+/*-----------------------*/
+/* Payment Index */
+/*-----------------------*/
+.payment-background{
+    background-image: url("../images/background/payment-background.png");
+}
+
+.payment-title p {
+    font-size: 30px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.payment-title span {
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.bank-logo{
+    width: 25%;
+}
+
+.bank-title{
+    font-size: 20px;
+}
+
+/*-----------------------*/
+/* Payment Pay */
+/*-----------------------*/
+
+.bank-logo-pay{
+    width: 15%;
+}
+
+.container-pay{
+    min-height: calc(100vh - 450px);
 }

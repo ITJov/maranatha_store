@@ -10,4 +10,8 @@ class PaymentController extends Controller
     {
         return view('payments.payment-index');
     }
+
+    public function payView(){
+        return view('payments.payment-pay');
+    }
 }

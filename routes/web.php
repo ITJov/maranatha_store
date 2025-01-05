@@ -100,8 +100,9 @@ Route::middleware(['auth', 'is_user'])->group(function () {
     Route::post('/user-profile/updatePassword', [ProfileController::class, 'updatePassword'])->name('password.update')->middleware('auth');
 
     // Payment
-    Route::get('/payments/payment-index', [PaymentController::class, 'index'])->name('payment.index');
-    
+    Route::get('/payments/index', [PaymentController::class, 'index'])->name('payment.index');
+    Route::get('/payments/pay', [PaymentController::class, 'payView'])->name('payment.pay');
+
     // Invoice User Page
     Route::get('/invoice_user/invoice-index', [UserInvoiceController::class, 'generateInvoice'])->name('invoice.index');
     Route::post('/invoice_user/invoice-index', [UserInvoiceController::class, 'generateInvoice'])->name('invoice.index');
