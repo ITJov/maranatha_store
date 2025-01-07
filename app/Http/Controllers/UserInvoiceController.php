@@ -61,6 +61,10 @@ class UserInvoiceController extends Controller
                 'updated_at' => now(),
             ]);
 
+            // Kurangi stok produk
+            app('App\Http\Controllers\ProductController')->reduceStock($item->id_produk, $item->quantity);
+
+
             // Simpan ID untuk purchasings_detail
             $purchasingIds[] = $nextPurchasingId;
 

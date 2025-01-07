@@ -161,21 +161,38 @@ class ProductController extends Controller
 
     public function show($id)
     {
-    $user = Product::findOrFail($id);
+        $user = Product::findOrFail($id);
 
-    return view('customers.show-customer', compact('user'));
+        return view('customers.show-customer', compact('user'));
     }
 
     public function addStock(Request $request,$id){
-    $request->validate([
-        'additional_stock' => 'required|integer|min:1',
-    ]);
+        $request->validate([
+            'additional_stock' => 'required|integer|min:1',
+        ]);
 
-    $product = Product::findOrFail($id);
+        $product = Product::findOrFail($id);
 
-    $product->kuantiti += $request->input('additional_stock');
-    $product->save();
+        $product->kuantiti += $request->input('additional_stock');
+        $product->save();
 
-    return redirect()->route('product-ecommerce')->with('success', 'Stock added successfully!');
-}
+        return redirect()->route('product-ecommerce')->with('success', 'Stock added successfully!');
+    }
+
+    public function reduceStock($productId, $quantity)
+    {
+        $product = Product::findOrFail($productId);
+
+        if ($product->kuantiti < $quantity) {
+            return response()->json([
+                'message' => 'Stok produk tidak mencukupi.'
+            ], 400);
+        }
+
+        $product->kuantiti -= $quantity;
+        $product->save();
+
+        return $product;
+    }
+
 }
