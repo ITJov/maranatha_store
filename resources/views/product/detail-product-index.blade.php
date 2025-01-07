@@ -29,7 +29,7 @@
                         <div class="d-flex">
                             <div class="input-group mb-3" style="width: 150px;">
                                 <button type="button" class="btn btn-outline-secondary" id="decreaseQuantity">-</button>
-                                <input type="number" name="quantity" id="quantityInput" class="form-control text-center"
+                                <input type="" name="quantity" id="quantityInput" class="form-control text-center"
                                     value="1" min="1" max="{{ $product->kuantiti }}">
                                 <button type="button" class="btn btn-outline-secondary" id="increaseQuantity">+</button>
                             </div>
