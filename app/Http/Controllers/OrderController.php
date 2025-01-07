@@ -9,7 +9,8 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Purchasing::with(['user', 'details', 'products'])->paginate(10); 
-        return view('ecommerce/orders-ecommerce', compact('orders'));
+        $orders = Purchasing::with(['details', 'user', 'product'])->paginate(10); // relasi
+
+        return view('ecommerce.orders-ecommerce', compact('orders'));
     }
 }

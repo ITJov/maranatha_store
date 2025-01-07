@@ -11,7 +11,7 @@ class UserInvoiceController extends Controller
     {
         // Ambil data dari tabel shop_carts dengan join ke tabel products
         $cartItems = DB::table('shop_carts')
-            ->join('products', 'shop_carts.id_produk', '=', 'products.id') // Sesuaikan dengan id_produk
+            ->join('products', 'shop_carts.id_produk', '=', 'products.id')
             ->select(
                 'shop_carts.id_produk',
                 'shop_carts.kuantiti_produk as quantity',
@@ -34,7 +34,7 @@ class UserInvoiceController extends Controller
         // Tambahkan entri ke tabel payments
         DB::table('payments')->insert([
             'id' => $nextPaymentId,
-            'payment_method' => 'va', // Virtual Account
+            'payment_method' => 'va',
             'status' => true,
             'created_at' => now(),
             'updated_at' => now(),
@@ -43,17 +43,42 @@ class UserInvoiceController extends Controller
         // Tanggal saat ini
         $date = now();
 
+        $totalPrice = 0;
+
         // Pindahkan data dari shop_carts ke purchasings
+        $purchasingIds = [];
         foreach ($cartItems as $item) {
-            $nextPurchasingId = DB::table('purchasings')->max('id') + 1; // Auto-increment ID untuk purchasings
+            $nextPurchasingId = DB::table('purchasings')->max('id') + 1;
 
             DB::table('purchasings')->insert([
-                'id' => $nextPurchasingId, // Auto-increment ID
+                'id' => $nextPurchasingId,
                 'id_produk' => $item->id_produk,
                 'kuantiti_produk' => $item->quantity,
                 'user_id' => auth()->id(),
                 'date' => $date,
                 'payment_id' => $nextPaymentId, // Menghubungkan ke tabel payments
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+
+            // Simpan ID untuk purchasings_detail
+            $purchasingIds[] = $nextPurchasingId;
+
+            // Hitung total harga
+            $totalPrice += $item->quantity * $item->price;
+        }
+
+        // Tambahkan data ke tabel purchasings_detail
+        foreach ($purchasingIds as $purchasingId) {
+            $nextPurchasingsDetailId = DB::table('purchasings_detail')->max('id') + 1;
+            DB::table('purchasings_detail')->insert([
+                'id' => $nextPurchasingsDetailId,
+                'date' => $date,
+                'total_price' => $totalPrice,
+                'status_order' => 1, // Boolean 
+                'purchasing_id' => $purchasingId, // ID dari tabel purchasings
+                'created_at' => now(),
+                'updated_at' => now(),
             ]);
         }
 
@@ -66,11 +91,6 @@ class UserInvoiceController extends Controller
             'address' => 'Jalan Surya Sumantri No. 65',
             'order_time' => now()->format('d/m/Y - H:i'),
         ];
-
-        // Hitung total harga
-        $totalPrice = $cartItems->sum(function ($item) {
-            return $item->quantity * $item->price;
-        });
 
         // Kirim data ke halaman invoice
         return view('invoice_user.invoice-index', [

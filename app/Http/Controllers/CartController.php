@@ -11,7 +11,7 @@ class CartController extends Controller
     // nampilin data di halamn cart
     public function index()
     {
-        $userId = Auth::id(); // Mendapatkan ID pengguna yang sedang login
+        $userId = Auth::id();
 
         // Mengambil data keranjang dari database dengan relasi ke produk
         $cartItems = Shop_Cart::where('user_id', $userId)
@@ -55,7 +55,7 @@ class CartController extends Controller
 
     public function remove($id)
     {
-        $userId = Auth::id(); // Mendapatkan ID pengguna yang sedang login
+        $userId = Auth::id(); // ID pengguna yang sedang login
 
         // Cari data keranjang berdasarkan id produk dan id pengguna
         $cartItem = Shop_Cart::where('id', $id)->where('user_id', $userId)->first();
@@ -86,7 +86,7 @@ class CartController extends Controller
             $cartItem->save();
         } else {
             // Jika belum ada, buat entri baru
-            $nextId = Shop_Cart::max('id') + 1; // Hitung ID berikutnya
+            $nextId = Shop_Cart::max('id') + 1; 
 
             Shop_Cart::create([
                 'id' => $nextId,
