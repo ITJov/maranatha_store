@@ -11,8 +11,10 @@
             <div class="row">
                 <div class="col-2"></div>
                 <div class="col-4">
-                    <a class="text-decoration-none" href="/payments/pay">
-                        <div class="card border-0 box-shadow rounded-4 p-2">
+                    <form action="{{ route('payment.pay') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="bank" value="bca">
+                        <div class="card border-0 box-shadow rounded-4 p-2" onclick="this.closest('form').submit();">
                             <div class="card-body d-flex align-items-center justify-content-center">
                                 <img class="bank-logo" src="{{ asset('assets/images/bank/bca.png') }}" alt="bca">
                                 <div class="text-start ms-5">
@@ -20,43 +22,58 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </form>
                 </div>
                 <div class="col-4">
-                    <div class="card border-0 box-shadow rounded-4 p-2">
-                        <div class="card-body d-flex align-items-center justify-content-center">
-                            <img class="bank-logo" src="{{ asset('assets/images/bank/mandiri.png') }}" alt="mandiri">
-                            <div class="text-start ms-5">
-                                <p class="bank-title mb-2 fw-500">Bank Mandiri</p>
+                    <form action="{{ route('payment.pay') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="bank" value="mandiri">
+                        <div class="card border-0 box-shadow rounded-4 p-2" onclick="this.closest('form').submit();">
+                            <div class="card-body d-flex align-items-center justify-content-center">
+                                <img class="bank-logo" src="{{ asset('assets/images/bank/mandiri.png') }}"
+                                     alt="mandiri">
+                                <div class="text-start ms-5">
+                                    <p class="bank-title mb-2 fw-500">Bank Mandiri</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
                 <div class="col-2"></div>
             </div>
             <div class="row mt-4">
                 <div class="col-2"></div>
                 <div class="col-4">
-                    <div class="card border-0 box-shadow rounded-4 p-2">
-                        <div class="card-body d-flex align-items-center justify-content-center">
-                            <img class="bank-logo" src="{{ asset('assets/images/bank/seabank.png') }}" alt="seabank">
-                            <div class="text-start ms-5">
-                                <p class="bank-title m-0 fw-500">Bank Seabank</p>
-                                <p class="bank-title m-0 fw-500">Indonesia</p>
+                    <form action="{{ route('payment.pay') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="bank" value="seabank">
+                        <div class="card border-0 box-shadow rounded-4 p-2" onclick="this.closest('form').submit();">
+                            <div class="card-body d-flex align-items-center justify-content-center">
+                                <img class="bank-logo" src="{{ asset('assets/images/bank/seabank.png') }}"
+                                     alt="seabank">
+                                <div class="text-start ms-5">
+                                    <p class="bank-title m-0 fw-500">Bank Seabank</p>
+                                    <p class="bank-title m-0 fw-500">Indonesia</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
                 <div class="col-4">
-                    <div class="card border-0 box-shadow rounded-4 p-2">
-                        <div class="card-body d-flex align-items-center justify-content-center">
-                            <img class="bank-logo" src="{{ asset('assets/images/bank/bri.png') }}" alt="bri">
-                            <div class="text-start ms-5">
-                                <p class="bank-title m-0 fw-500">Bank Rakyat</p>
-                                <p class="bank-title m-0 fw-500">Indonesia</p>
+                    <form action="{{ route('payment.pay') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="bank" value="bri">
+                        <div class="card border-0 box-shadow rounded-4 p-2" onclick="this.closest('form').submit();">
+                            <div class="card-body d-flex align-items-center justify-content-center">
+                                <img class="bank-logo" src="{{ asset('assets/images/bank/bri.png') }}"
+                                     alt="bri">
+                                <div class="text-start ms-5">
+                                    <p class="bank-title m-0 fw-500">Bank Rakyat</p>
+                                    <p class="bank-title m-0 fw-500">Indonesia</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
                 <div class="col-2"></div>
             </div>

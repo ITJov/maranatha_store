@@ -101,7 +101,8 @@ Route::middleware(['auth', 'is_user'])->group(function () {
 
     // Payment
     Route::get('/payments/index', [PaymentController::class, 'index'])->name('payment.index');
-    Route::get('/payments/pay', [PaymentController::class, 'payView'])->name('payment.pay');
+    Route::post('/payments/pay', [PaymentController::class, 'payView'])->name('payment.pay');
+
 
     // Invoice User Page
     Route::get('/invoice_user/invoice-index', [UserInvoiceController::class, 'generateInvoice'])->name('invoice.index');

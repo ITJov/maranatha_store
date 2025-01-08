@@ -12,10 +12,15 @@
             <div class="col-6">
                 <div class="card border-0 box-shadow rounded-4 p-2">
                     <div class="card-body d-flex align-items-center">
-                        <img class="bank-logo-pay" src="{{ asset('assets/images/bank/bca.png') }}" alt="bca">
+                        <img class="bank-logo-pay w-20 ps-3" src="{{ asset('assets/images/bank/'.$bank.'.png') }}"
+                             alt={{$bank}}>
                         <div class="text-start ms-5">
-                            <p class="bank-title mb-2 fw-5 fw-bold">BCA Virtual Account</p>
-                            <p class="m-0" id="virtualAccount">No : 141670000000</p>
+                            @if($bank == 'bca' || $bank == 'bri')
+                                <p class="bank-title mb-2 fw-5 fw-bold">{{strtoupper($bank)}} Virtual Account</p>
+                            @else
+                                <p class="bank-title mb-2 fw-5 fw-bold">{{ucwords($bank)}} Virtual Account</p>
+                            @endif
+                            <p class="m-0" id="virtualAccount">No : {{$vaNumber}}</p>
                         </div>
                         <form class="ms-auto me-2" id="copyForm" action="{{ route('invoice.index') }}" method="POST">
                             @csrf
