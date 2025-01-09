@@ -89,6 +89,8 @@ Route::middleware(['auth', 'is_user'])->group(function () {
     // Product
     Route::get('/product/index',[ProductController::class, 'showUser'])->name('product.index');
     Route::get('/product/category/{category}', [ProductController::class, 'filterByCategory'])->name('product.category');
+    Route::post('/product/search', [ProductController::class, 'search'])->name('product.search');
+
 
     // Detail Product
     Route::get('/product/{id}', [DetailProductController::class, 'show'])->name('product.detail');
@@ -108,4 +110,6 @@ Route::middleware(['auth', 'is_user'])->group(function () {
     Route::get('/invoice_user/invoice-index', [UserInvoiceController::class, 'generateInvoice'])->name('invoice.index');
     Route::post('/invoice_user/invoice-index', [UserInvoiceController::class, 'generateInvoice'])->name('invoice.index');
 
+    // Invoice History User Page
+    Route::get('/invoice_user/history', [UserInvoiceController::class, 'historyInvoice'])->name('invoice.history');
 });

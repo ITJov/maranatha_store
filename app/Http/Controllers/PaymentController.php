@@ -11,14 +11,6 @@ class PaymentController extends Controller
         return view('payments.payment-index');
     }
 
-    public function sendBank(Request $request)
-    {
-        $bank = $request->input('bank');
-        // Lakukan sesuatu dengan $bank
-        return redirect()->back()->with('message', 'Bank berhasil dipilih: ' . $bank);
-    }
-
-
     public function payView(Request $request)
     {
         $bank = $request->input('bank');

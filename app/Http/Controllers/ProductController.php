@@ -195,4 +195,10 @@ class ProductController extends Controller
         return $product;
     }
 
+    public function search(Request $request){
+        $search = $request->input('search');
+        $products = Product::where('name', 'LIKE', "%{$search}%")->get();
+        return view('product.index', compact('products'));
+    }
+
 }

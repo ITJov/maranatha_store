@@ -17,27 +17,35 @@
         <div class="collapse navbar-collapse m-0 p-0" id="navbarNavDropdown">
             <ul class="navbar-nav d-flex align-items-center justify-content-between w-100">
                 <li class="nav-item dropdown ms-3 background-secondary rounded-3 p-0 px-2">
-                <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false" id="dropdownCategory">
-                    Select category
-                </a>
-                <ul id="category" class="dropdown-menu border-0 background-secondary text-light">
-                    <li><a class="dropdown-item text-light" href="{{ route('product.index') }}" onclick="updateCategory('All Product')">All Product</a></li>
-                    <li><a class="dropdown-item text-light" href="{{ route('product.category', 'foods') }}" onclick="updateCategory('Food')">Food</a></li>
-                    <li><a class="dropdown-item text-light" href="{{ route('product.category', 'drinks') }}" onclick="updateCategory('Drink')">Drink</a></li>
-                    <li><a class="dropdown-item text-light" href="{{ route('product.category', 'stationery') }}" onclick="updateCategory('Stationery')">Stationery</a></li>
-                    <li><a class="dropdown-item text-light" href="{{ route('product.category', 'medicines') }}" onclick="updateCategory('Medicine')">Medicine</a></li>
-                </ul>
+                    <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false" id="dropdownCategory">
+                        Select category
+                    </a>
+                    <ul id="category" class="dropdown-menu border-0 background-secondary text-light">
+                        <li><a class="dropdown-item text-light" href="{{ route('product.index') }}"
+                               onclick="updateCategory('All Product')">All Product</a></li>
+                        <li><a class="dropdown-item text-light" href="{{ route('product.category', 'foods') }}"
+                               onclick="updateCategory('Food')">Food</a></li>
+                        <li><a class="dropdown-item text-light" href="{{ route('product.category', 'drinks') }}"
+                               onclick="updateCategory('Drink')">Drink</a></li>
+                        <li><a class="dropdown-item text-light" href="{{ route('product.category', 'stationery') }}"
+                               onclick="updateCategory('Stationery')">Stationery</a></li>
+                        <li><a class="dropdown-item text-light" href="{{ route('product.category', 'medicines') }}"
+                               onclick="updateCategory('Medicine')">Medicine</a></li>
+                    </ul>
                 <li class="search">
                     <div class="container ">
-                        <div class="input-group rounded shadow-sm  border rounded-1 py-1"
-                             style="background-color: #F3F9FB;">
-                                <span class="input-group-text bg-transparent border-0 text-muted">
+                        <form action="{{ route('product.search') }}" method="POST">
+                             @csrf
+                            <div class="input-group rounded shadow-sm  border rounded-1 py-1"
+                                 style="background-color: #F3F9FB;">
+                                <button class="input-group-text bg-transparent border-0 text-muted">
                                     <i class="bi bi-search" style="color: #f97316;"></i>
-                                </span>
-                            <input type="text" class="form-control border-0 bg-transparent"
-                                   placeholder="Search essentials, groceries and more..." aria-label="Search">
-                        </div>
+                                </button>
+                                <input type="text" name="search" class="form-control border-0 bg-transparent"
+                                       placeholder="Search essentials, groceries and more..." aria-label="Search">
+                            </div>
+                        </form>
                     </div>
                 </li>
                 <li class="nav-item d-flex align-items-center">
@@ -57,16 +65,19 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li><a class="dropdown-item" href="/user-profile/index">Profile</a></li>
-                                <li><a class="dropdown-item" href="#">History</a></li>
+                                <li><a class="dropdown-item" href="/invoice_user/history">History</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
                                 <li>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                          style="display: none;">
                                         @csrf
                                     </form>
-                                    <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        <i class="uil uil-sign-out-alt font-size-18 align-middle me-1 text-muted"></i> Log Out
+                                    <a class="dropdown-item" href="#"
+                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <i class="uil uil-sign-out-alt font-size-18 align-middle me-1 text-muted"></i>
+                                        Log Out
                                     </a>
                                 </li>
                             </ul>
@@ -86,7 +97,7 @@
         localStorage.setItem('selectedCategory', category);
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         const pathWebsite = window.location.pathname;
         const dropdown = document.getElementById('dropdownCategory');
 

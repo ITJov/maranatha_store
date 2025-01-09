@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\Purchasing;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class UserInvoiceController extends Controller
@@ -104,5 +107,46 @@ class UserInvoiceController extends Controller
             'storeData' => $storeData,
             'totalPrice' => $totalPrice,
         ]);
+    }
+
+    public function historyInvoice()
+    {
+
+        $user = Auth::id();
+        $purchasings = Purchasing::where('user_id', $user)->get();
+
+        $invoices = [];
+        $previousPaymentId = null;
+        $accumulatedPrice = 0;
+
+        foreach ($purchasings as $purchase) {
+            $itemPrice = Product::where('id', $purchase->id_produk)->value('price');
+            $totalPrice = $purchase->kuantiti_produk * $itemPrice;
+
+            if ($purchase->payment_id !== $previousPaymentId) {
+                if ($previousPaymentId !== null) {
+                    $invoices[] = [
+                        'id' => $previousPaymentId,
+                        'totalPrice' => $totalPrice,
+                        'date' => $previousDate,
+                    ];
+                }
+                $previousPaymentId = $purchase->payment_id;
+                $accumulatedPrice = $totalPrice;
+                $previousDate = $purchase->date;
+            } else {
+                $accumulatedPrice += $totalPrice;
+            }
+        }
+
+        if ($previousPaymentId !== null) {
+            $invoices[] = [
+                'id' => $purchase->payment_id,
+                'totalPrice' => $totalPrice,
+                'date' => $purchase->date,
+            ];
+        }
+
+        return view('invoice_user.invoice-history', compact('invoices'));
     }
 }

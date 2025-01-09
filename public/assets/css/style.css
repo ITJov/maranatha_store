@@ -335,3 +335,65 @@ body[data-sidebar-size=sm] .navbar-brand-box .logo #logo > h5 {
 .container-pay{
     min-height: calc(100vh - 450px);
 }
+
+/*-----------------------*/
+/* Invoice */
+/*-----------------------*/
+
+.invoice-background{
+    background-image: url("../images/background/invoice-background.png");
+}
+
+/*-----------------------*/
+/* History */
+/*-----------------------*/
+
+.history-background{
+    background-image: url("../images/background/history-background.png");
+}
+
+.history-title{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.history-title span{
+    font-size: 1em;
+}
+
+.history-table td{
+    background-color: rgba(0,0,0,0) !important;
+    vertical-align: middle;
+}
+
+.w-item{
+    width: 39.8%;
+}
+
+.w-item2{
+    width: 30.4%;
+}
+
+.w-item3{
+    width: 29.8%;
+}
+
+/*-----------------------*/
+/* Invoice */
+/*-----------------------*/
+
+.invoice-title{
+	font-size: 35px;
+}
+
+.invoice-title span {
+	font-size: 1em;
+}
+
+.invoice-logo{
+	width: 80%;
+}
+
+.invoice-data p{
+	margin: 0;
+}
