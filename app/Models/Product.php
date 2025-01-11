@@ -19,6 +19,7 @@ class Product extends Model
         'kuantiti',
         'kategori',
         'file_photo',
+        'hidden',
     ];
 
     protected $primaryKey = 'id';

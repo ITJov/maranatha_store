@@ -53,24 +53,37 @@
                                         <td>{{ $product->kuantiti }}</td>
                                         <td>{{ $product->kategori }}</td>
                                         <td>
-                                            <!-- Tombol Detail -->
-                                            <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal{{ $product->id }}">
-                                                <i class="uil uil-info-circle"></i> Detail
-                                            </button>
+                                        <!-- Tombol Detail -->
+                                        <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal{{ $product->id }}">
+                                            <i class="uil uil-info-circle"></i> Detail
+                                        </button>
 
-                                            <!-- Tombol Edit -->
-                                            <a href="{{ route('product.edit', $product->id) }}" class="btn btn-primary btn-sm">
-                                                <i class="uil uil-pen"></i> Edit
-                                            </a>
+                                        <!-- Tombol Edit -->
+                                        <a href="{{ route('product.edit', $product->id) }}" class="btn btn-primary btn-sm">
+                                            <i class="uil uil-pen"></i> Edit
+                                        </a>
 
-                                            <!-- Tombol Delete -->
-                                            <form action="{{ route('product.destroy', $product->id) }}" method="POST" style="display:inline-block;">
+                                        <!-- Tombol Hide/Unhide -->
+                                        @if ($product->hidden)
+                                            <!-- Tombol Unhide -->
+                                            <form action="{{ route('product.unhide', $product->id) }}" method="POST" style="display:inline-block;">
                                                 @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm delete-btn" onclick="return confirm('Are you sure you want to delete this product?');">
-                                                    <i class="uil uil-trash-alt"></i> Delete
+                                                @method('PUT')
+                                                <button type="submit" class="btn btn-success btn-sm">
+                                                    <i class="uil uil-eye"></i> Unhide
                                                 </button>
                                             </form>
+                                        @else
+                                            <!-- Tombol Hide -->
+                                            <form action="{{ route('product.hide', $product->id) }}" method="POST" style="display:inline-block;">
+                                                @csrf
+                                                @method('PUT')
+                                                <button type="submit" class="btn btn-warning btn-sm">
+                                                    <i class="uil uil-eye-slash"></i> Hide
+                                                </button>
+                                            </form>
+                                        @endif
+
                                             <form action="{{ route('product.addStock', $product->id) }}" method="POST" style="display: inline;">
                                             @csrf
                                             <div class="mt-3 input-group" style="width: 150px;">

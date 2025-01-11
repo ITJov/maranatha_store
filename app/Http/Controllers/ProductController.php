@@ -15,12 +15,39 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(10);
+        $products = Product::where('hidden', false)->paginate(10);
+        $products = Product::orderBy('created_at', 'desc')->paginate(10);
 
         $categories = DB::table('products')->select('kategori')->distinct()->pluck('kategori');
 
         return view('ecommerce.product-ecommerce', compact('products', 'categories'));
     }
+
+    public function hide($id)
+    {
+        $product = Product::findOrFail($id);
+
+        $product->hidden = true;
+        $product->save();
+
+        return redirect()->route('product-ecommerce')->with('success', 'Product has been hidden successfully!');
+    }
+
+    public function unhide($id)
+    {
+        $product = Product::findOrFail($id);
+        $product->hidden = false; 
+        $product->save();
+
+        return redirect()->route('product-ecommerce')->with('success', 'Product unhidden successfully!');
+    }
+
+    public function hiddenProducts()
+    {
+        $products = Product::where('hidden', true)->paginate(10); 
+        return view('ecommerce.product-hide-ecommerce', compact('products'));
+    }
+    
 
     public function filterByCategory($category)
     {
@@ -35,8 +62,9 @@ class ProductController extends Controller
      */
     public function showUser()
     {
-        $products = Product::all();
-
+        $products = Product::where('hidden', false) // Filter produk yang tidak di-hide
+        ->orderBy('created_at', 'desc')        // Urutkan produk terbaru
+        ->get();
         return view('product.index', compact('products'));
     }
 
@@ -195,10 +223,15 @@ class ProductController extends Controller
         return $product;
     }
 
-    public function search(Request $request){
+    public function search(Request $request)
+    {
         $search = $request->input('search');
-        $products = Product::where('name', 'LIKE', "%{$search}%")->get();
+        $products = Product::where('hidden', false) 
+            ->where('name', 'LIKE', "%{$search}%") 
+            ->get();
+
         return view('product.index', compact('products'));
     }
+
 
 }

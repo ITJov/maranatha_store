@@ -51,6 +51,10 @@ Route::middleware(['is_admin'])->group(function () {
     Route::put('/ecommerce/{product}', [ProductController::class, 'update'])->name('product.update');
     Route::delete('/ecommerce/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
     Route::post('/ecommerce/product/{id}/addStock', [ProductController::class, 'addStock'])->name('product.addStock');
+    Route::put('/product/{id}/hide', [ProductController::class, 'hide'])->name('product.hide');
+    Route::put('/product/{id}/unhide', [ProductController::class, 'unhide'])->name('product.unhide');
+    Route::get('/ecommerce/product-hide-ecommerce', [ProductController::class, 'hiddenProducts'])->name('product.hidden');
+
 
     // Order
     Route::get('/ecommerce/orders-ecommerce', [OrderController::class, 'index'])->name('orders.index');

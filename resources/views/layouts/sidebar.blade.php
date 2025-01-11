@@ -40,10 +40,11 @@
                         <li><a href="/ecommerce/product-ecommerce">Products</a></li>
                         <li><a href="/ecommerce/orders-ecommerce">Orders</a></li>
                         <li><a href="/ecommerce/create-product-ecommerce">Add product</a></li>
+                        <li><a href="/ecommerce/product-hide-ecommerce">Hidden Product</a></li>
                     </ul>
                 </li>
 
-                <li>
+                <!-- <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="uil-invoice"></i>
                         <span>@lang('translation.Invoices')</span>
@@ -53,7 +54,7 @@
                         <li><a href="/invoices/invoices-detail">@lang('translation.Invoice_Detail')</a></li>
                     </ul>
                 </li>
-
+ -->
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="uil-user"></i>

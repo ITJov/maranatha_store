@@ -31,21 +31,6 @@
 
             // Get role_id for 'admin' role
             $role_id = DB::table('role')->where('nama_role', 'admin')->value('id');
-
-            // Insert user if the role 'admin' exists
-            if ($role_id) {
-                DB::table('users')->insert([
-                    [
-                        'id' => $id,
-                        'name' => 'admin',
-                        'email' => 'admin@gmail.com',
-                        'password' => Hash::make('admin'),
-                        'role_id' => $role_id,
-                    ]
-                ]);
-            } else {
-                throw new Exception("Role 'admin' tidak ditemukan di tabel role");
-            }
         }
 
         /**

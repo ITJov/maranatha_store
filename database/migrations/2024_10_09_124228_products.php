@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('kuantiti');
             $table->string('kategori',255);
             $table->string('file_photo',255);
+            $table->boolean('hidden')->default(false); 
             $table->timestamp('updated_at')->useCurrent();
             $table->timestamp('created_at')->useCurrent();     
            });

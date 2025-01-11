@@ -29,7 +29,7 @@ Role List
 @endif
 
 <h1>Role List</h1>
-<div class="col-md-4">
+<!-- <div class="col-md-4">
     <div>
         <a href="{{ route('role.create') }}">
             <button type="button" class="btn btn-success waves-effect waves-light mb-3">
@@ -37,7 +37,7 @@ Role List
             </button>
         </a>
     </div>
-</div>
+</div> -->
 
 <div class="row">
     <div class="col-lg-12">
@@ -74,15 +74,6 @@ Role List
                                     <a href="{{ route('role.edit', $role->id) }}" class="btn btn-primary btn-sm">
                                         <i class="uil uil-pen"></i> Edit
                                     </a>
-
-                                    <!-- Tombol Hapus -->
-                                    <form action="{{ route('role.destroy', $role->id) }}" method="POST" style="display:inline-block;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm delete-btn" onclick="return confirm('Apakah Anda yakin ingin menghapus role ini?');">
-                                            <i class="uil uil-trash-alt"></i> Delete
-                                        </button>
-                                    </form>
                                 </td>
                             </tr>
                             @endforeach

@@ -63,15 +63,6 @@
                                         <i class="uil uil-pen"></i> Edit
                                     </a>
 
-                                    <!-- Tombol Hapus -->
-                                    <form action="{{ route('customer.destroy', $user->id) }}" method="POST" style="display:inline-block;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?');">
-                                            <i class="uil uil-trash-alt"></i> Delete
-                                        </button>
-                                    </form>
-
                                 </td>
                             </tr>
 
