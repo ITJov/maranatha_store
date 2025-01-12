@@ -15,30 +15,4 @@ class DetailProductController extends Controller
         return view('product.detail-product-index', compact('product', 'productRecommend'));
     }
 
-    // public function addToCart(Request $request, $id)
-    // {
-    //     $product = Product::findOrFail($id);
-
-    //     $request->validate([
-    //         'quantity' => 'required|integer|min:1|max:' . $product->kuantiti,
-    //     ]);
-
-    //     $cart = session()->get('cart', []);
-
-    //     if (isset($cart[$id])) {
-    //         $cart[$id]['quantity'] += $request->quantity;
-    //     } else {
-    //         $cart[$id] = [
-    //             "name" => $product->name,
-    //             "price" => $product->price,
-    //             "quantity" => $request->quantity,
-    //             "image" => $product->file_photo,
-    //             "kategori" => $product->kategori,
-    //         ];
-    //     }
-
-    //     session()->put('cart', $cart);
-
-    //     return redirect()->back()->with('success', 'Product added to cart!')->withInput();
-    // }
 }

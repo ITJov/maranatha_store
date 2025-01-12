@@ -19,26 +19,30 @@
                 <div class="col-5">
                     <p class="m-0 fs-5 text-capitalize">{{ $product->kategori }}</p>
                     <p class="detail-product-name text-capitalize">{{ $product->name }}</p>
-                    <p class="fs-5">Stock: {{ $product->kuantiti }} <span
-                                class="ms-3 fw-bold fs-5 fa-bold text-success">IN STOCK</span>
+                    <p class="fs-5">Stock: {{ $product->kuantiti }} 
+                        @if($product->kuantiti > 0)
+                            <span class="ms-3 fw-bold fs-5 fa-bold text-success">IN STOCK</span>
+                        @else
+                            <span class="ms-3 fw-bold fs-5 fa-bold text-danger">OUT OF STOCK</span>
+                        @endif
                     </p>
                     <p class="fw-700 price">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
-                    <!-- pakai controller di cart -->
+                    
+                    <!-- Jika stok habis, tombol akan dinonaktifkan -->
                     <form action="{{ route('cart.addToCart', $product->id) }}" method="POST">
                         @csrf
                         <div class="d-flex">
                             <div class="input-group mb-3" style="width: 150px;">
-                                <button type="button" class="btn btn-outline-secondary" id="decreaseQuantity">-</button>
-                                <input type="" name="quantity" id="quantityInput" class="form-control text-center"
-                                    value="1" min="1" max="{{ $product->kuantiti }}">
-                                <button type="button" class="btn btn-outline-secondary" id="increaseQuantity">+</button>
+                                <button type="button" class="btn btn-outline-secondary" id="decreaseQuantity" {{ $product->kuantiti <= 0 ? 'disabled' : '' }}>-</button>
+                                <input type="number" name="quantity" id="quantityInput" class="form-control text-center"
+                                    value="1" min="1" max="{{ $product->kuantiti }}" {{ $product->kuantiti <= 0 ? 'readonly' : '' }}>
+                                <button type="button" class="btn btn-outline-secondary" id="increaseQuantity" {{ $product->kuantiti <= 0 ? 'disabled' : '' }}>+</button>
                             </div>
                             <div class="ms-3">
-                                <button type="submit" class="btn btn-success">Add to Cart</button>
+                                <button type="submit" class="btn btn-success" {{ $product->kuantiti <= 0 ? 'disabled' : '' }}>Add to Cart</button>
                             </div>
                         </div>
                     </form>
-
                 </div>
             </div>
             <div class="mx-5 subtitle-text">

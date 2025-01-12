@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Shop_Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Product;
 
 class CartController extends Controller
 {
@@ -74,20 +75,29 @@ class CartController extends Controller
         $request->validate([
             'quantity' => 'required|integer|min:1',
         ]);
-
+    
+        $product = Product::findOrFail($productId);
+    
+        // Periksa apakah stok produk cukup
+        if ($product->kuantiti <= 0) {
+            return redirect()->back()->with('error', 'This product is out of stock.');
+        }
+    
         $userId = Auth::id();
-
-        // Cek apakah item sudah ada di keranjang berdasarkan id_produk dan user_id
         $cartItem = Shop_Cart::where('id_produk', $productId)->where('user_id', $userId)->first();
-
+    
         if ($cartItem) {
-            // Jika sudah ada, tambahkan kuantitasnya
             $cartItem->kuantiti_produk += $request->quantity;
+    
+            // Validasi jika stok kurang dari jumlah yang ditambahkan
+            if ($cartItem->kuantiti_produk > $product->kuantiti) {
+                return redirect()->back()->with('error', 'Not enough stock available.');
+            }
+    
             $cartItem->save();
         } else {
-            // Jika belum ada, buat entri baru
-            $nextId = Shop_Cart::max('id') + 1; 
-
+            $nextId = Shop_Cart::max('id') + 1;
+    
             Shop_Cart::create([
                 'id' => $nextId,
                 'id_produk' => $productId,
@@ -95,9 +105,9 @@ class CartController extends Controller
                 'user_id' => $userId,
             ]);
         }
-
+    
         return redirect()->back()->with('success', 'Item added to cart!');
     }
-
+    
 
 }

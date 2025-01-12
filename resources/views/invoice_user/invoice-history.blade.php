@@ -7,41 +7,39 @@
         <div class="my-4">
             <p class="history-title"><span class="color-primary">PURCHASE</span> HISTORY</p>
         </div>
-        <div>
-            <div class="row mb-1">
-                <div class="col-1"></div>
-                <div class="col-4">
-                    <h4 class="fw-semibold">Purchase ID</h4>
-                </div>
-                <div class="col-3">
-                    <h4 class="fw-semibold">Date</h4>
-                </div>
-                <div class="col-3">
-                    <h4 class="fw-semibold text-center">Amount</h4>
-                </div>
-                <div class="col-1"></div>
-            </div>
-            @if($invoices == null)
-                <hr>
-                <div class="container d-flex align-items-center justify-content-center" style="min-height: calc(100vh - 370.27px);">
-                    <p>You don't have a transaction history yet</p>
-                </div>
-            @else
-                @foreach( $invoices as $invoice)
-                    <div class="row">
-                        <div class="col-1"></div>
-                        <div class="card col-10 p-1">
-                            <ul class="d-flex flex-row list-group list-group-flush">
-                                <li class="list-group-item w-item ">{{ $invoice['id'] }}</li>
-                                <li class="list-group-item w-item2" id="date">{{ $invoice['date']}}</li>
-                                <li class="list-group-item w-item3 text-center">
-                                    Rp {{ number_format($invoice['totalPrice'],0, '.',',') }} </li>
-                            </ul>
-                        </div>
-                        <div class="col-1"></div>
-                    </div>
-                @endforeach
-            @endif
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped text-center align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th class="text-center">Purchase ID</th>
+                        <th class="text-center">Date</th>
+                        <th class="text-center">Products</th>
+                        <th class="text-center">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if(empty($invoices) || count($invoices) == 0)
+                        <tr>
+                            <td colspan="4">You don't have a transaction history yet</td>
+                        </tr>
+                    @else
+                        @foreach($invoices as $invoice)
+                            <tr>
+                                <td>{{ $invoice['id'] }}</td>
+                                <td>{{ $invoice['date'] }}</td>
+                                <td>
+                                    <ul class="list-unstyled m-0 p-0">
+                                        @foreach($invoice['products'] as $product)
+                                            <li>{{ $product['name'] }}</li>
+                                        @endforeach
+                                    </ul>
+                                </td>
+                                <td>Rp {{ number_format($invoice['totalPrice'], 0, '.', ',') }}</td>
+                            </tr>
+                        @endforeach
+                    @endif
+                </tbody>
+            </table>
         </div>
     </div>
 @endsection
