@@ -5,7 +5,7 @@
     <div class="navbar-brand-box mt-4">
         <a href="{{url('index')}}" class="logo">
             <span class="logo-container d-flex align-items-center" id="logo">
-                <img src="assets/images/logo.png" alt="" class="logo-img" height="30">
+                <img src={{asset("assets/images/logo.png")}} alt="" class="logo-img" height="30">
                  <h5 class="logo-text ms-3 mt-3">Maranatha Store</h5>
             </span>
         </a>

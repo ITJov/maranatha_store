@@ -40,7 +40,6 @@
                                 <th>Email</th>
                                 <th>Role</th>
                                 <th>Join Date</th>
-                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -53,19 +52,6 @@
                                 <td>{{ $user->created_at }}</td>
                                 <td>
                                     
-                                    <!-- Tombol Detail -->
-                                    <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal{{ $user->id }}">
-                                        <i class="uil uil-info-circle"></i> Detail
-                                    </button>
-
-                                    <!-- Tombol Edit -->
-                                    <a href="{{ route('customer.edit', $user->id) }}" class="btn btn-primary btn-sm">
-                                        <i class="uil uil-pen"></i> Edit
-                                    </a>
-
-                                </td>
-                            </tr>
-
                             <div class="modal fade" id="detailModal{{ $user->id }}" tabindex="-1" aria-labelledby="detailModalLabel{{ $user->id }}" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">

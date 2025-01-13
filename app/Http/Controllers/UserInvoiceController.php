@@ -117,7 +117,7 @@ class UserInvoiceController extends Controller
     {
         $user = Auth::id();
         $purchasings = Purchasing::where('user_id', $user)
-            ->orderBy('payment_id') // Urutkan berdasarkan payment_id
+            ->orderBy('payment_id') 
             ->get();
     
         $invoices = [];
@@ -126,53 +126,52 @@ class UserInvoiceController extends Controller
         $accumulatedPrice = 0;
     
         foreach ($purchasings as $purchase) {
-            $product = Product::find($purchase->id_produk); // Ambil produk terkait
+            $product = Product::find($purchase->id_produk); 
             
             if (!$product) {
-                continue; // Lewati jika produk tidak ditemukan
+                continue; 
             }
     
             $itemName = $product->name;
             $itemPrice = $product->price;
-            $itemTotal = $purchase->kuantiti_produk * $itemPrice; // Total untuk produk ini
+            $itemQuantity = $purchase->kuantiti_produk;
+            $itemTotal = $purchase->kuantiti_produk * $itemPrice; 
     
             if ($purchase->payment_id !== $previousPaymentId) {
-                // Simpan invoice sebelumnya jika ada
                 if ($previousPaymentId !== null) {
                     $invoices[] = [
                         'id' => $previousPaymentId,
                         'totalPrice' => $accumulatedPrice,
                         'date' => $previousDate,
                         'products' => $products,
+                        'kuantiti'=> $itemQuantity
                     ];
                 }
     
-                // Reset untuk invoice baru
                 $previousPaymentId = $purchase->payment_id;
                 $accumulatedPrice = $itemTotal;
                 $previousDate = $purchase->date;
                 $products = [];
             } else {
-                // Tambahkan harga ke invoice yang sedang diproses
                 $accumulatedPrice += $itemTotal;
             }
     
-            // Tambahkan produk ke daftar
             $products[] = [
                 'name' => $itemName,
                 'quantity' => $purchase->kuantiti_produk,
                 'price' => $itemPrice,
+                'kuantiti'=> $itemQuantity,
                 'total' => $itemTotal,
             ];
         }
     
-        // Simpan invoice terakhir setelah loop selesai
         if ($previousPaymentId !== null) {
             $invoices[] = [
                 'id' => $previousPaymentId,
                 'totalPrice' => $accumulatedPrice,
                 'date' => $previousDate,
                 'products' => $products,
+                'kuantiti'=> $itemQuantity,
             ];
         }
     

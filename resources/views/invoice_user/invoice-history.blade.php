@@ -8,7 +8,7 @@
             <p class="history-title"><span class="color-primary">PURCHASE</span> HISTORY</p>
         </div>
         <div class="table-responsive">
-            <table class="table table-bordered table-striped text-center align-middle">
+            <table class="table table-bordered text-center align-middle">
                 <thead class="table-dark">
                     <tr>
                         <th class="text-center">Purchase ID</th>
@@ -28,9 +28,9 @@
                                 <td>{{ $invoice['id'] }}</td>
                                 <td>{{ $invoice['date'] }}</td>
                                 <td>
-                                    <ul class="list-unstyled m-0 p-0">
+                                    <ul class="text-start list-group list-group-numbered m-0 p-0">
                                         @foreach($invoice['products'] as $product)
-                                            <li>{{ $product['name'] }}</li>
+                                            <li class="list-group-item">{{ $product['name'] }}</li>
                                         @endforeach
                                     </ul>
                                 </td>

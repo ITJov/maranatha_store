@@ -34,15 +34,15 @@
                         <div class="d-flex">
                             <div class="input-group mb-3" style="width: 150px;">
                                 <button type="button" class="btn btn-outline-secondary" id="decreaseQuantity" {{ $product->kuantiti <= 0 ? 'disabled' : '' }}>-</button>
-                                <input type="number" name="quantity" id="quantityInput" class="form-control text-center"
-                                    value="1" min="1" max="{{ $product->kuantiti }}" {{ $product->kuantiti <= 0 ? 'readonly' : '' }}>
+                                <input type="" name="quantity" id="quantityInput" class="form-control text-center"
+                                    value="1" min="1" max="{{ $product->kuantiti }}" {{ $product->kuantiti <= 0 ? 'readonly' : '' }} readonly>
                                 <button type="button" class="btn btn-outline-secondary" id="increaseQuantity" {{ $product->kuantiti <= 0 ? 'disabled' : '' }}>+</button>
                             </div>
                             <div class="ms-3">
                                 <button type="submit" class="btn btn-success" {{ $product->kuantiti <= 0 ? 'disabled' : '' }}>Add to Cart</button>
                             </div>
                         </div>
-                    </form>
+                    </form> 
                 </div>
             </div>
             <div class="mx-5 subtitle-text">

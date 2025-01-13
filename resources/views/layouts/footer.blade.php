@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6">
-                <script>document.write(new Date().getFullYear())</script> © Maranatha Store.
+                <p style="color: white;"><script>document.write(new Date().getFullYear())</script> © Maranatha Store.</p>
             </div>
             <div class="col-sm-6">
             </div>
