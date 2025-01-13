@@ -13,6 +13,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\DetailProductController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\UserInvoiceController;
+use App\Http\Controllers\AdminDashboardController;
 
 
 /*
@@ -42,6 +43,8 @@ Route::post('/formsubmit', [App\Http\Controllers\HomeController::class, 'FormSub
 
 Route::middleware(['is_admin'])->group(function () {
     //-----------------bagian admin---------------------
+    // Dashboard Admin
+    Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
     // Ecommerce
     Route::view('/ecommerce/ecommerce-orders', 'ecommerce.ecommerce-orders');
     Route::get('/ecommerce/product-ecommerce', [ProductController::class, 'index'])->name('product-ecommerce');
