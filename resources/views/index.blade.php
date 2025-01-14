@@ -10,15 +10,35 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-body">
+                <div class="float-end mt-2">
+                    <div id="total-revenue-chart" data-colors='["--bs-primary"]'></div>
+                </div>
                 <div>
-                    <h4 class="mb-1 mt-1">Rp.<span data-plugin="counterup">{{ number_format($totalRevenue ?? 0, 2) }}</span></h4>
+                    <h4 class="mb-1 mt-1">$<span data-plugin="counterup">34,152</span></h4>
                     <p class="text-muted mb-0">Total Revenue</p>
                 </div>
+                <!-- <p class="text-muted mt-3 mb-0"><span class="text-success me-1"><i class="mdi mdi-arrow-up-bold me-1"></i>2.65%</span>  last week
+                </p> -->
             </div>
         </div>
-    </div>
-</div>
+    </div> 
 
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="float-end mt-2">
+                    <div id="total-revenue-chart" data-colors='["--bs-primary"]'></div>
+                </div>
+                <div>
+                    <h4 class="mb-1 mt-1">$<span data-plugin="counterup">34,152</span></h4>
+                    <p class="text-muted mb-0">Total Revenue</p>
+                </div>
+                <!-- <p class="text-muted mt-3 mb-0"><span class="text-success me-1"><i class="mdi mdi-arrow-up-bold me-1"></i>2.65%</span>  last week
+                </p> -->
+            </div>
+        </div>
+    </div> 
+</div>
 
 <div class="card">
         <div class="card-body">
