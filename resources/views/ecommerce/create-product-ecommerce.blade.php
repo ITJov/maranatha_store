@@ -16,12 +16,6 @@
 @endcomponent
 
 <div class="row">
-    @if(session('error'))
-    <div class="alert alert-danger">
-        {{ session('error') }}
-    </div>
-    @endif
-    
     <div class="col-lg-12">
         <div id="addproduct-accordion" class="custom-accordion">
             <div class="p-4 border-top">
