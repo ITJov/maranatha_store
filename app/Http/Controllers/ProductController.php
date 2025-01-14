@@ -84,7 +84,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|string|max:255|unique:products,name',
+            'name' => 'required|string|max:255',
             'description' => 'nullable|string|max:255',
             'price' => 'required|numeric',
             'kuantiti' => 'required|integer',
@@ -92,6 +92,11 @@ class ProductController extends Controller
             'new_category' => 'nullable|string|max:255',
             'file_photo' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
+
+        // Cek jika produk sudah ada berdasarkan nama
+        if (Product::where('name', $validatedData['name'])->exists()) {
+            return redirect()->back()->with('error', 'The product already exists.');
+        }
 
         $category = $request->input('new_category') ? $request->input('new_category') : $request->input('kategori');
 
@@ -117,7 +122,7 @@ class ProductController extends Controller
             'file_photo' => 'assets/images/product/' . $fileName, 
         ]);
 
-        return redirect()->route('product-ecommerce')->with('success', 'Produk berhasil ditambahkan');
+        return redirect()->route('product-ecommerce')->with('success', 'Product added successfully.');
     }
 
     /**
