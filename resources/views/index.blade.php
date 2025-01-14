@@ -11,7 +11,7 @@
         <div class="card">
             <div class="card-body">
                 <div>
-                    <h4 class="mb-1 mt-1">Rp.<span data-plugin="counterup">{{ number_format($totalRevenue ?? 0) }}</span></h4>
+                    <h4 class="mb-1 mt-1">Rp.<span data-plugin="counterup">{{ number_format($totalRevenue ?? 0, 2) }}</span></h4>
                     <p class="text-muted mb-0">Total Revenue</p>
                 </div>
             </div>
