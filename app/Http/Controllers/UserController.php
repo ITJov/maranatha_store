@@ -53,7 +53,7 @@ class UserController extends Controller
             'role_id' => $validatedData['role_id'],
         ]);
 
-        return redirect()->route('customer-index')->with('success', 'Pengguna berhasil ditambahkan');
+        return redirect()->route('customer-index')->with('success', 'User added successfully');
     }
 
     /**
@@ -103,7 +103,7 @@ class UserController extends Controller
         // Simpan perubahan
         $user->save();
     
-        return redirect()->route('customer-index')->with('success', 'Pengguna berhasil diperbarui');
+        return redirect()->route('customer-index')->with('success', 'User added successfully.');
     }
     
     /**
