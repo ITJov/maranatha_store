@@ -18,9 +18,9 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         if ($user->role_id == '1') {
-            return redirect('/'); 
+            return redirect('/admin-dashboard/index'); 
         } elseif ($user->role_id == '3') {
-            return redirect('/user-dashboard/index'); 
+            return redirect('/'); 
         }
 
         return redirect('/'); 

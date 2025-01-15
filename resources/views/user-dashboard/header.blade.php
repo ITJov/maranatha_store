@@ -58,29 +58,36 @@
                     <div class="px-3">|</div>
                     <ul style="list-style-type: none" class="p-0">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle fs-5" href="#" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="color-primary bi bi-person fs-5"></i>
-                                {{Str::ucfirst(Auth::user()->name)}}
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="/user-profile/index">Profile</a></li>
-                                <li><a class="dropdown-item" href="/invoice_user/history">History</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                          style="display: none;">
-                                        @csrf
-                                    </form>
-                                    <a class="dropdown-item" href="#"
-                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        <i class="uil uil-sign-out-alt font-size-18 align-middle me-1 text-muted"></i>
-                                        Log Out
-                                    </a>
-                                </li>
-                            </ul>
+                            @if(Auth::check())
+                                <a class="nav-link dropdown-toggle fs-5" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="color-primary bi bi-person fs-5"></i>
+                                    {{ Str::ucfirst(Auth::user()->name) }}
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="/user-profile/index">Profile</a></li>
+                                    <li><a class="dropdown-item" href="/invoice_user/history">History</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            style="display: none;">
+                                            @csrf
+                                        </form>
+                                        <a class="dropdown-item" href="#"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            <i class="uil uil-sign-out-alt font-size-18 align-middle me-1 text-muted"></i>
+                                            Log Out
+                                        </a>
+                                    </li>
+                                </ul>
+                            @else
+                                <a class="nav-link fs-5" href="{{ route('login') }}">
+                                    <i class="color-primary bi bi-person fs-5"></i>
+                                    Guest
+                                </a>
+                            @endif
                         </li>
                     </ul>
                 </li>
