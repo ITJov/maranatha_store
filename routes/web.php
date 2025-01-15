@@ -33,8 +33,9 @@ Auth::routes();
 //     return view('welcome');
 // })->middleware('is_admin');
 
+Route::get('/', [HomeController::class, 'root'])->name('home');
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'root']);
+// Route::get('/', [App\Http\Controllers\HomeController::class, 'root']);
 
 Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index']);
 

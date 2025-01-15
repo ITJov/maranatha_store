@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -32,10 +33,35 @@ class HomeController extends Controller
         return abort(404);
     }
 
-    public function root()
+    public function root(Request $request)
     {
-        return view('index');
+        // Ambil tanggal dari request, jika tidak ada gunakan hari ini
+        $date = $request->date ?? date('Y-m-d');
+
+        // Ambil total pendapatan berdasarkan tanggal
+        $totalRevenue = DB::table('purchasings_detail')
+            ->join('purchasings', 'purchasings_detail.purchasing_id', '=', 'purchasings.id')
+            ->whereDate('purchasings.date', $date)
+            ->sum('purchasings_detail.total_price');
+
+        // Ambil data produk berdasarkan tanggal
+        $products = DB::table('purchasings')
+            ->join('products', 'purchasings.id_produk', '=', 'products.id')
+            ->whereDate('purchasings.date', $date)
+            ->select('purchasings.id_produk', 'purchasings.kuantiti_produk', 'products.name')
+            ->get();
+
+        // Response untuk AJAX request
+        if(request()->ajax()) {
+            return response()->json([
+                'products' => $products,
+                'totalRevenue' => $totalRevenue
+            ]);
+        }
+
+        return view('index', compact('totalRevenue', 'date'));
     }
+
 
     /*Language Translation*/
     public function lang($locale)
