@@ -99,7 +99,6 @@ class ProductController extends Controller
             'file_photo' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        // Cek jika produk sudah ada berdasarkan nama
         if (Product::where('name', $validatedData['name'])->exists()) {
             return redirect()->back()->with('error', 'The product already exists.');
         }
@@ -119,7 +118,7 @@ class ProductController extends Controller
         Product::create([
             'id' => $id,
             'name' => $validatedData['name'],
-            'description' => $validatedData['description'],
+            'description' => $validatedData['description']?? '',
             'price' => $validatedData['price'],
             'kuantiti' => $validatedData['kuantiti'],
             'category_id' => $validatedData['category'],

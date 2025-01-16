@@ -41,20 +41,34 @@ class CartController extends Controller
     public function updateQuantity(Request $request, $id)
     {
         $request->validate([
-            'quantity' => 'required|integer|min:1',
+            'action' => 'required|string|in:increase,decrease',
         ]);
-
+    
         $cartItem = Shop_Cart::findOrFail($id);
-
-        $cartItem->kuantiti_produk = $request->quantity;
+        $product = Product::findOrFail($cartItem->id_produk);
+    
+        if ($request->action === 'increase') {
+            // Cek apakah stok mencukupi
+            if ($cartItem->kuantiti_produk + 1 > $product->kuantiti) {
+                return redirect()->back()->with('error', 'Not enough stock available.');
+            }
+    
+            $cartItem->kuantiti_produk += 1;
+        } elseif ($request->action === 'decrease') {
+            $cartItem->kuantiti_produk -= 1;
+    
+            // Hapus item jika kuantitas mencapai 0
+            if ($cartItem->kuantiti_produk <= 0) {
+                $cartItem->delete();
+                return redirect()->route('cart.index')->with('success', 'Item removed from cart!');
+            }
+        }
+    
         $cartItem->save();
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Quantity updated successfully.',
-        ]);
+    
+        return redirect()->back()->with('success', 'Cart updated successfully!');
     }
-
+    
     public function remove($id)
     {
         $userId = Auth::id(); // ID pengguna yang sedang login
@@ -85,8 +99,11 @@ class CartController extends Controller
         }
     
         $userId = Auth::id();
+        if (!auth()->check()) {
+            return redirect()->route('login')->with('error', 'You must log in first.');
+        }
         $cartItem = Shop_Cart::where('id_produk', $productId)->where('user_id', $userId)->first();
-    
+
         if ($cartItem) {
             $cartItem->kuantiti_produk += $request->quantity;
     
