@@ -44,17 +44,17 @@
                     </ul>
                 </li>
 
-                <!-- <li>
+                <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="uil-invoice"></i>
-                        <span>@lang('translation.Invoices')</span>
+                        <i class="uil-books"></i>
+                        <span>Categories</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="/invoices/invoices-list">@lang('translation.Invoice_List')</a></li>
-                        <li><a href="/invoices/invoices-detail">@lang('translation.Invoice_Detail')</a></li>
+                        <li><a href="/ecommerce/category">Products Categories</a></li>
+                        <li><a href="/ecommerce/category/hidden">Hidden Categories</a></li>
                     </ul>
                 </li>
- -->
+
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="uil-user"></i>

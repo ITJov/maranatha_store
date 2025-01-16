@@ -55,7 +55,7 @@ Role List
                                 </th>
                                 <th>No</th>
                                 <th>Nama Role</th>
-                                <th>Action</th> 
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody class="mb-4">
@@ -81,7 +81,7 @@ Role List
                     </table>
                 </div>
             </div>
-        </div>                         
+        </div>
     </div>
 </div>
 @endsection

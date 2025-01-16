@@ -71,6 +71,12 @@ class HomeController extends Controller
             ]);
 
         } catch (\Exception $e) {
+<<<<<<< Updated upstream
+=======
+            // Log the error if needed
+            \Log::error('Dashboard Error: ' . $e->getMessage());
+
+>>>>>>> Stashed changes
             // Return view with default values
             return view('index', [
                 'totalRevenue' => 0,
@@ -80,6 +86,10 @@ class HomeController extends Controller
         }
     }
 
+<<<<<<< Updated upstream
+=======
+//    /Language Translation/
+>>>>>>> Stashed changes
     public function lang($locale)
     {
         if ($locale) {

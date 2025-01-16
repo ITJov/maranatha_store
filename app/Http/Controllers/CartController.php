@@ -14,27 +14,28 @@ class CartController extends Controller
     {
         $userId = Auth::id();
 
-        // Mengambil data keranjang dari database dengan relasi ke produk
+        // Fetch cart items with related product and category
         $cartItems = Shop_Cart::where('user_id', $userId)
-            ->with('product') // Mengambil relasi dengan produk
+            ->with(['product.category']) // Include product and its category
             ->get()
             ->map(function ($cartItem) {
                 return [
                     'id' => $cartItem->id,
                     'name' => $cartItem->product->name ?? 'Product not found',
                     'image' => $cartItem->product->file_photo ?? 'default.jpg',
-                    'kategori' => $cartItem->product->kategori ?? 'Category not found',
+                    'category_id' => $cartItem->product->category_id ?? 'Category not found',
+                    'category_name' => $cartItem->product->category->name ?? 'Category not found', // Fetch category name
                     'price' => $cartItem->product->price ?? 0,
                     'quantity' => $cartItem->kuantiti_produk,
                     'total' => ($cartItem->product->price ?? 0) * $cartItem->kuantiti_produk,
                 ];
             });
-
-        // Hitung total harga seluruh item
+        // Calculate the total price of all items
         $totalPrice = $cartItems->sum('total');
 
         return view('carts.cart-index', compact('cartItems', 'totalPrice'));
     }
+
 
 
     public function updateQuantity(Request $request, $id)

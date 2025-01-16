@@ -13,7 +13,7 @@
 </head>
 <body class="@yield('body-class')">
     {{-- Header --}}
-    @include('user-dashboard.header')
+    @include('user-dashboard.header', ['categories'=> $categories])
 
     <div class="container-fluid p-0 overflow-hidden content @yield('add-certain')">
         {{-- Livewire Content --}}

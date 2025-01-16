@@ -41,7 +41,7 @@
                             </div>
                             <div>
                                 <h5>{{ $item['name'] ?? 'Product not found' }}</h5>
-                                <p class="m-0">{{$item['kategori'] ?? 'Category not found'}}</p>
+                                <p class="m-0">{{$item['category_name'] ?? 'Category not found'}}</p>
                             </div>
                         </td>
                         <td><p>Rp {{ number_format($item['price'] ?? 0, 0, ',', '.') }}</p></td>
