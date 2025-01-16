@@ -93,7 +93,7 @@ Route::middleware(['is_admin'])->group(function () {
 
 // Rute untuk User
 Route::middleware(['auth', 'is_user'])->group(function () {
-    // Route::get('/user-dashboard/index', [UserDashboardController::class, 'index'])->name('user.dashboard');
+    Route::get('/user-dashboard/index', [UserDashboardController::class, 'index'])->name('user.dashboard');
 
     // Cart
     Route::get('/carts/cart-index', [CartController::class, 'index'])->name('cart.index');
@@ -105,7 +105,7 @@ Route::middleware(['auth', 'is_user'])->group(function () {
     // Route::post('/product/search', [ProductController::class, 'search'])->name('product.search');
 
 
-    // // Detail Product
+    // // // Detail Product
     // Route::get('/product/{id}', [DetailProductController::class, 'show'])->name('product.detail');
     // Route::post('/product/{id}/add-to-cart', [CartController::class, 'addToCart'])->name('cart.addToCart');
 
