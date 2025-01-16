@@ -114,7 +114,10 @@ Route::middleware(['auth', 'is_user'])->group(function () {
     // Invoice User Page
     Route::get('/invoice_user/invoice-index', [UserInvoiceController::class, 'generateInvoice'])->name('invoice.index');
     Route::post('/invoice_user/invoice-index', [UserInvoiceController::class, 'generateInvoice'])->name('invoice.index');
+    
 
     // Invoice History User Page
     Route::get('/invoice_user/history', [UserInvoiceController::class, 'historyInvoice'])->name('invoice.history');
+    Route::get('/invoice_user/invoice/{id}', [UserInvoiceController::class, 'showInvoice'])->name('invoice.detail');
+
 });

@@ -72,4 +72,11 @@
             </div>
         @endforeach
     </div>
+        <!-- Ikon WhatsApp -->
+        <a href="https://wa.me/62881023373000" target="_blank">
+        <div class="whatsapp-icon rounded-circle d-flex align-items-center justify-content-center">
+            <i class="bi bi-whatsapp text-light fs-2"></i>
+        </div>
+    </a>
+
 @endsection
