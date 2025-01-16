@@ -33,17 +33,25 @@ Auth::routes();
 //     return view('welcome');
 // })->middleware('is_admin');
 
-Route::get('/', [HomeController::class, 'root'])->name('home');
+Route::get('/', [UserDashboardController::class, 'index'])->name('user.dashboard');
 
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'root']);
 
-Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('{any}', [UserDashboardController::class, 'index'])->name('user.dashboard');
+
+Route::get('/product/index',[ProductController::class, 'showUser'])->name('product.index');
+Route::get('/product/category/{category}', [ProductController::class, 'filterByCategory'])->name('product.category');
+Route::post('/product/search', [ProductController::class, 'search'])->name('product.search');
+
+Route::get('/product/{id}', [DetailProductController::class, 'show'])->name('product.detail');
+Route::post('/product/{id}/add-to-cart', [CartController::class, 'addToCart'])->name('cart.addToCart');
 
 Route::post('/formsubmit', [App\Http\Controllers\HomeController::class, 'FormSubmit'])->name('FormSubmit');
 
 Route::middleware(['is_admin'])->group(function () {
     //-----------------bagian admin---------------------
     // Ecommerce
+    Route::get('/admin-dashboard/index', [HomeController::class, 'root'])->name('home');
     Route::view('/ecommerce/ecommerce-orders', 'ecommerce.ecommerce-orders');
     Route::get('/ecommerce/product-ecommerce', [ProductController::class, 'index'])->name('product-ecommerce');
     Route::get('/ecommerce/create-product-ecommerce', [ProductController::class, 'create'])->name('product.create');
@@ -91,15 +99,15 @@ Route::middleware(['auth', 'is_user'])->group(function () {
     Route::get('/carts/cart-index', [CartController::class, 'index'])->name('cart.index');
     Route::delete('/carts/cart-index/{id}/remove', [CartController::class, 'remove'])->name('cart.remove');
 
-    // Product
-    Route::get('/product/index',[ProductController::class, 'showUser'])->name('product.index');
-    Route::get('/product/category/{category}', [ProductController::class, 'filterByCategory'])->name('product.category');
-    Route::post('/product/search', [ProductController::class, 'search'])->name('product.search');
+    // // Product
+    // Route::get('/product/index',[ProductController::class, 'showUser'])->name('product.index');
+    // Route::get('/product/category/{category}', [ProductController::class, 'filterByCategory'])->name('product.category');
+    // Route::post('/product/search', [ProductController::class, 'search'])->name('product.search');
 
 
-    // Detail Product
-    Route::get('/product/{id}', [DetailProductController::class, 'show'])->name('product.detail');
-    Route::post('/product/{id}/add-to-cart', [CartController::class, 'addToCart'])->name('cart.addToCart');
+    // // // Detail Product
+    // Route::get('/product/{id}', [DetailProductController::class, 'show'])->name('product.detail');
+    // Route::post('/product/{id}/add-to-cart', [CartController::class, 'addToCart'])->name('cart.addToCart');
 
     // Profile
     Route::get('/user-profile/index', [ProfileController::class, 'index'])->name('user-profile.index')->middleware('auth');

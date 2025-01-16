@@ -84,8 +84,11 @@ class CartController extends Controller
         }
     
         $userId = Auth::id();
+        if (!auth()->check()) {
+            return redirect()->route('login')->with('error', 'You must log in first.');
+        }
         $cartItem = Shop_Cart::where('id_produk', $productId)->where('user_id', $userId)->first();
-    
+
         if ($cartItem) {
             $cartItem->kuantiti_produk += $request->quantity;
     
