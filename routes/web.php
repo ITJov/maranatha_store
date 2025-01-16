@@ -98,6 +98,8 @@ Route::middleware(['auth', 'is_user'])->group(function () {
     // Cart
     Route::get('/carts/cart-index', [CartController::class, 'index'])->name('cart.index');
     Route::delete('/carts/cart-index/{id}/remove', [CartController::class, 'remove'])->name('cart.remove');
+    Route::put('/cart/update/{id}', [CartController::class, 'updateQuantity'])->name('cart.updateQuantity');
+
 
     // // Product
     // Route::get('/product/index',[ProductController::class, 'showUser'])->name('product.index');
