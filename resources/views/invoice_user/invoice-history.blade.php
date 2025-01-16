@@ -25,7 +25,11 @@
                     @else
                         @foreach($invoices as $invoice)
                             <tr>
-                                <td>{{ $invoice['id'] }}</td>
+                                <td>
+                                    <a href="{{ route('invoice.detail', ['id' => $invoice['id']]) }}" class="text-decoration-none">
+                                        {{ $invoice['id'] }}
+                                    </a>
+                                </td>
                                 <td>{{ $invoice['date'] }}</td>
                                 <td>
                                     <ul class="text-start list-group list-group-numbered m-0 p-0">

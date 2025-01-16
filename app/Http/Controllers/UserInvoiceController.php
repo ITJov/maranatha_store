@@ -177,4 +177,33 @@ class UserInvoiceController extends Controller
     
         return view('invoice_user.invoice-history', compact('invoices'));
     }
-            }
+
+    public function showInvoice($id)
+{
+    $purchasingDetails = Purchasing::where('payment_id', $id)
+        ->join('products', 'purchasings.id_produk', '=', 'products.id')
+        ->select('products.name', 'purchasings.kuantiti_produk as quantity', 'products.price')
+        ->get();
+
+    $totalPrice = $purchasingDetails->sum(function ($item) {
+        return $item->quantity * $item->price;
+    });
+
+    $payment = DB::table('payments')->where('id', $id)->first();
+
+    $storeData = [
+        'store_name' => 'Maranatha Store',
+        'address' => 'Jalan Surya Sumantri no.65',
+        'order_time' => now()->format('d/m/Y - H:i'),
+    ];
+
+    return view('invoice_user.invoice-index', [
+        'purchasing' => $purchasingDetails,
+        'paymentId' => $id,
+        'date' => $payment->created_at,
+        'storeData' => $storeData,
+        'totalPrice' => $totalPrice,
+    ]);
+    }
+
+}

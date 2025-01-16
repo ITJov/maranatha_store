@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Illuminate\Http\Request;
@@ -10,17 +11,18 @@ use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
+    protected $selectedCategory;
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $products = Product::where('hidden', false)->paginate(10);
-        $products = Product::orderBy('created_at', 'desc')->paginate(10);
+        $products = Product::where('hidden', false)
+                       ->orderBy('created_at', 'desc')
+                       ->with('category')
+                       ->paginate(10);
 
-        $categories = DB::table('products')->select('kategori')->distinct()->pluck('kategori');
-
-        return view('ecommerce.product-ecommerce', compact('products', 'categories'));
+    return view('ecommerce.product-ecommerce', compact('products'));
     }
 
     public function hide($id)
@@ -36,7 +38,11 @@ class ProductController extends Controller
     public function unhide($id)
     {
         $product = Product::findOrFail($id);
-        $product->hidden = false; 
+        $category = Category::find($product->category_id);
+        if($category->hidden){
+            return redirect()->route('product.hidden')->with('message','Category is already hidden');
+        }
+        $product->hidden = false;
         $product->save();
 
         return redirect()->route('product-ecommerce')->with('success', 'Product unhidden successfully!');
@@ -44,15 +50,15 @@ class ProductController extends Controller
 
     public function hiddenProducts()
     {
-        $products = Product::where('hidden', true)->paginate(10); 
+        $products = Product::where('hidden', true)->paginate(10);
         return view('ecommerce.product-hide-ecommerce', compact('products'));
     }
-    
 
-    public function filterByCategory($category)
+
+    public function filterByCategory($category_id)
     {
-        $products = Product::where('kategori', $category)->get();
-        
+        $products = Product::where('category_id', $category_id)
+            ->where('hidden',false)->get();
         return view('product.index', compact('products'));
     }
 
@@ -73,7 +79,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = DB::table('products')->select('kategori')->distinct()->pluck('kategori');
+        $categories = Category::all();
 
         return view('ecommerce.create-product-ecommerce', compact('categories'));
     }
@@ -88,7 +94,7 @@ class ProductController extends Controller
             'description' => 'nullable|string|max:255',
             'price' => 'required|numeric',
             'kuantiti' => 'required|integer',
-            'kategori' => 'nullable|string|max:255',
+            'category' => 'string|max:10',
             'new_category' => 'nullable|string|max:255',
             'file_photo' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
@@ -96,8 +102,6 @@ class ProductController extends Controller
         if (Product::where('name', $validatedData['name'])->exists()) {
             return redirect()->back()->with('error', 'The product already exists.');
         }
-
-        $category = $request->input('new_category') ? $request->input('new_category') : $request->input('kategori');
 
         $id = IdGenerator::generate(['table' => 'products', 'length' => 10, 'prefix' => 'PRD-']);
 
@@ -117,8 +121,8 @@ class ProductController extends Controller
             'description' => $validatedData['description']?? '',
             'price' => $validatedData['price'],
             'kuantiti' => $validatedData['kuantiti'],
-            'kategori' => $category,
-            'file_photo' => 'assets/images/product/' . $fileName, 
+            'category_id' => $validatedData['category'],
+            'file_photo' => 'assets/images/product/' . $fileName,
         ]);
 
         return redirect()->route('product-ecommerce')->with('success', 'Product added successfully.');
@@ -130,8 +134,7 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::findOrFail($id);
-
-        $categories = DB::table('products')->select('kategori')->distinct()->pluck('kategori');
+        $categories = Category::all();
 
         return view('ecommerce.edit-product-ecommerce', compact('product', 'categories'));
     }
@@ -146,35 +149,35 @@ class ProductController extends Controller
             'description' => 'nullable|string|max:255',
             'price' => 'required|numeric',
             'kuantiti' => 'required|integer',
-            'kategori' => 'nullable|string|max:255',
+            'category' => 'nullable|string|max:255',
             'file_photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
-    
+
         $product = Product::findOrFail($id);
-    
+
         if ($request->hasFile('file_photo')) {
             if ($product->file_photo && File::exists(public_path($product->file_photo))) {
                 File::delete(public_path($product->file_photo));
             }
-    
+
             $file = $request->file('file_photo');
             $fileName = uniqid() . '_' . $file->getClientOriginalName();
             $file->move(public_path('assets/images/product'), $fileName);
-    
+
             $product->file_photo = 'assets/images/product/' . $fileName;
         }
-    
+
         $product->update([
             'name' => $validatedData['name'],
             'description' => $validatedData['description'] ?? $product->description,
             'price' => $validatedData['price'],
             'kuantiti' => $validatedData['kuantiti'],
-            'kategori' => $validatedData['kategori'],
+            'category_id' => $validatedData['category'],
         ]);
-    
+
         return redirect()->route('product-ecommerce')->with('success', 'Produk berhasil diperbarui');
     }
-    
+
     /**
      * Remove the specified resource from storage.
      */
@@ -229,11 +232,22 @@ class ProductController extends Controller
 
     public function search(Request $request)
     {
+        $id = $request->input('category_id');
         $search = $request->input('search');
-        $products = Product::where('hidden', false) 
-            ->where('name', 'LIKE', "%{$search}%") 
+//
+//        if ($id == null) {
+//            $products = Product::where('hidden', false)
+//            ->where('name', 'LIKE', "%{$search}%")
+//            ->get();
+//            return view('product.index', compact('products'));
+//        }
+
+        $products = Product::where('hidden', false)
+            ->where('category_id', $id)
+            ->where('name', 'LIKE', "%{$search}%")
             ->get();
 
+//        dd($id, $search, $products);
         return view('product.index', compact('products'));
     }
 

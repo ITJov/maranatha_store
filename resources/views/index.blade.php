@@ -6,6 +6,8 @@
 @slot('title') Dashboard @endslot
 @endcomponent
 
+
+
 <div class="align-items-center">
     <div class="col-md-6 w-100">
         <div class="card">
@@ -15,13 +17,12 @@
                     <p class="text-muted mb-0">Total Revenue</p>
                 </div>
                 <div class="form-group mb-0">
-                    <input type="date" class="form-control" id="datePicker" value="{{ $date }}">
+                    <input type="date" class="form-control" id="datePicker" value="{{ $date ?? now()->format('Y-m-d') }}">
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 
 <div class="row mt-1">
     <div class="col-12">

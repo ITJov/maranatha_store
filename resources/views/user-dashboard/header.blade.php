@@ -23,20 +23,18 @@
                     </a>
                     <ul id="category" class="dropdown-menu border-0 background-secondary text-light">
                         <li><a class="dropdown-item text-light" href="{{ route('product.index') }}"
-                               onclick="updateCategory('All Product')">All Product</a></li>
-                        <li><a class="dropdown-item text-light" href="{{ route('product.category', 'foods') }}"
-                               onclick="updateCategory('Food')">Food</a></li>
-                        <li><a class="dropdown-item text-light" href="{{ route('product.category', 'drinks') }}"
-                               onclick="updateCategory('Drink')">Drink</a></li>
-                        <li><a class="dropdown-item text-light" href="{{ route('product.category', 'stationery') }}"
-                               onclick="updateCategory('Stationery')">Stationery</a></li>
-                        <li><a class="dropdown-item text-light" href="{{ route('product.category', 'medicines') }}"
-                               onclick="updateCategory('Medicine')">Medicine</a></li>
+                               onclick="updateCategory(null, 'All Product')">All Product</a></li>
+                        @foreach($categories as $category)
+                            <li><a class="dropdown-item text-light"
+                                   href="{{ route('product.category', $category->id) }}"
+                                   onclick="updateCategory('{{ $category->id }}', '{{ $category->name }}')">{{ $category->name }}</a></li>
+                        @endforeach
+
                     </ul>
                 <li class="search">
                     <div class="container ">
                         <form action="{{ route('product.search') }}" method="POST">
-                             @csrf
+                            @csrf
                             <div class="input-group rounded shadow-sm  border rounded-1 py-1"
                                  style="background-color: #F3F9FB;">
                                 <button class="input-group-text bg-transparent border-0 text-muted">
@@ -98,10 +96,10 @@
 
 <!-- biar dropdown sesuai sama kategori yang dipilih -->
 <script>
-    function updateCategory(category) {
-        document.getElementById('dropdownCategory').textContent = category;
+    function updateCategory(categoryId, categoryName) {
+        document.getElementById('dropdownCategory').textContent = categoryName;
         // simpan ke localStorage
-        localStorage.setItem('selectedCategory', category);
+        localStorage.setItem('selectedCategory', categoryName)
     }
 
     document.addEventListener('DOMContentLoaded', function () {

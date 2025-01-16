@@ -17,7 +17,7 @@
                     <img src="{{ asset($product->file_photo) }}" alt="{{ $product->name }}" class="img-fluid w-50">
                 </div>
                 <div class="col-5">
-                    <p class="m-0 fs-5 text-capitalize">{{ $product->kategori }}</p>
+                    <p class="m-0 fs-5 text-capitalize">{{ $product->category->name }}</p>
                     <p class="detail-product-name text-capitalize">{{ $product->name }}</p>
                     <p class="fs-5">Stock: {{ $product->kuantiti }} 
                         @if($product->kuantiti > 0)
