@@ -19,7 +19,7 @@
                 <th class="text-start">Product</th>
                 <th>Price</th>
                 <th>Quantity</th>
-                <th>Action</th>
+                <th class="text-center ps-5">Action</th>
                 <th>Total</th>
             </tr>
             </thead>
@@ -47,7 +47,7 @@
                         <td><p>Rp {{ number_format($item['price'] ?? 0, 0, ',', '.') }}</p></td>
                         <td class="pe-5"><p>{{ $item['quantity'] }}</p></td>
                         <td>
-                            <form action="{{ route('cart.updateQuantity', $item['id']) }}" method="POST" class="d-flex align-items-center">
+                            <form action="{{ route('cart.updateQuantity', $item['id']) }}" method="POST" class=" ps-5 d-flex align-items-center justify-content-center">
                                 @csrf
                                 @method('PUT')
                                 <button type="submit" name="action" value="decrease" class="btn btn-outline-secondary btn-sm">-</button>

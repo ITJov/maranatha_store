@@ -4,6 +4,15 @@
 @section('content')
     <div class="container">
         <div class="mt-5">
+            @if ($products->isEmpty())
+                <div class="row mt-4 mx-5 px-5 cart-description">
+                    <div class="col-4"></div>
+                    <div class="col-4  d-flex justify-content-center align-items-center">
+                        <h3>Product Does Not Exist</h3>
+                    </div>
+                    <div class="col-4"></div>
+                </div>
+            @endif
             <div class="row mt-4 mx-5 px-5">
                 @foreach($products as $product)
                     <div class="col-md-3 mb-4">

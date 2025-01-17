@@ -293,6 +293,10 @@ body[data-sidebar-size=sm] .navbar-brand-box .logo #logo > h5 {
 .cart-product-img {
     width: 3em;
 }
+
+.cart-description{
+    min-height: calc(100vh - 450px);
+}
 /*-----------------------*/
 /* Payment Index */
 /*-----------------------*/

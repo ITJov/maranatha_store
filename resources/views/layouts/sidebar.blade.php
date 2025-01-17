@@ -3,7 +3,7 @@
 
     <!-- LOGO -->
     <div class="navbar-brand-box mt-4">
-        <a href="{{url('index')}}" class="logo">
+        <a href="{{url('admin-dashboard/index')}}" class="logo">
             <span class="logo-container d-flex align-items-center" id="logo">
                 <img src={{asset("assets/images/logo.png")}} alt="" class="logo-img" height="30">
                  <h5 class="logo-text ms-3 mt-3">Maranatha Store</h5>
@@ -24,7 +24,7 @@
                 <li class="menu-title">@lang('translation.Menu')</li>
 
                 <li>
-                    <a href="{{url('index')}}">
+                    <a href="{{url('admin-dashboard/index')}}">
                         <i class="uil-home-alt"></i>
                         <span>@lang('translation.Dashboard')</span>
                     </a>

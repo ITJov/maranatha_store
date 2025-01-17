@@ -232,7 +232,6 @@ class ProductController extends Controller
 
     public function search(Request $request)
     {
-        $id = $request->input('category_id');
         $search = $request->input('search');
 //
 //        if ($id == null) {
@@ -243,7 +242,6 @@ class ProductController extends Controller
 //        }
 
         $products = Product::where('hidden', false)
-            ->where('category_id', $id)
             ->where('name', 'LIKE', "%{$search}%")
             ->get();
 

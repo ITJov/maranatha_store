@@ -58,7 +58,7 @@
                             @foreach ($categories as $category)
                                 <tr>
                                     <td class="">{{ $loop->iteration }}</td>
-                                    <td>{{ $category->name }}</td>
+                                    <td class="text-capitalize">{{ $category->name }}</td>
                                     <td>{{ $category->description }}</td>
                                     <td>
                                         <!-- Tombol Edit -->

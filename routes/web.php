@@ -44,6 +44,7 @@ Route::get('/product/index',[ProductController::class, 'showUser'])->name('produ
 Route::get('/product/category/{category}', [ProductController::class, 'filterByCategory'])->name('product.category');
 Route::post('/product/search', [ProductController::class, 'search'])->name('product.search');
 
+
 Route::get('/product/{id}', [DetailProductController::class, 'show'])->name('product.detail');
 Route::post('/product/{id}/add-to-cart', [CartController::class, 'addToCart'])->name('cart.addToCart');
 
@@ -110,10 +111,10 @@ Route::middleware(['auth', 'is_user'])->group(function () {
     Route::delete('/carts/cart-index/{id}/remove', [CartController::class, 'remove'])->name('cart.remove');
     Route::put('/cart/update/{id}', [CartController::class, 'updateQuantity'])->name('cart.updateQuantity');
 
-    // Product
-    Route::get('/product/index', [ProductController::class, 'showUser'])->name('product.index');
-    Route::get('/product/category/{category_id}', [ProductController::class, 'filterByCategory'])->name('product.category');
-    Route::post('/product/search', [ProductController::class, 'search'])->name('product.search');
+    // // Product
+    // Route::get('/product/index', [ProductController::class, 'showUser'])->name('product.index');
+    // Route::get('/product/category/{category_id}', [ProductController::class, 'filterByCategory'])->name('product.category');
+    // Route::post('/product/search', [ProductController::class, 'search'])->name('product.search');
 
     // // // Detail Product
     // Route::get('/product/{id}', [DetailProductController::class, 'show'])->name('product.detail');

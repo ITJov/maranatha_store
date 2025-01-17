@@ -17,7 +17,7 @@
         <div class="collapse navbar-collapse m-0 p-0" id="navbarNavDropdown">
             <ul class="navbar-nav d-flex align-items-center justify-content-between w-100">
                 <li class="nav-item dropdown ms-3 background-secondary rounded-3 p-0 px-2">
-                    <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown"
+                    <a class="nav-link dropdown-toggle text-light text-capitalize" href="#" role="button" data-bs-toggle="dropdown"
                        aria-expanded="false" id="dropdownCategory">
                         Select category
                     </a>
@@ -25,7 +25,7 @@
                         <li><a class="dropdown-item text-light" href="{{ route('product.index') }}"
                                onclick="updateCategory(null, 'All Product')">All Product</a></li>
                         @foreach($categories as $category)
-                            <li><a class="dropdown-item text-light"
+                            <li><a class="dropdown-item text-light text-capitalize"
                                    href="{{ route('product.category', $category->id) }}"
                                    onclick="updateCategory('{{ $category->id }}', '{{ $category->name }}')">{{ $category->name }}</a></li>
                         @endforeach
@@ -97,7 +97,7 @@
 <!-- biar dropdown sesuai sama kategori yang dipilih -->
 <script>
     function updateCategory(categoryId, categoryName) {
-        document.getElementById('dropdownCategory').textContent = categoryName;
+        const element = document.getElementById('dropdownCategory').textContent = categoryName;
         // simpan ke localStorage
         localStorage.setItem('selectedCategory', categoryName)
     }

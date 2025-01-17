@@ -10,6 +10,14 @@
     @slot('title') Products @endslot
 @endcomponent
 
+@if(session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
+
 <div class="row">
     <!-- Main Content -->
     <div class="col-xl-12 col-lg-12">
@@ -48,7 +56,7 @@
                                         <td>
                                             <img src="{{ asset($product->file_photo) }}" alt="{{ $product->name }}" style="width: 100px; height: auto;">
                                         </td>
-                                        <td>{{ $product->name }}</td>
+                                        <td class="text-capitalize">{{ $product->name }}</td>
                                         <td>{{ $product->price }}</td>
                                         <td>{{ $product->kuantiti }}</td>
                                         <td>{{ $product->category->name }}</td>
