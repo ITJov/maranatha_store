@@ -9,14 +9,12 @@ use App\Models\Product;
 
 class CartController extends Controller
 {
-    // nampilin data di halamn cart
     public function index()
     {
         $userId = Auth::id();
 
-        // Fetch cart items with related product and category
         $cartItems = Shop_Cart::where('user_id', $userId)
-            ->with(['product.category']) // Include product and its category
+            ->with(['product.category']) 
             ->get()
             ->map(function ($cartItem) {
                 return [
@@ -24,13 +22,12 @@ class CartController extends Controller
                     'name' => $cartItem->product->name ?? 'Product not found',
                     'image' => $cartItem->product->file_photo ?? 'default.jpg',
                     'category_id' => $cartItem->product->category_id ?? 'Category not found',
-                    'category_name' => $cartItem->product->category->name ?? 'Category not found', // Fetch category name
+                    'category_name' => $cartItem->product->category->name ?? 'Category not found', 
                     'price' => $cartItem->product->price ?? 0,
                     'quantity' => $cartItem->kuantiti_produk,
                     'total' => ($cartItem->product->price ?? 0) * $cartItem->kuantiti_produk,
                 ];
             });
-        // Calculate the total price of all items
         $totalPrice = $cartItems->sum('total');
 
         return view('carts.cart-index', compact('cartItems', 'totalPrice'));
@@ -48,7 +45,6 @@ class CartController extends Controller
         $product = Product::findOrFail($cartItem->id_produk);
     
         if ($request->action === 'increase') {
-            // Cek apakah stok mencukupi
             if ($cartItem->kuantiti_produk + 1 > $product->kuantiti) {
                 return redirect()->back()->with('error', 'Not enough stock available.');
             }
@@ -57,7 +53,6 @@ class CartController extends Controller
         } elseif ($request->action === 'decrease') {
             $cartItem->kuantiti_produk -= 1;
     
-            // Hapus item jika kuantitas mencapai 0
             if ($cartItem->kuantiti_produk <= 0) {
                 $cartItem->delete();
                 return redirect()->route('cart.index')->with('success', 'Item removed from cart!');
@@ -73,7 +68,6 @@ class CartController extends Controller
     {
         $userId = Auth::id(); // ID pengguna yang sedang login
 
-        // Cari data keranjang berdasarkan id produk dan id pengguna
         $cartItem = Shop_Cart::where('id', $id)->where('user_id', $userId)->first();
 
         if ($cartItem) {
@@ -93,7 +87,6 @@ class CartController extends Controller
     
         $product = Product::findOrFail($productId);
     
-        // Periksa apakah stok produk cukup
         if ($product->kuantiti <= 0) {
             return redirect()->back()->with('error', 'This product is out of stock.');
         }
@@ -107,7 +100,6 @@ class CartController extends Controller
         if ($cartItem) {
             $cartItem->kuantiti_produk += $request->quantity;
     
-            // Validasi jika stok kurang dari jumlah yang ditambahkan
             if ($cartItem->kuantiti_produk > $product->kuantiti) {
                 return redirect()->back()->with('error', 'Not enough stock available.');
             }
