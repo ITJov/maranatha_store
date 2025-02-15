@@ -48,13 +48,12 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label class="form-label" for="kategori">Category</label>
-                                <select class="form-control select2" name="kategori" id="kategori" required>
+                                <label class="form-label" for="category">Category</label>
+                                <select class="form-control select2" name="category" id="category" required>
                                     <option value="" disabled selected>Select</option>
                                     @foreach ($categories as $category)
-                                        <option value="{{ $category }}">{{ $category }}</option>
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
-                                    <option value="new">Add New Category</option>
                                 </select>
                             </div>
                         </div>

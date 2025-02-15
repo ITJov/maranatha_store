@@ -9,12 +9,7 @@ Edit Product
 
 <form action="{{ route('product.update', $product->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
-    @method('PUT') 
-
-    <div class="mb-3">
-        <label for="id" class="form-label">ID Product</label>
-        <input type="text" class="form-control" name="id" id="id" value="{{ $product->id }}" readonly>
-    </div>
+    @method('PUT')
 
     <div class="mb-3">
         <label for="name" class="form-label">Product Name</label>
@@ -32,11 +27,11 @@ Edit Product
     </div>
 
     <div class="mb-3">
-        <label for="kategori" class="form-label">Category</label>
-        <select class="form-control select2" name="kategori" id="kategori" required>
+        <label for="category" class="form-label">Category</label>
+        <select class="form-control select2" name="category" id="category" required>
             @foreach($categories as $category)
-                <option value="{{ $category }}" {{ $product->kategori == $category ? 'selected' : '' }}>
-                    {{ $category }}
+                <option value="{{ $category->id }}" {{ $product->category_id == $category->id? 'selected' : '' }}>
+                    {{ $category->name }}
                 </option>
             @endforeach
         </select>

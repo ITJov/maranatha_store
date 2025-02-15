@@ -10,7 +10,11 @@ class DetailProductController extends Controller
     public function show($id)
     {
         $product = Product::findOrFail($id);
-        $productRecommend = Product::where('kategori', $product->kategori)->where('id', '!=', $product->id)->take(4)->get();
+        $productRecommend = Product::where('category_id', $product->category_id)
+            ->where('id', '!=', $product->id)
+            ->with('category')
+            ->take(4)
+            ->get();
 
         return view('product.detail-product-index', compact('product', 'productRecommend'));
     }

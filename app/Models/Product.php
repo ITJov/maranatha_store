@@ -17,7 +17,7 @@ class Product extends Model
         'description',
         'price',
         'kuantiti',
-        'kategori',
+        'category_id',
         'file_photo',
         'hidden',
     ];
@@ -36,4 +36,8 @@ class Product extends Model
         return $this->hasMany(Shop_Cart::class);
     }
 
+   public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

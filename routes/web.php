@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -43,6 +44,7 @@ Route::get('/product/index',[ProductController::class, 'showUser'])->name('produ
 Route::get('/product/category/{category}', [ProductController::class, 'filterByCategory'])->name('product.category');
 Route::post('/product/search', [ProductController::class, 'search'])->name('product.search');
 
+
 Route::get('/product/{id}', [DetailProductController::class, 'show'])->name('product.detail');
 Route::post('/product/{id}/add-to-cart', [CartController::class, 'addToCart'])->name('cart.addToCart');
 
@@ -64,6 +66,15 @@ Route::middleware(['is_admin'])->group(function () {
     Route::put('/product/{id}/unhide', [ProductController::class, 'unhide'])->name('product.unhide');
     Route::get('/ecommerce/product-hide-ecommerce', [ProductController::class, 'hiddenProducts'])->name('product.hidden');
 
+    // Category
+    Route::get('/ecommerce/category', [CategoryController::class, 'index'])->name('category.index');
+    Route::get('/ecommerce/category/create-category', [CategoryController::class, 'create'])->name('category.create');
+    ROute::post('/ecommerce/category/store', [CategoryController::class, 'store'])->name('category.store');
+    Route::get('/ecommerce/category/{category}/edit', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::post('ecommerce/category/{category}', [CategoryController::class, 'update'])->name('category.update');
+    Route::post('/ecommerce/category/{id}/hide', [CategoryController::class, 'hide'])->name('category.hide');
+    Route::put('/ecommerce/category/{id}/unhide', [CategoryController::class, 'unhide'])->name('category.unhide');
+    Route::get('/ecommerce/category/hidden',[CategoryController::class, 'hiddenCategory'])->name('category.hidden');
 
     // Order
     Route::get('/ecommerce/orders-ecommerce', [OrderController::class, 'index'])->name('orders.index');
@@ -98,12 +109,12 @@ Route::middleware(['auth', 'is_user'])->group(function () {
     // Cart
     Route::get('/carts/cart-index', [CartController::class, 'index'])->name('cart.index');
     Route::delete('/carts/cart-index/{id}/remove', [CartController::class, 'remove'])->name('cart.remove');
+    Route::put('/cart/update/{id}', [CartController::class, 'updateQuantity'])->name('cart.updateQuantity');
 
     // // Product
-    // Route::get('/product/index',[ProductController::class, 'showUser'])->name('product.index');
-    // Route::get('/product/category/{category}', [ProductController::class, 'filterByCategory'])->name('product.category');
+    // Route::get('/product/index', [ProductController::class, 'showUser'])->name('product.index');
+    // Route::get('/product/category/{category_id}', [ProductController::class, 'filterByCategory'])->name('product.category');
     // Route::post('/product/search', [ProductController::class, 'search'])->name('product.search');
-
 
     // // // Detail Product
     // Route::get('/product/{id}', [DetailProductController::class, 'show'])->name('product.detail');

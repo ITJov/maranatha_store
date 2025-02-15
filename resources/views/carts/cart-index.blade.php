@@ -19,7 +19,7 @@
                 <th class="text-start">Product</th>
                 <th>Price</th>
                 <th>Quantity</th>
-                <th>Action</th>
+                <th class="text-center ps-5">Action</th>
                 <th>Total</th>
             </tr>
             </thead>
@@ -41,18 +41,19 @@
                             </div>
                             <div>
                                 <h5>{{ $item['name'] ?? 'Product not found' }}</h5>
-                                <p class="m-0">{{$item['kategori'] ?? 'Category not found'}}</p>
+                                <p class="m-0">{{$item['category_name'] ?? 'Category not found'}}</p>
                             </div>
                         </td>
                         <td><p>Rp {{ number_format($item['price'] ?? 0, 0, ',', '.') }}</p></td>
                         <td class="pe-5"><p>{{ $item['quantity'] }}</p></td>
                         <td>
-                        <!-- hapus data di cart page -->
-                        <form action="{{ route('cart.remove', $item['id']) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">Remove</button>
-                        </form>
+                            <form action="{{ route('cart.updateQuantity', $item['id']) }}" method="POST" class=" ps-5 d-flex align-items-center justify-content-center">
+                                @csrf
+                                @method('PUT')
+                                <button type="submit" name="action" value="decrease" class="btn btn-outline-secondary btn-sm">-</button>
+                                <input type="text" value="{{ $item['quantity'] }}" class="form-control text-center mx-2" style="width: 50px;" disabled>
+                                <button type="submit" name="action" value="increase" class="btn btn-outline-secondary btn-sm">+</button>
+                            </form>
                         </td>
                         <td><p>Rp {{ number_format(($item['price'] ?? 0) * $item['quantity'], 0, ',', '.') }}</p></td>
                     </tr>
