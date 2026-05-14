@@ -2,6 +2,8 @@
 @section('title')
     Register
 @endsection
+@section('body-style', 'login-background background-img')
+
 @section('content')
     <div class="account-pages my-5 pt-sm-5">
         <div class="container">

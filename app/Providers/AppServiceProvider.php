@@ -24,10 +24,17 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    // public function boot()
+    // {
+    //     $categories = Category::all();
+    //     View::share('categories', $categories);
+    //     Schema::defaultStringLength(191);
+    // }
+
     public function boot()
     {
-        $categories = Category::all();
-        View::share('categories', $categories);
-        Schema::defaultStringLength(191);
+        if (!app()->runningInConsole() && Schema::hasTable('categories')) {
+            view()->share('categories', \App\Models\Category::all());
+        }
     }
 }

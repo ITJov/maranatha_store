@@ -71,9 +71,6 @@ class HomeController extends Controller
             ]);
 
         } catch (\Exception $e) {
-            // Log the error if needed
-            Log::error('Dashboard Error: ' . $e->getMessage());
-
             // Return view with default values
             return view('index', [
                 'totalRevenue' => 0,

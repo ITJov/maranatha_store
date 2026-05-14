@@ -59,7 +59,7 @@
                                         <td class="text-capitalize">{{ $product->name }}</td>
                                         <td>{{ $product->price }}</td>
                                         <td>{{ $product->kuantiti }}</td>
-                                        <td>{{ $product->category->name }}</td>
+                                        <td>{{ $product->category->name ?? 'N/A' }}</td>
                                         <td>
                                         <!-- Tombol Detail -->
                                         <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detailModal{{ $product->id }}">

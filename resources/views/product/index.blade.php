@@ -18,10 +18,10 @@
                     <div class="col-md-3 mb-4">
                         <div class="card round-circle rounded-4">
                             <a class="text-decoration-none text-dark"
-                               href="{{ route('product.detail', ['id' => $product->id]) }}">
+                                href="{{ route('product.detail', ['id' => $product->id]) }}">
                                 <img src="{{ asset($product->file_photo) }}"
-                                     class="round-circle rounded-top-4 pt-4 card-img-top product-image"
-                                     alt="{{ $product->name }}">
+                                    class="round-circle rounded-top-4 pt-4 card-img-top product-image"
+                                    alt="{{ $product->name }}">
                                 <div class="card-body">
                                     <h5 class="card-title text-capitalize">{{ $product->name }}</h5>
                                     <hr class="">

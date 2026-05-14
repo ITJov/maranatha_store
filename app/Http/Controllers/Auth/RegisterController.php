@@ -64,10 +64,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+        $id = \Haruncpi\LaravelIdGenerator\IdGenerator::generate([
+            'table' => 'users', 
+            'length' => 10, 
+            'prefix' => 'USR-'
+        ]);
+
         return User::create([
+            'id' => $id,
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role_id' => 3,
         ]);
     }
 }

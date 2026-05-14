@@ -23,8 +23,8 @@
                                     <div class="mb-3">
                                         <label class="form-label text-muted" for="email">Email</label>
                                         <input type="text" class="form-control @error('email') is-invalid @enderror border-dark-subtle"
-                                               name="email" value="{{ old('email') }}" id="email"
-                                               placeholder="Enter Email address">
+                                            name="email" value="{{ old('email') }}" id="email"
+                                            placeholder="Enter Email address">
                                         @error('email')
                                         <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -34,8 +34,8 @@
                                     <div class="mb-3">
                                         <label class="form-label text-muted" for="userpassword">Password</label>
                                         <input type="password"
-                                               class="form-control @error('password') is-invalid @enderror border-dark-subtle"
-                                               name="password" id="userpassword" placeholder="Enter password">
+                                            class="form-control @error('password') is-invalid @enderror border-dark-subtle"
+                                            name="password" id="userpassword" placeholder="Enter password">
                                         @error('password')
                                         <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -45,7 +45,7 @@
 
                                     <div class="form-check" id="remember-me">
                                         <input type="checkbox" class="form-check-input border-dark-subtle" id="auth-remember-check"
-                                               name="remember" {{ old('remember') ? 'checked' : '' }}>
+                                            name="remember" {{ old('remember') ? 'checked' : '' }}>
                                         <label class="form-check-label" for="auth-remember-check">Remember me</label>
                                     </div>
 
@@ -57,6 +57,10 @@
                                         <button class="btn background-primary text-white w-sm waves-effect waves-light" type="submit">Log In</button>
                                     </div>
                                 </form>
+                            </div>
+                            <div class="mt-4 text-center">
+                                <p class="text-muted mb-0">Don't have an account? <a href="{{ route('register') }}"
+                                    class="fw-medium text-primary"> Register Now</a></p>
                             </div>
                         </div>
                     </div>
