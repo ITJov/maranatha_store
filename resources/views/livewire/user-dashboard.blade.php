@@ -9,7 +9,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ $product->name }}</h5>
                     <p class="card-text">Price: Rp {{ number_format($product->price, 0, ',', '.') }}</p>
-                    <p class="card-text">Category: {{ $product->kategori }}</p>
+                    <p class="card-text">Category: {{ $product->category_id }}</p>
                     <button class="btn btn-primary" wire:click="addToCart({{ $product->id }})">Add to Cart</button>
                 </div>
             </div>

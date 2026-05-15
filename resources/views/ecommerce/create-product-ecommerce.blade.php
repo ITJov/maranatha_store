@@ -90,7 +90,7 @@
 <script src="{{ URL::asset('/assets/libs/select2/select2.min.js') }}"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const categorySelect = document.getElementById('kategori');
+        const categorySelect = document.getElementById('category_id');
         const newCategoryContainer = document.getElementById('new-category-container');
         const newCategoryInput = document.getElementById('new-category');
 

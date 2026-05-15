@@ -14,19 +14,19 @@ class UserInvoiceController extends Controller
 {
     public function generateInvoice(Request $request)
     {
-        if (!auth()->check()) {
+        if (!Auth::check()) {
             return redirect()->route('login')->with('error', 'You must log in first.');
         }
     
         $cartItems = DB::table('shop_carts')
-            ->join('products', 'shop_carts.id_produk', '=', 'products.id')
+            ->join('products', 'shop_carts.product_id', '=', 'products.id')
             ->select(
-                'shop_carts.id_produk',
+                'shop_carts.product_id',
                 'shop_carts.kuantiti_produk as quantity',
                 'products.name',
                 'products.price'
             )
-            ->where('shop_carts.user_id', auth()->id())
+            ->where('shop_carts.user_id', Auth::id())
             ->get();
     
         if ($cartItems->isEmpty()) {
@@ -62,7 +62,7 @@ class UserInvoiceController extends Controller
     
             DB::table('purchasings')->insert([
                 'id' => $nextPurchasingId,
-                'id_produk' => $item->id_produk,
+                'product_id' => $item->product_id,
                 'kuantiti_produk' => $item->quantity,
                 'user_id' => auth()->id(),
                 'date' => $date,
@@ -71,7 +71,7 @@ class UserInvoiceController extends Controller
                 'updated_at' => now(),
             ]);
     
-            app('App\Http\Controllers\ProductController')->reduceStock($item->id_produk, $item->quantity);
+            app('App\Http\Controllers\ProductController')->reduceStock($item->product_id, $item->quantity);
     
             $purchasingIds[] = $nextPurchasingId;
             $totalPrice += $item->quantity * $item->price;
@@ -104,13 +104,7 @@ class UserInvoiceController extends Controller
             'order_time' => now()->format('d/m/Y - H:i'),
         ];
     
-        return view('invoice_user.invoice-index', [
-            'purchasing' => $cartItems,
-            'paymentId' => $nextPaymentId,
-            'date' => $date,
-            'storeData' => $storeData,
-            'totalPrice' => $totalPrice,
-        ]);
+        return redirect()->route('order.status')->with('success', 'Pembayaran Berhasil! Pesananmu sedang diproses.');
     }
     
     public function historyInvoice()
@@ -126,7 +120,7 @@ class UserInvoiceController extends Controller
         $accumulatedPrice = 0;
     
         foreach ($purchasings as $purchase) {
-            $product = Product::find($purchase->id_produk); 
+            $product = Product::find($purchase->product_id); 
             
             if (!$product) {
                 continue; 
@@ -181,7 +175,7 @@ class UserInvoiceController extends Controller
     public function showInvoice($id)
 {
     $purchasingDetails = Purchasing::where('payment_id', $id)
-        ->join('products', 'purchasings.id_produk', '=', 'products.id')
+        ->join('products', 'purchasings.product_id', '=', 'products.id')
         ->select('products.name', 'purchasings.kuantiti_produk as quantity', 'products.price')
         ->get();
 
@@ -204,6 +198,30 @@ class UserInvoiceController extends Controller
         'storeData' => $storeData,
         'totalPrice' => $totalPrice,
     ]);
+    }
+
+    public function trackStatus()
+    {
+        $userId = Auth::id();
+
+        // Ambil semua pesanan aktif (status 1, 2, atau 3)
+        $activeOrders = DB::table('purchasings_detail')
+            ->join('purchasings', 'purchasings_detail.purchasing_id', '=', 'purchasings.id')
+            ->join('products', 'purchasings.product_id', '=', 'products.id')
+            ->select(
+                'purchasings.payment_id',
+                'purchasings_detail.status_order',
+                'purchasings_detail.updated_at',
+                'products.name as product_name',
+                'products.price',
+                'purchasings.kuantiti_produk'
+            )
+            ->where('purchasings.user_id', $userId)
+            ->whereIn('purchasings_detail.status_order', [1, 2, 3])
+            ->get()
+            ->groupBy('payment_id'); 
+
+        return view('invoice_user.invoice-index', compact('activeOrders'));
     }
 
 }

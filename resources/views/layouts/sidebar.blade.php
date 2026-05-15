@@ -30,6 +30,14 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="{{ url('/ecommerce/orders-status-management') }}" class="waves-effect">
+                        <i class="uil-sync"></i>
+                        
+                        <span>Update Status Pesanan</span>
+                    </a>
+                </li>
+
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">

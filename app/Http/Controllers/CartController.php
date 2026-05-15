@@ -42,7 +42,7 @@ class CartController extends Controller
         ]);
     
         $cartItem = Shop_Cart::findOrFail($id);
-        $product = Product::findOrFail($cartItem->id_produk);
+        $product = Product::findOrFail($cartItem->product_id);
     
         if ($request->action === 'increase') {
             if ($cartItem->kuantiti_produk + 1 > $product->kuantiti) {
@@ -92,10 +92,10 @@ class CartController extends Controller
         }
     
         $userId = Auth::id();
-        if (!auth()->check()) {
+        if (!Auth::check()) {
             return redirect()->route('login')->with('error', 'You must log in first.');
         }
-        $cartItem = Shop_Cart::where('id_produk', $productId)->where('user_id', $userId)->first();
+        $cartItem = Shop_Cart::where('product_id', $productId)->where('user_id', $userId)->first();
 
         if ($cartItem) {
             $cartItem->kuantiti_produk += $request->quantity;
@@ -110,7 +110,7 @@ class CartController extends Controller
     
             Shop_Cart::create([
                 'id' => $nextId,
-                'id_produk' => $productId,
+                'product_id' => $productId,
                 'kuantiti_produk' => $request->quantity,
                 'user_id' => $userId,
             ]);

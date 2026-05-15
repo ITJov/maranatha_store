@@ -13,8 +13,8 @@ class Shop_Cart extends Model
 
     // Kolom yang dapat diisi
     protected $fillable = [
-        'id',            // ID utama (bisa auto-increment atau manual)
-        'id_produk',     // Foreign key ke tabel produk
+        'id',            
+        'product_id',     
         'kuantiti_produk',
         'user_id',
     ];
@@ -28,7 +28,7 @@ class Shop_Cart extends Model
      */
     public function product()
     {
-        return $this->belongsTo(Product::class, 'id_produk', 'id');
+        return $this->belongsTo(Product::class, 'product_id', 'id');
     }
 
     /**

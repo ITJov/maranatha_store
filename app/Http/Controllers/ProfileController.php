@@ -41,6 +41,7 @@ class ProfileController extends Controller
             ],
         ]);
 
+        /** @var User $user */
         $user = Auth::user();
 
         $user->password = Hash::make($request->new_password);

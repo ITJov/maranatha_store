@@ -7,7 +7,6 @@
 @endcomponent
 
 
-
 <div class="align-items-center">
     <div class="col-md-6 w-100">
         <div class="card">
@@ -62,7 +61,6 @@
                 // Update total revenue
                 $('#revenue-display').text(numberFormat(response.totalRevenue));
 
-                // Update chart
                 updateChart(response.products);
             },
             error: function(xhr, status, error) {

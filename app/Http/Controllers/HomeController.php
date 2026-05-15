@@ -46,10 +46,10 @@ class HomeController extends Controller
 
             // Get product data for the selected date
             $products = DB::table('purchasings')
-                ->join('products', 'purchasings.id_produk', '=', 'products.id')
+                ->join('products', 'purchasings.product_id', '=', 'products.id')
                 ->whereDate('purchasings.date', $date)
                 ->select(
-                    'purchasings.id_produk',
+                    'purchasings.product_id',
                     'purchasings.kuantiti_produk',
                     'products.name'
                 )

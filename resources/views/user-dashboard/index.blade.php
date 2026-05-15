@@ -1,6 +1,32 @@
 @extends('user-dashboard.master-user')
 @section('body-class', 'home-page-background background-img')
 @section('content')
+@php
+        $activeOrderCount = \DB::table('purchasings_detail')
+            ->join('purchasings', 'purchasings_detail.purchasing_id', '=', 'purchasings.id')
+            ->where('purchasings.user_id', Auth::id())
+            ->whereIn('purchasings_detail.status_order', [1, 2, 3])
+            ->count();
+    @endphp
+
+    {{-- 2. Tampilkan Alert jika ada pesanan --}}
+    @if($activeOrderCount > 0)
+    <div class="mx-5 px-5 mt-4">
+        <div class="alert alert-warning border-0 shadow-sm d-flex justify-content-between align-items-center mb-0 p-3" style="border-radius: 15px; background-color: #fff3cd; border-left: 5px solid #ffc107 !important;">
+            <div class="d-flex align-items-center">
+                {{-- Efek berkedip agar user sadar ada pesanan --}}
+                <div class="spinner-grow text-warning spinner-grow-sm me-3" role="status"></div>
+                <div>
+                    <p class="mb-0 fw-bold text-dark">Kamu punya {{ $activeOrderCount }} pesanan aktif!</p>
+                    <small class="text-muted">Staf kami sedang menyiapkan pesananmu di Maranatha Store.</small>
+                </div>
+            </div>
+            <a href="{{ route('order.status') }}" class="btn background-secondary text-light fw-bold px-4 shadow-sm">
+                LACAK PESANAN <i class="bi bi-arrow-right ms-2"></i>
+            </a>
+        </div>
+    </div>
+    @endif
     <div id="carouselExampleAutoplaying" class="carousel slide m-5 px-5" data-bs-ride="carousel">
         <div class="carousel-inner rounded-3" id="carousel">
             <div class="carousel-item active">
@@ -56,10 +82,10 @@
             <div class="col-md-3 mb-4">
                 <div class="card round-circle rounded-4">
                     <a class="text-decoration-none text-dark"
-                       href="{{ route('product.detail', ['id' => $product->id]) }}">
+                        href="{{ route('product.detail', ['id' => $product->id]) }}">
                         <img src="{{ asset($product->file_photo) }}"
-                             class="round-circle rounded-top-4 pt-4 card-img-top product-image"
-                             alt="{{ $product->name }}">
+                            class="round-circle rounded-top-4 pt-4 card-img-top product-image"
+                            alt="{{ $product->name }}">
 
                         <div class="card-body">
                             <h5 class="card-title text-capitalize">{{ $product->name }}</h5>

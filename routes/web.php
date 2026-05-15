@@ -78,6 +78,8 @@ Route::middleware(['is_admin'])->group(function () {
 
     // Order
     Route::get('/ecommerce/orders-ecommerce', [OrderController::class, 'index'])->name('orders.index');
+    Route::get('/ecommerce/orders-status-management', [OrderController::class, 'management'])->name('orders.management');
+    Route::put('/ecommerce/orders-status-management/{id}', [OrderController::class, 'updateStatus'])->name('orders.updateStatus');
 
     // Invoices
     Route::view('/invoices/invoices-detail', 'invoices.invoices-detail');
@@ -139,4 +141,6 @@ Route::middleware(['auth', 'is_user'])->group(function () {
     Route::get('/invoice_user/history', [UserInvoiceController::class, 'historyInvoice'])->name('invoice.history');
     Route::get('/invoice_user/invoice/{id}', [UserInvoiceController::class, 'showInvoice'])->name('invoice.detail');
 
+    // Invoice status update
+    Route::get('/order/status', [UserInvoiceController::class, 'trackStatus'])->name('order.status');
 });

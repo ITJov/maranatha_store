@@ -10,7 +10,7 @@ class UserDashboardController extends Controller
 {
     public function index()
     {
-        $categories = []; 
+        $categories = Category::where('hidden', false)->get(); 
         $products = Product::where('hidden', false) 
                 ->latest()                             
                 ->take(4)                               
